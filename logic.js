@@ -275,9 +275,6 @@ function displayMovieTwo() {
 	$("#movie2").append("<img class='moviePoster' id='" + movie2Poster + "' src='images/" + movie2Poster + ".jpg'>");
 }
 
-pickMovieOne();
-pickMovieTwo();
-
 $(document).on("click", ".moviePoster", function(){
 	var picked = $(this).attr("id");
 	switch (picked) {
@@ -370,9 +367,9 @@ function bracketStage(){
 function displayBracket() {
 	for(i=0; i < (sortScores.length-1); i++){
 		if(i <= 7) {
-			$("#" + (i+1) + "Seed").append("<img class='bracketPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
+			$("#" + (i+1) + "Seed").append("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
 		}else{
-			$("#" + (i+1) + "Seed").prepend("<img class='bracketPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
+			$("#" + (i+1) + "Seed").prepend("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
 		}
 	}
 	if(sortScores[i].rank >= 17) {
@@ -381,6 +378,7 @@ function displayBracket() {
 }
 
 $(document).on("click", ".bracketPoster", function(){
+	$(this).removeClass("bracketPoster");
 	var movieId = $(this).first().attr('id');
 	var spliceId = movieId.split(" ");
 	var movieName = spliceId[0];
@@ -401,7 +399,7 @@ $(document).on("click", ".bracketPoster", function(){
 		startThirdRound();
 		sortBracketLoserScores();
 	}else{}
-	$(this).parent().parent().siblings().empty();
+	$(this).parent().parent().siblings().children().children().remove();
 });
 
 function sortBracketLoserScores() {
@@ -421,7 +419,6 @@ function sortTop8LoserScores() {
 function sortTop4LoserScores() {
 	finalRanking.slice(13, 14).sort(function(a, b){return b.rank-a.rank});
 	for (var i = 12; i < 15; i++){
-		console.log(i);
 		finalRanking[i].rank = 17 - i;
 	}
 }
@@ -434,35 +431,35 @@ function startThirdRound() {
 		switch(thirdRoundRank) {
 			case 1:
 			case 16:
-				$("#winner1").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner1").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 8:
 			case 9:
-				$("#winner2").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner2").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 4:
 			case 13:
-				$("#winner3").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner3").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 5:
 			case 12:
-				$("#winner4").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner4").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 2:
 			case 15:
-				$("#winner5").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner5").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 7:
 			case 10:
-				$("#winner6").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner6").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 3:
 			case 14:
-				$("#winner7").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner7").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 			case 6:
 			case 11:
-				$("#winner8").append("<img class='top8Poster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
+				$("#winner8").append("<img class='top8Poster posterPoster' id='" + top8[i].image + "' src='images/" + top8[i].image + ".jpg'>");
 				break;
 
 		}
@@ -470,6 +467,7 @@ function startThirdRound() {
 }
 
 $(document).on("click", ".top8Poster", function(){
+	$(this).removeClass("top8Poster");
 	var top4MovieName = $(this).attr("id");
 	var loserIdTop8Name = $(this).parent().parent().siblings().children().children().attr("id");
 	for (var i = 0; i < top8.length; i++) {
@@ -484,11 +482,10 @@ $(document).on("click", ".top8Poster", function(){
 		sortTop8LoserScores();
 		startFinalRound();
 	}else{}
-	$(this).parent().parent().siblings().empty();
+	$(this).parent().parent().siblings().children().children().remove();
 });
 
 function startFinalRound() {
-	console.log(finalRanking);
 	$("#thirdRound").hide();
 	$("#finalRound").show();
 	for(var i=0; i < top4.length; i++) {
@@ -498,25 +495,25 @@ function startFinalRound() {
 			case 16:
 			case 8:
 			case 9:
-				$("#winner9").append("<img class='top4Poster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
+				$("#winner9").append("<img class='top4Poster posterPoster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
 				break;
 			case 4:
 			case 13:
 			case 5:
 			case 12:
-				$("#winner10").append("<img class='top4Poster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
+				$("#winner10").append("<img class='top4Poster posterPoster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
 				break;
 			case 2:
 			case 15:
 			case 7:
 			case 10:
-				$("#winner11").append("<img class='top4Poster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
+				$("#winner11").append("<img class='top4Poster posterPoster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
 				break;
 			case 3:
 			case 14:
 			case 6:
 			case 11:
-				$("#winner12").append("<img class='top4Poster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
+				$("#winner12").append("<img class='top4Poster posterPoster' id='" + top4[i].image + "' src='images/" + top4[i].image + ".jpg'>");
 				break;
 
 		}
@@ -533,11 +530,9 @@ $(document).on("click", ".top4Poster", function(){
 	for(var i=0; i < top4.length; i++) {
 		if(leftLoserTop4Name === top4[i].image){
 			finalRanking.push(top4[i]);
-			console.log(finalRanking);
 		}
 		if(rightLoserTop4Name === top4[i].image){
 			finalRanking.push(top4[i]);
-			console.log(finalRanking);
 		}
 		if(top2Image === top4[i].image){
 			var top2Rank = top4[i].rank;
@@ -574,37 +569,35 @@ $(document).on("click", ".top4Poster", function(){
 });
 
 $(document).on("click", ".top2Poster", function(){
-	var winnerName = $(this).attr("id");
-	var leftFinalLoserName = $(this).parent().parent().next().next().children().children().attr("id");
-	var rightFinalLoserName = $(this).parent().parent().prev().prev().children().children().attr("id");
-	console.log(winnerName);
-	for(var i=0; i < top4.length; i++) {
-		if(top4[i].image === winnerName){
-			top4[i].rank = 1;
-			finalRanking.push(top4[i]);
-			console.log(finalRanking);
+	if ($("#top4Left").css("visibility") === "hidden" && $("#top4Right").css("visibility") === "hidden"){
+		var winnerName = $(this).attr("id");
+		var leftFinalLoserName = $(this).parent().parent().next().next().children().children().attr("id");
+		var rightFinalLoserName = $(this).parent().parent().prev().prev().children().children().attr("id");
+		for(var i=0; i < top4.length; i++) {
+			if(top4[i].image === winnerName){
+				top4[i].rank = 1;
+				finalRanking.push(top4[i]);
+			}
+			if(top4[i].image === leftFinalLoserName){
+				top4[i].rank = 2;
+				finalRanking.push(top4[i]);
+			}
+			if(top4[i].image === rightFinalLoserName){
+				top4[i].rank = 2;
+				finalRanking.push(top4[i]);
+			}
 		}
-		if(top4[i].image === leftFinalLoserName){
-			top4[i].rank = 2;
-			finalRanking.push(top4[i]);
-			console.log(finalRanking);
-		}
-		if(top4[i].image === rightFinalLoserName){
-			top4[i].rank = 2;
-			finalRanking.push(top4[i]);
-			console.log(finalRanking);
-		}
+		$("#finalRound").hide();
+		$("#championDisplay").show();
+		$("#overallWinner").append(this);
+		$(this).attr("class", "winner");
+		displayFinalRanking();
+	}else{
 	}
-	$("#finalRound").hide();
-	$("#championDisplay").show();
-	$("#overallWinner").append(this);
-	$(this).attr("class", "winner");
-	displayFinalRanking();
 });
 
 function displayFinalRanking(){
 	$("#rankingDisplay").empty();
-	console.log(finalRanking);
 	if (finalRanking.length === 17){
 		finalRanking.sort(function(a, b){return a.rank-b.rank});
 		for(i=0; i<finalRanking.length; i++){
@@ -614,3 +607,35 @@ function displayFinalRanking(){
 	}
 }
 
+$("#replayButton").click(function(){
+	beginGame();
+});
+
+function beginGame() {
+	$("#firstRound").show();
+	$("#secondRound").hide();
+	$("#thirdRound").hide();
+	$("#finalRound").hide();
+	$("#championDisplay").hide();
+	$(".posterPoster").remove();
+	$(".bracketPoster").remove();
+	$(".top8Poster").remove();
+	$(".top4Poster").remove();
+	$(".top2Poster").remove();
+	$(".winner").remove();
+	$("#top4Left").css("visibility", "visible");
+	$("#top4Right").css("visibility", "visible");
+	for(var i=0; i < scores.length; i++) {
+		scores[i].appearances = 0;
+		scores[i].score = 0;
+		scores[i].rank = 0;
+	}
+	numberFinished = 0;
+	top8 = [];
+	top4 = [];
+	finalRanking = [];
+	pickMovieOne();
+	pickMovieTwo();
+}
+
+beginGame();

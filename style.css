@@ -41,13 +41,13 @@ body {
 	border-width: 5px;
 }
 
-.bracketPoster {
+.posterPoster {
 	height: 150px;
 	margin-left: 5px;
 	-webkit-transition: border .2s ease-in;
 }
 
-.bracketPoster:hover {
+.posterPoster:hover {
 	border-style: solid;
 	border-color: #f3f5f6;
 	border-width: 5px;
@@ -167,6 +167,18 @@ body {
 
 #rankingDisplay {
 	color: white;
+}
+
+#replayButton {
+	background: #1d6bb6;
+	color: white;
+	border-color: #be3229;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 5px;
+	width: 100px;
+	padding-left: 25px;
+	margin-left: 48%;
 }
 
 #footer {
