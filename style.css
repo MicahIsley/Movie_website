@@ -1,0 +1,181 @@
+body {
+	background: #0f0f25;
+}
+
+#avengersLogo {
+	height: 200px;
+}
+
+#mainTitle {
+	text-align: center;
+	font-size: 46px;
+	font-family: 'Josefin Sans', sans-serif;
+	background: white;
+}
+
+.logo {
+	height: 100px;
+}
+
+.message {
+	text-align: center;
+	font-size: 28px;
+	margin-bottom: 50px;
+	color: white;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.moviePoster {
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
+}
+
+.moviePoster:hover {
+	transform: scale(1.2);
+	border-style: solid;
+	border-color: #be3229;
+	border-width: 5px;
+}
+
+.bracketPoster {
+	height: 150px;
+	margin-left: 5px;
+	-webkit-transition: border .2s ease-in;
+}
+
+.bracketPoster:hover {
+	border-style: solid;
+	border-color: #f3f5f6;
+	border-width: 5px;
+}
+
+.top8Poster {
+	height: 150px;
+}
+
+.top8Poster:hover {
+	border-style: solid;
+	border-color: #f3f5f6;
+	border-width: 5px;
+}
+
+.top4Poster {
+	height: 150px;
+	width: auto;
+}
+
+.top4Poster:hover {
+	border-style: solid;
+	border-color: #f3f5f6;
+	border-width: 5px;
+}
+
+.top2Poster {
+	height: 150px;
+}
+
+.top2Poster {
+	border-style: solid;
+	border-color: #f3f5f6;
+	border-width: 5px;
+}
+
+.winner {
+	height: 500px;
+}
+
+.row {
+	margin-top: 20px;
+}
+
+#firstRound {
+	margin-bottom: 25px;
+}
+
+#secondRound {
+	display: none;
+	color: white;
+	margin-bottom: 50px;
+}
+
+.moviePair {
+	background: #be3229;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #676268;
+	border-width: 3px;
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+}
+
+.finalPair {
+	background: #be3229;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #676268;
+	border-width: 3px;
+	padding: 5px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+#top4Left {
+	margin-left: 8%;
+}
+
+#thirdRound {
+	display: none;
+}
+
+#finalRound {
+	display: none;
+}
+
+#finalBattle {
+	height: 170px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#finalVs {
+	margin-right: 17px;
+}
+
+#championDisplay {
+	display: none;
+	margin-left: 6%;
+}
+
+.vs {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 20px;
+	margin-top: 60px;
+
+}
+
+.top4Vs {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#rankingDisplay {
+	color: white;
+}
+
+#footer {
+	color: white;
+	background: black;
+	height: 100px;
+	margin-top: 50px;
+	padding-top: 35px;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Josefin Sans', sans-serif;
+}

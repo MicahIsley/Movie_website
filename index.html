@@ -1,0 +1,203 @@
+<!DOCTYPEhtml>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row" id="mainTitle">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<img src="images/Avengers.png" id="avengersLogo">
+					</div>
+				</div>
+				<div class="row">
+					<div id="movieBattle">Movie Battle</div>
+				</div>
+			</div>
+			<div class="row" id="firstRound">
+				<div class="row">
+					<div class="message">Choose which movie you like better</div>
+				</div>
+				<div class="col-sm-3 col-sm-offset-2">
+					<div id="movie1">
+					</div>
+				</div>
+				<div class="col-sm-3 col-sm-offset-2">
+					<div id="movie2">
+					</div>
+				</div>
+			</div>
+			<div class="row" id="secondRound">
+				<div class="row">
+					<div class="message">Top 16! Choose your favorite!</div>
+				</div>
+				<div class="col-sm-5">
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="1Seed">1. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="16Seed"> 16.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="8Seed">8. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="9Seed"> 9.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="4Seed">4. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="13Seed"> 13.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="5Seed">5. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="12Seed"> 12.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5 col-sm-offset-2">
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="2Seed">2. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="15Seed"> 15.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="7Seed">7. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="10Seed"> 10.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="3Seed">3. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="14Seed"> 14.</div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="6Seed">6. </div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="11Seed"> 11.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="thirdRound">
+				<div class="col-sm-5">
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="winner1"></div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="winner2"></div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="winner3"></div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="winner4"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5 col-sm-offset-2">
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="winner5"></div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="winner6"></div>
+						</div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-sm-5">
+							<div id="winner7"></div>
+						</div>
+						<div class="col-sm-1 vs">Vs.</div>
+						<div class="col-sm-5">
+							<div id="winner8"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="finalRound">
+				<div class="col-sm-2 col-sm-offset-1 finalPair" id="top4Left">
+					<div class="row">
+						<div class="loser" id="winner9"></div>
+					</div>
+					<div class="row top4Vs">Vs.</div>
+					<div class="row">
+						<div class="loser" id="winner10"></div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="row finalPair" id="finalBattle">
+						<div class="col-sm-5">
+							<div class="loser" id="winner13"></div>
+						</div>
+						<div class="col-sm-1" id="finalVs">Vs. </div>
+						<div class="col-sm-5">
+							<div class="loser" id="winner14"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 col-sm-offset-1 finalPair" id="top4Right">
+					<div class="row">
+						<div class="loser" id="winner11"></div>
+					</div>
+					<div class="row top4Vs">Vs.</div>
+					<div class="row">
+						<div class="loser" id="winner12"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="championDisplay">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div id="overallWinner"></div>
+				</div>
+				<div class="col-sm-4 col-sm-offset-2">
+					<div id="rankingDisplay"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<footer>
+		<div id="footer">Built by Micah Isley</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="logic.js"></script>
+</html>
