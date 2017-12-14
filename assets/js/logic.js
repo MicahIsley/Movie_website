@@ -1,4 +1,5 @@
-var scores = [
+var scores = [];
+var marvelMovies = [
 	{
 		name: "Ant Man",
 		score: 0,
@@ -119,6 +120,142 @@ var scores = [
 		rank: 0
 	}
 ];
+var pixarMovies = [
+	{
+		name: "Toy Story",
+		score: 0,
+		appearances: 0,
+		image: "toyStory",
+		rank: 0		
+	},
+	{
+		name: "A Bug's Life",
+		score: 0,
+		appearances: 0,
+		image: "aBugsLife",
+		rank: 0		
+	},
+	{
+		name: "Toy Story 2",
+		score: 0,
+		appearances: 0,
+		image: "toyStory2",
+		rank: 0		
+	},
+	{
+		name: "Monsters, Inc.",
+		score: 0,
+		appearances: 0,
+		image: "monstersInc",
+		rank: 0		
+	},
+	{
+		name: "Finding Nemo",
+		score: 0,
+		appearances: 0,
+		image: "findingNemo",
+		rank: 0		
+	},
+	{
+		name: "The Incredibles",
+		score: 0,
+		appearances: 0,
+		image: "theIncredibles",
+		rank: 0		
+	},
+	{
+		name: "Cars",
+		score: 0,
+		appearances: 0,
+		image: "cars",
+		rank: 0		
+	},
+	{
+		name: "Ratatouille",
+		score: 0,
+		appearances: 0,
+		image: "ratatouille",
+		rank: 0		
+	},
+	{
+		name: "Wall-E",
+		score: 0,
+		appearances: 0,
+		image: "wallE",
+		rank: 0		
+	},
+	{
+		name: "Up",
+		score: 0,
+		appearances: 0,
+		image: "up",
+		rank: 0		
+	},
+	{
+		name: "Toy Story 3",
+		score: 0,
+		appearances: 0,
+		image: "toyStory3",
+		rank: 0		
+	},
+	{
+		name: "Cars 2",
+		score: 0,
+		appearances: 0,
+		image: "cars2",
+		rank: 0		
+	},
+	{
+		name: "Brave",
+		score: 0,
+		appearances: 0,
+		image: "brave",
+		rank: 0		
+	},
+	{
+		name: "Monsters University",
+		score: 0,
+		appearances: 0,
+		image: "monstersUniversity",
+		rank: 0		
+	},
+	{
+		name: "Inside Out",
+		score: 0,
+		appearances: 0,
+		image: "insideOut",
+		rank: 0		
+	},
+	{
+		name: "The Good Dinosaur",
+		score: 0,
+		appearances: 0,
+		image: "theGoodDinosaur",
+		rank: 0		
+	},
+	{
+		name: "Finding Dory",
+		score: 0,
+		appearances: 0,
+		image: "findingDory",
+		rank: 0		
+	},
+	{
+		name: "Cars 3",
+		score: 0,
+		appearances: 0,
+		image: "cars3",
+		rank: 0		
+	},
+	{
+		name: "Coco",
+		score: 0,
+		appearances: 0,
+		image: "coco",
+		rank: 0		
+	}
+];
+var selectedCategory;
 var movie1;
 var movie2;
 var numberFinished = 0;
@@ -133,7 +270,7 @@ function pickMovieOne() {
 	if(movie1.appearances < 1) {
 		displayMovieOne();
 	}else{
-		if(numberFinished >= 16){
+		if(numberFinished >= scores.length-1){
 				$("#movie1").append("Bye");
 		}else{
 			pickMovieOne();
@@ -150,7 +287,7 @@ function pickMovieTwo() {
 		if(movie2.appearances < 1) {
 			displayMovieTwo();
 		}else{
-			if(numberFinished >= 17){
+			if(numberFinished >= scores.length){
 				$("#movie2").append("Bye");
 			}else{
 				pickMovieTwo();
@@ -161,174 +298,31 @@ function pickMovieTwo() {
 
 function displayMovieOne() {
 	var movie1Poster = movie1.image;
-	switch (movie1Poster) {
-		case "antMan":
-			scores[0].appearances ++;
-			break;
-		case "avengers":
-			scores[1].appearances ++;
-			break;
-		case "avengers2":
-			scores[2].appearances ++;
-			break;
-		case "captainAmerica":
-			scores[3].appearances ++;
-			break;
-		case "captainAmerica2":
-			scores[4].appearances ++;
-			break;
-		case "captainAmerica3":
-			scores[5].appearances ++;
-			break;
-		case "doctorStrange":
-			scores[6].appearances ++;
-			break;
-		case "guardians":
-			scores[7].appearances ++;
-			break;
-		case "guardians2":
-			scores[8].appearances ++;
-			break;
-		case "hulk":
-			scores[9].appearances ++;
-			break;
-		case "ironMan":
-			scores[10].appearances ++;
-			break;
-		case "ironMan2":
-			scores[11].appearances ++;
-			break;
-		case "ironMan3":
-			scores[12].appearances ++;
-			break;
-		case "spidermanHomecoming":
-			scores[13].appearances ++;
-			break;
-		case "thor":
-			scores[14].appearances ++;
-			break;
-		case "thor2":
-			scores[15].appearances ++;
-			break;
-		case "thor3":
-			scores[16].appearances ++;
-			break;
+	for(i=0; i < scores.length; i++){
+		if(movie1Poster === scores[i].image){
+			scores[i].appearances ++;
+		}else{}
 	}
 	$("#movie1").append("<img class='moviePoster' id='" + movie1Poster + "' src='images/" + movie1Poster + ".jpg'>");
 }
 
 function displayMovieTwo() {
 	var movie2Poster = movie2.image;
-	switch (movie2Poster) {
-		case "antMan":
-			scores[0].appearances ++;
-			break;
-		case "avengers":
-			scores[1].appearances ++;
-			break;
-		case "avengers2":
-			scores[2].appearances ++;
-			break;
-		case "captainAmerica":
-			scores[3].appearances ++;
-			break;
-		case "captainAmerica2":
-			scores[4].appearances ++;
-			break;
-		case "captainAmerica3":
-			scores[5].appearances ++;
-			break;
-		case "doctorStrange":
-			scores[6].appearances ++;
-			break;
-		case "guardians":
-			scores[7].appearances ++;
-			break;
-		case "guardians2":
-			scores[8].appearances ++;
-			break;
-		case "hulk":
-			scores[9].appearances ++;
-			break;
-		case "ironMan":
-			scores[10].appearances ++;
-			break;
-		case "ironMan2":
-			scores[11].appearances ++;
-			break;
-		case "ironMan3":
-			scores[12].appearances ++;
-			break;
-		case "spidermanHomecoming":
-			scores[13].appearances ++;
-			break;
-		case "thor":
-			scores[14].appearances ++;
-			break;
-		case "thor2":
-			scores[15].appearances ++;
-			break;
-		case "thor3":
-			scores[16].appearances ++;
-			break;
+	for(i=0; i < scores.length; i++){
+		if(movie2Poster === scores[i].image){
+			scores[i].appearances ++;
+		}else{}
 	}
 	$("#movie2").append("<img class='moviePoster' id='" + movie2Poster + "' src='images/" + movie2Poster + ".jpg'>");
 }
 
 $(document).on("click", ".moviePoster", function(){
 	var picked = $(this).attr("id");
-	switch (picked) {
-		case "antMan":
-			scores[0].score += 1;
-			break;
-		case "avengers":
-			scores[1].score += 1;
-			break;
-		case "avengers2":
-			scores[2].score += 1;
-			break;
-		case "captainAmerica":
-			scores[3].score += 1;
-			break;
-		case "captainAmerica2":
-			scores[4].score += 1;
-			break;
-		case "captainAmerica3":
-			scores[5].score += 1;
-			break;
-		case "doctorStrange":
-			scores[6].score += 1;
-			break;
-		case "guardians":
-			scores[7].score += 1;
-			break;
-		case "guardians2":
-			scores[8].score += 1;
-			break;
-		case "hulk":
-			scores[9].score += 1;
-			break;
-		case "ironMan":
-			scores[10].score += 1;
-			break;
-		case "ironMan2":
-			scores[11].score += 1;
-			break;
-		case "ironMan3":
-			scores[12].score += 1;
-			break;
-		case "spidermanHomecoming":
-			scores[13].score += 1;
-			break;
-		case "thor":
-			scores[14].score += 1;
-			break;
-		case "thor2":
-			scores[15].score += 1;
-			break;
-		case "thor3":
-			scores[16].score += 1;
-			break;
+	for(i=0; i < scores.length; i++){
+		if(picked === scores[i].image){
+			scores[i].score ++;
+			console.log(scores);
+		}
 	}
 	displayRanking();
 });
@@ -339,7 +333,6 @@ function displayRanking() {
 	sortScores.sort(function(a, b){return b.score-a.score});
 	for(i=0; i<sortScores.length; i++){
 		sortScores[i].rank = i + 1;
-		//$("#rankingDisplay").append("<p>" + (i+1) + ". " + sortScores[i].name + "</p>");
 	}
 	checkEnding()
 }
@@ -349,7 +342,7 @@ function checkEnding() {
 	for(i=0; i<scores.length; i++) {
 		if(scores[i].appearances === 1){
 			numberFinished ++;
-			if(numberFinished === 17){
+			if(numberFinished === scores.length){
 				bracketStage();
 			}else{}
 		}else{}
@@ -365,16 +358,16 @@ function bracketStage(){
 };
 
 function displayBracket() {
-	for(i=0; i < (sortScores.length-1); i++){
+	for(i=0; i < sortScores.length; i++){
 		if(i <= 7) {
 			$("#" + (i+1) + "Seed").append("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
-		}else{
+		}else if(i <16) {
 			$("#" + (i+1) + "Seed").prepend("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
+		}else if(i >= 16) {
+			finalRanking.push(sortScores[i]);
+			console.log(finalRanking);
 		}
 	}
-	if(sortScores[i].rank >= 17) {
-			finalRanking.push(sortScores[i]);
-		}
 }
 
 $(document).on("click", ".bracketPoster", function(){
@@ -562,7 +555,7 @@ $(document).on("click", ".top4Poster", function(){
 
 			}
 		}
-		if(finalRanking.length === 15){
+		if(finalRanking.length === (scores.length-2)){
 			sortTop4LoserScores();
 		}
 	}
@@ -598,7 +591,10 @@ $(document).on("click", ".top2Poster", function(){
 
 function displayFinalRanking(){
 	$("#rankingDisplay").empty();
-	if (finalRanking.length === 17){
+	console.log(finalRanking.length + " " + scores.length);
+	console.log(finalRanking);
+	console.log(scores);
+	if (finalRanking.length === scores.length){
 		finalRanking.sort(function(a, b){return a.rank-b.rank});
 		for(i=0; i<finalRanking.length; i++){
 			finalRanking[i].rank = i + 1;
@@ -608,10 +604,31 @@ function displayFinalRanking(){
 }
 
 $("#replayButton").click(function(){
-	beginGame();
+	$("#categorySelection").show();
+	$("#firstRound").hide();
+	$("#secondRound").hide();
+	$("#thirdRound").hide();
+	$("#finalRound").hide();
+	$("#championDisplay").hide();
+});
+
+$(".category").click(function(){
+	var categoryId = $(this).attr("id");
+	if(categoryId === "pixarMovies"){
+		selectedCategory = pixarMovies;
+		beginGame();
+	}else if(categoryId === "marvelMovies"){
+		selectedCategory = marvelMovies;
+		beginGame();
+	}
 });
 
 function beginGame() {
+	scores = [];
+	for(var i=0; i < selectedCategory.length; i++){
+		scores.push(selectedCategory[i]);
+	}
+	$("#categorySelection").hide();
 	$("#firstRound").show();
 	$("#secondRound").hide();
 	$("#thirdRound").hide();
@@ -637,5 +654,3 @@ function beginGame() {
 	pickMovieOne();
 	pickMovieTwo();
 }
-
-beginGame();

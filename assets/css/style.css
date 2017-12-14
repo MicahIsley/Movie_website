@@ -8,7 +8,7 @@ body {
 
 #mainTitle {
 	text-align: center;
-	font-size: 46px;
+	font-size: 66px;
 	font-family: 'Josefin Sans', sans-serif;
 	background: white;
 }
@@ -23,6 +23,10 @@ body {
 	margin-bottom: 50px;
 	color: white;
 	font-family: 'Josefin Sans', sans-serif;
+}
+
+.categoryLogo {
+	height: 100px;
 }
 
 .moviePoster {
@@ -92,8 +96,13 @@ body {
 	margin-top: 20px;
 }
 
+#categorySelection {
+	color: white;
+}
+
 #firstRound {
 	margin-bottom: 25px;
+	display: none;
 }
 
 #secondRound {
@@ -125,7 +134,10 @@ body {
 }
 
 #top4Left {
-	margin-left: 8%;
+	
+}
+
+#categorySelection {
 }
 
 #thirdRound {
@@ -137,9 +149,10 @@ body {
 }
 
 #finalBattle {
-	height: 170px;
+	height: 200px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+
 }
 
 #finalVs {
@@ -191,3 +204,29 @@ body {
 	font-size: 20px;
 	font-family: 'Josefin Sans', sans-serif;
 }
+
+@media only screen and (max-width: 500px) {
+	#avengersLogo {
+		height: 80px;
+	}
+
+	#mainTitle {
+		font-size: 26px;
+	}
+
+	.moviePoster {
+		height: 220px;
+
+	}
+
+	.winner {
+		height: 420px;
+	}
+
+	#replayButton {
+		margin-left: 30%;
+	}
+
+	.categoryLogo {
+		height: 80px;
+	}
