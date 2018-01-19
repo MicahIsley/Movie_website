@@ -255,6 +255,7 @@ var pixarMovies = [
 		rank: 0		
 	}
 ];
+var username;
 var selectedCategory;
 var movie1;
 var movie2;
@@ -262,7 +263,112 @@ var numberFinished = 0;
 var sortScores;
 var top8 = [];
 var top4 = [];
+var top2 = [];
 var finalRanking = [];	
+var currentUserId;
+var currentUser;
+var multiplayerGroup = [];
+var multiplayerSize;
+var mode;
+var onlineTimeout;
+var firstRoundTimeout;
+var votingTimeout;
+var compiledRank = [];
+var multiplayerRound = 0;
+
+function getUserData() {
+	$.ajax('/user', {
+		credentials: "include"
+	})
+	.then((res) => {
+		currentUserId = res.user;
+		getCurrentUsername();
+		this.isAuthenticated = true
+		if (typeof cb === 'function') {
+			cb(res.json().user);
+		}
+	});
+};
+
+function getCurrentUsername() {
+	$.get("/api/userInfo/" + currentUserId.googleId, function(data) {
+		currentUser = data.username;
+		displayOnline();
+	});
+};
+
+function displayOnline() {
+
+	$.ajax({
+		method: "POST",
+		url: "/online/" + currentUser,
+		data: {
+			username: currentUser,
+		}
+	}).done(function(data) {
+	});
+	$("#onlinePlayers").append(currentUser);
+};
+
+$("#logoutButton").click(function() {
+	$.ajax({
+		method: "DELETE",
+		url: "/online/delete/" + currentUser,
+		data: {
+			username: currentUser,
+		}
+	}).done(function(data) {
+	});
+});
+
+function findOnline() {
+	$.get("/online", function(data) {
+		$("#onlinePlayers").empty();
+		for(i=0; i < data.length; i++) {
+			$("#onlinePlayers").append("<div class='row onlinePlayer' id='" + data[i].username + "'>" + data[i].username + "</div>");
+		}
+	});
+	onlineTimeout = setTimeout("findOnline()", 1000);
+};
+
+findOnline();
+getUserData();
+
+$("#soloMode").click(function() {
+	$("#gameModeSelection").hide();
+	$("#categorySelection").show();
+	mode = "solo";
+});
+
+$("#groupMode").click(function() {
+	multiplayerGroup.push(currentUser);
+	$("#gameModeSelection").hide();
+	$("#multiplayerLobby").show();
+	$("#yourGroupMembers").append("<div class='row'>" + currentUser + "</div>");
+	mode = "group";
+});
+
+$(document).on("click", ".onlinePlayer", function(){
+	var addPlayer = $(this).attr("id");
+	multiplayerGroup.push(addPlayer);
+	$("#yourGroupMembers").empty();
+	for(i=0; i < multiplayerGroup.length; i++){
+		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "</div>");
+	}
+});
+
+$("#readyButton").click(function() {
+	multiplayerSize = $("#yourGroupMembers > div").length;
+	$.ajax({
+		method: "PUT",
+		url: "/online/updateReady/" + currentUser
+	}).done(function(data) {
+	});
+	$("#multiplayerLobby").hide();
+	$("#categorySelection").show();
+	clearTimeout(onlineTimeout);
+	clearMultiplayer();
+});
 
 function pickMovieOne() {
 	$("#movie1").empty();
@@ -321,7 +427,6 @@ $(document).on("click", ".moviePoster", function(){
 	for(i=0; i < scores.length; i++){
 		if(picked === scores[i].image){
 			scores[i].score ++;
-			console.log(scores);
 		}
 	}
 	displayRanking();
@@ -334,7 +439,7 @@ function displayRanking() {
 	for(i=0; i<sortScores.length; i++){
 		sortScores[i].rank = i + 1;
 	}
-	checkEnding()
+	checkEnding();
 }
 
 function checkEnding() {
@@ -352,12 +457,76 @@ function checkEnding() {
 }
 
 function bracketStage(){
-	$("#firstRound").hide();
-	$("#secondRound").show();
-	displayBracket();
+	if( mode === "solo") {
+		displayBracket();
+	} else if( mode === "group") {
+		postToMultiplayer();
+		clearVotingData();
+	}
 };
 
+function clearMultiplayer() {
+	$.ajax({
+		method: "DELETE",
+		url: "/multiplayer/deleteAll"
+	}).done(function(data) {
+	});
+};
+
+function postToMultiplayer() {
+	$.ajax({
+		method: "POST",
+		url: "/multiplayer/" + currentUser,
+		data: {
+			user: currentUser,
+			ranking: scores
+		}
+		}).done(function(data) {
+			checkForAllData()
+		});
+};
+
+function checkForAllData() {
+	$.get("/multiplayer", function(data) {
+		if(data.length === multiplayerSize) {
+			compileRankings(data);
+		}
+	});
+	firstRoundTimeout = setTimeout("checkForAllData()", 1000);
+};
+
+function compileRankings(data) {
+	clearTimeout(firstRoundTimeout);
+	for(var i = 0; i < data[0].ranking.length; i ++) {
+		var combinedScore = 0;
+		for(var j = 0; j < multiplayerSize; j ++) {
+			var firstPart = parseInt(data[j].ranking[i].score);
+			var secondPart = parseInt(combinedScore);
+			combinedScore = firstPart + secondPart;
+		}
+		var compiledObject = {
+			score: combinedScore,
+			image: data[0].ranking[i].image,
+			name: data[0].ranking[i].name
+			}
+		compiledRank.push(compiledObject);
+	}
+	sortCompiledScores();
+}
+
+function sortCompiledScores() {
+	sortScores = compiledRank.slice(0);
+	sortScores.sort(function(a, b){return b.score-a.score});
+	for(i=0; i<sortScores.length; i++){
+		sortScores[i].rank = i + 1;
+	}
+	finalRanking.push(sortScores[sortScores.length - 1]);
+	displayMultiplayerBracket();
+}
+
 function displayBracket() {
+	$("#firstRound").hide();
+	$("#secondRound").show();
 	for(i=0; i < sortScores.length; i++){
 		if(i <= 7) {
 			$("#" + (i+1) + "Seed").append("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
@@ -365,12 +534,38 @@ function displayBracket() {
 			$("#" + (i+1) + "Seed").prepend("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
 		}else if(i >= 16) {
 			finalRanking.push(sortScores[i]);
-			console.log(finalRanking);
 		}
 	}
 }
 
+function displayMultiplayerBracket() {
+	$("#leftSlot").empty();
+	$("#rightSlot").empty();
+	$("#leftSlot").css("background", "#be3229");
+	$("#rightSlot").css("background", "#be3229");
+	$("#firstRound").hide();
+	$("#multiplayerMatchups").show();
+	if(top8.length < 8){
+		$("#roundHeading").text("Top 16");
+		$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + sortScores[multiplayerRound].image + ".jpg'>");
+		$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
+	}else if(top8.length === 8 && top4.length < 4){
+		$("#roundHeading").text("Top 8");
+		$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='images/" + top8[multiplayerRound - 8].image + ".jpg'>");
+		$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='images/" + top8[15 - multiplayerRound].image + ".jpg'>");
+	}else if(top4.length === 4 && top2.length < 2) {
+		$("#roundHeading").text("Top 4");
+		$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='images/" + top4[multiplayerRound - 12].image + ".jpg'>");
+		$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='images/" + top4[15 - multiplayerRound].image + ".jpg'>");
+	}else if(top2.length === 2){
+		$("#roundHeading").text("Top 2");
+		$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='images/" + top2[multiplayerRound - 14].image + ".jpg'>");
+		$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='images/" + top2[15 - multiplayerRound].image + ".jpg'>");
+	}
+}
+
 $(document).on("click", ".bracketPoster", function(){
+
 	$(this).removeClass("bracketPoster");
 	var movieId = $(this).first().attr('id');
 	var spliceId = movieId.split(" ");
@@ -380,20 +575,243 @@ $(document).on("click", ".bracketPoster", function(){
 	var loserSpliceId = loserIdBracket.split(" ");
 	var loserName = loserSpliceId[0];
 	var loserRank = loserSpliceId[1];
-	for (var i = 0; i < scores.length; i++) {
-		if (scores[i].image === loserName) {
-			finalRanking.push(scores[i]);
+	if(mode === "solo") {
+		for (var i = 0; i < scores.length; i++) {
+			if (scores[i].image === loserName) {
+				finalRanking.push(scores[i]);
+			}
+			if (scores[i].image === movieName) {
+				top8.push(scores[i]);
+			}else{}
 		}
-		if (scores[i].image === movieName) {
-			top8.push(scores[i]);
-		}else{}
+		$(this).parent().parent().siblings().children().children().remove();
+	}else if(mode === "group") {
+		var loser = $(this).parent().parent().siblings().children().children();
+		loser.removeClass("bracketPoster");
+		loser.css("-webkit-filter", "grayscale(1)");
+		$(this).parent().append("<div>Check-Mark</div>");
+		multiplayerRound ++;
+		createVotingDatabase();
 	}
 	if(top8.length === 8){
-		startThirdRound();
-		sortBracketLoserScores();
+		if(mode === "solo"){
+			startThirdRound();
+			sortBracketLoserScores();
+		}
 	}else{}
-	$(this).parent().parent().siblings().children().children().remove();
 });
+
+function postVote() {
+	if($("#leftSlot").contents().length === 2) {
+		postVoteLeft();
+	}else if($("#rightSlot").contents().length === 2) {
+		postVoteRight();
+	}
+};
+
+function postVoteLeft() {
+	$.ajax({
+		method: "PUT",
+		url: "/voting/updateLeft" 
+	}).done(function(data) {
+		determineRoundWinner();
+	});
+};
+
+function postVoteRight() {
+	$.ajax({
+		method: "PUT",
+		url: "/voting/updateRight" 
+	}).done(function(data) {
+		determineRoundWinner();
+	});
+};
+
+function createVotingDatabase() {
+	$.get("/voting", function(data) {
+		if(data.length > 0) {
+			postVote();
+		}else {
+			$.ajax({
+				method: "POST",
+				url: "/newVoting",
+				data: {
+					_id: 1,
+					randNum: Math.floor((Math.random() * 10) + 1)
+				}
+				}).done(function(data) {
+					postVote();
+				});
+		}
+	});
+}
+
+function clearVotingData() {
+	$.get("/voting", function(data) {
+		console.log(data.length);
+		if(data.length === 0){
+			if(multiplayerRound > 0) {
+					displayMultiplayerBracket();
+			}else{}
+		}else{
+			$.ajax({
+				method: "DELETE",
+				url: "/voting/deleteAll"
+			}).done(function(data) {
+				if(multiplayerRound > 0) {
+					displayMultiplayerBracket();
+				}else{}
+			});
+		}
+	});
+};
+
+function determineRoundWinner() {
+	$.get("/voting", function(data) {
+		if(data[0].votes === multiplayerSize){
+			clearTimeout(votingTimeout);
+			var winningSide = "tie";
+			if(data[0].left > data[0].right){
+				winningSide = "left";
+			}else if(data[0].right > data[0].left) {
+				winningSide = "right";
+			}else {
+				winningSide = "tie";
+			}
+			var leftId = $("#leftSlot").children("img").attr("id");
+			var rightId = $("#rightSlot").children("img").attr("id");
+			var randomNumber = data[0].randNum;
+			for (var i = 0; i < sortScores.length; i++) {
+				if(winningSide === "left"){
+					if (sortScores[i].image === rightId) {
+						if(top2.length < 2){
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}else if (top2.length === 2){
+							sortScores[i].rank = 2;
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}
+					}
+					if (sortScores[i].image === leftId) {
+						if(top8.length < 8){
+							top8.push(sortScores[i]);
+						}else if(top8.length === 8 && top4.length < 4){
+							top4.push(sortScores[i]);
+						}else if(top4.length === 4 && top2.length < 2){
+							top2.push(sortScores[i]);
+						}else if(top2.length === 2){
+							sortScores[1].rank = 1;
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}
+					}else{}
+				}else if(winningSide === "right") {
+					if (sortScores[i].image === leftId) {
+						if(top2.length < 2){
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}else if (top2.length === 2){
+							sortScores[i].rank = 2;
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}
+					}
+					if (sortScores[i].image === rightId) {
+						if(top8.length < 8){
+							top8.push(sortScores[i]);
+						}else if(top8.length === 8 && top4.length < 4){
+							top4.push(sortScores[i]);
+						}else if(top4.length === 4 && top2.length < 2){
+							top2.push(sortScores[i]);
+						}else if(top2.length === 2){
+							sortScores[1].rank = 1;
+							finalRanking.push(sortScores[i]);
+							console.log(finalRanking);
+						}
+					}else{}
+				}else if(winningSide === "tie") {
+					if(randomNumber > 5){
+						if (sortScores[i].image === rightId) {
+							if(top2.length < 2){
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}else if (top2.length === 2){
+								sortScores[i].rank = 2;
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}
+						}
+						if (sortScores[i].image === leftId) {
+							if(top8.length < 8){
+								top8.push(sortScores[i]);
+							}else if(top8.length === 8 && top4.length < 4){
+								top4.push(sortScores[i]);
+							}else if(top4.length === 4 && top2.length < 2){
+								top2.push(sortScores[i]);
+							}else if(top2.length === 2){
+								sortScores[1].rank = 1;
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}
+							winningSide = "left";
+						}else{}
+					}else{
+						if (sortScores[i].image === leftId) {
+							if(top2.length < 2){
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}else if (top2.length === 2){
+								sortScores[i].rank = 2;
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}
+						}
+						if (sortScores[i].image === rightId) {
+							if(top8.length < 8){
+								top8.push(sortScores[i]);
+							}else if(top8.length === 8 && top4.length < 4){
+								top4.push(sortScores[i]);
+							}else if(top4.length === 4 && top2.length < 2){
+								top2.push(sortScores[i]);
+							}else if(top2.length === 2){
+								sortScores[1].rank = 1;
+								finalRanking.push(sortScores[i]);
+								console.log(finalRanking);
+							}
+							winningSide = "right";
+						}else{}
+					}
+				}
+			}
+			if(top8.length === 8){
+				sortBracketLoserScores();
+			}
+			displayWinningSide(winningSide);
+		}else{
+			votingTimeout = setTimeout("determineRoundWinner()", 500);
+		}
+	});
+}
+
+function displayWinningSide(winningSide){
+	console.log(winningSide);
+	if(winningSide === "left"){
+		$("#leftSlot").css("background", "green");
+		if(finalRanking.length === selectedCategory.length) {
+			setTimeout("displayFinalRanking()", 3000);
+		}else{
+			setTimeout("clearVotingData()", 3000);
+		}
+	}else if(winningSide === "right"){
+		$("#rightSlot").css("background", "green");
+		if(finalRanking.length === selectedCategory.length) {
+			setTimeout("displayFinalRanking()", 3000);
+		}else{
+			setTimeout("clearVotingData()", 3000);
+		}
+	}
+}
 
 function sortBracketLoserScores() {
 	finalRanking.sort(function(a, b){return b.rank-a.rank});
@@ -403,6 +821,7 @@ function sortBracketLoserScores() {
 }
 
 function sortTop8LoserScores() {
+	console.log(finalRanking);
 	finalRanking.slice(9, 12).sort(function(a, b){return b.rank-a.rank});
 	for (var i = 9; i < 13; i++){
 		finalRanking[i].rank = 17 - i;
@@ -463,19 +882,32 @@ $(document).on("click", ".top8Poster", function(){
 	$(this).removeClass("top8Poster");
 	var top4MovieName = $(this).attr("id");
 	var loserIdTop8Name = $(this).parent().parent().siblings().children().children().attr("id");
-	for (var i = 0; i < top8.length; i++) {
-		if (top8[i].image === loserIdTop8Name) {
-			finalRanking.push(top8[i]);
+	if(mode === "solo"){
+		for (var i = 0; i < top8.length; i++) {
+			if (top8[i].image === loserIdTop8Name) {
+				finalRanking.push(top8[i]);
+			}
+			if (top8[i].image === top4MovieName) {
+				top4.push(top8[i]);
+			}
 		}
-		if (top8[i].image === top4MovieName) {
-			top4.push(top8[i]);
-		}
-	}
-	if(top4.length === 4){
-		sortTop8LoserScores();
-		startFinalRound();
-	}else{}
 	$(this).parent().parent().siblings().children().children().remove();
+	}
+	if(mode === "group"){
+			var loser = $(this).parent().parent().siblings().children().children();
+			console.log(loser);
+			loser.removeClass("bracketPoster");
+			loser.css("-webkit-filter", "grayscale(1)");
+			$(this).parent().append("<div>Check-Mark</div>");
+			multiplayerRound ++;
+			createVotingDatabase();
+		}
+	if(top4.length === 4){
+		if(mode === "solo") {
+			startFinalRound();
+		}
+		sortTop8LoserScores();
+	}else{}
 });
 
 function startFinalRound() {
@@ -517,91 +949,149 @@ function startFinalRound() {
 $(document).on("click", ".top4Poster", function(){
 	var top4MoviePoster = $(this);
 	var top2Image = $(this).attr("id");
-	$(top4MoviePoster).attr("class", "top2Poster");
 	var rightLoserTop4Name = $(this).parent().parent().next().next().children().children().attr("id");
 	var leftLoserTop4Name = $(this).parent().parent().prev().prev().children().children().attr("id");
-	for(var i=0; i < top4.length; i++) {
-		if(leftLoserTop4Name === top4[i].image){
-			finalRanking.push(top4[i]);
-		}
-		if(rightLoserTop4Name === top4[i].image){
-			finalRanking.push(top4[i]);
-		}
-		if(top2Image === top4[i].image){
-			var top2Rank = top4[i].rank;
-			switch(top2Rank) {
-				case 1:
-				case 16:
-				case 8:
-				case 9:
-				case 4:
-				case 13:
-				case 5:
-				case 12:
-					$("#winner13").append(top4MoviePoster);
-					$("#top4Left").css("visibility", "hidden");
-					break;
-				case 2:
-				case 15:
-				case 7:
-				case 10:
-				case 3:
-				case 14:
-				case 6:
-				case 11:
-					$("#winner14").append(top4MoviePoster);
-					$("#top4Right").css("visibility", "hidden");
-					break;
+	var loserIdTop4Name = $(this).parent().parent().siblings().children().children().attr("id");
+	if(mode === "solo"){
+		for(i=0; i < top4.length; i++){
+			if(leftLoserTop4Name === top4[i].image){
+				finalRanking.push(top4[i]);
+			}else if(rightLoserTop4Name === top4[i].image){
+				finalRanking.push(top4[i]);
+			}
+			$(top4MoviePoster).attr("class", "top2Poster");
+			if(top2Image === top4[i].image){
+				var top2Rank = top4[i].rank;
+				switch(top2Rank) {
+					case 1:
+					case 16:
+					case 8:
+					case 9:
+					case 4:
+					case 13:
+					case 5:
+					case 12:
+						$("#winner13").append(top4MoviePoster);
+						$("#top4Left").css("visibility", "hidden");
+						break;
+					case 2:
+					case 15:
+					case 7:
+					case 10:
+					case 3:
+					case 14:
+					case 6:
+					case 11:
+						$("#winner14").append(top4MoviePoster);
+						$("#top4Right").css("visibility", "hidden");
+						break;
 
+				}
 			}
 		}
-		if(finalRanking.length === (scores.length-2)){
-			sortTop4LoserScores();
-		}
+	}else if(mode === "group"){
+		$(this).removeClass("top4Poster");
+		var loser = $(this).parent().parent().siblings().children().children();
+		console.log(loser);
+		loser.removeClass("bracketPoster");
+		loser.css("-webkit-filter", "grayscale(1)");
+		$(this).parent().append("<div>Check-Mark</div>");
+		multiplayerRound ++;
+		createVotingDatabase();
+	}
+	if(finalRanking.length === (scores.length-2)){
+		sortTop4LoserScores();
 	}
 });
 
 $(document).on("click", ".top2Poster", function(){
-	if ($("#top4Left").css("visibility") === "hidden" && $("#top4Right").css("visibility") === "hidden"){
+	if(mode === "solo"){
+		if ($("#top4Left").css("visibility") === "hidden" && $("#top4Right").css("visibility") === "hidden"){
+			var winnerName = $(this).attr("id");
+			var leftFinalLoserName = $(this).parent().parent().next().next().children().children().attr("id");
+			var rightFinalLoserName = $(this).parent().parent().prev().prev().children().children().attr("id");
+			for(var i=0; i < top4.length; i++) {
+				if(top4[i].image === winnerName){
+					top4[i].rank = 1;
+					finalRanking.push(top4[i]);
+				}
+				if(top4[i].image === leftFinalLoserName){
+					top4[i].rank = 2;
+					finalRanking.push(top4[i]);
+				}
+				if(top4[i].image === rightFinalLoserName){
+					top4[i].rank = 2;
+					finalRanking.push(top4[i]);
+				}
+			}
+			$("#finalRound").hide();
+			$("#championDisplay").show();
+			$("#overallWinner").append(this);
+			$(this).attr("class", "winner");
+			displayFinalRanking();
+		}else{}
+	}else if(mode === "group"){
+		console.log(finalRanking);
+		$(this).removeClass("top2Poster");
+		var loser = $(this).parent().parent().siblings().children().children();
+		loser.removeClass("bracketPoster");
+		loser.css("-webkit-filter", "grayscale(1)");
+		$(this).parent().append("<div>Check-Mark</div>");
 		var winnerName = $(this).attr("id");
 		var leftFinalLoserName = $(this).parent().parent().next().next().children().children().attr("id");
 		var rightFinalLoserName = $(this).parent().parent().prev().prev().children().children().attr("id");
-		for(var i=0; i < top4.length; i++) {
-			if(top4[i].image === winnerName){
-				top4[i].rank = 1;
-				finalRanking.push(top4[i]);
-			}
-			if(top4[i].image === leftFinalLoserName){
-				top4[i].rank = 2;
-				finalRanking.push(top4[i]);
-			}
-			if(top4[i].image === rightFinalLoserName){
-				top4[i].rank = 2;
-				finalRanking.push(top4[i]);
-			}
-		}
-		$("#finalRound").hide();
-		$("#championDisplay").show();
-		$("#overallWinner").append(this);
-		$(this).attr("class", "winner");
-		displayFinalRanking();
-	}else{
+		createVotingDatabase();
 	}
 });
 
 function displayFinalRanking(){
+	$("#finalRound").hide();
+	$("#championDisplay").show();
+	$("#multiplayerMatchups").hide();
+	$("#leftSlot").empty();
+	$("#rightSlot").empty();
 	$("#rankingDisplay").empty();
 	console.log(finalRanking.length + " " + scores.length);
 	console.log(finalRanking);
 	console.log(scores);
+	$("#overallWinner").append("<img id='winner src='" + finalRanking[0].image + ".jpg'>");
 	if (finalRanking.length === scores.length){
 		finalRanking.sort(function(a, b){return a.rank-b.rank});
+		console.log(finalRanking);
 		for(i=0; i<finalRanking.length; i++){
 			finalRanking[i].rank = i + 1;
 			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 		}
+		saveRankingToDatabase();
 	}
 }
+
+/*function checkForDuplicateUser() {
+	$.ajax({
+		method: "GET",
+		url: "/rankings/user"
+	}).done(function(data) {
+		console.log(data);
+		if(data.user === username){
+			console.log("Username Already Exists");
+		}else{
+			saveRankingToDatabase();
+		}
+	});
+}*/
+
+function saveRankingToDatabase() {
+	$.ajax({
+		method: "POST",
+		url: "/rankings/" + username,
+		data: {
+			user: "user",
+			ranking: finalRanking
+		}
+	}).done(function(data) {
+		console.log(data);
+	});
+};
 
 $("#replayButton").click(function(){
 	$("#categorySelection").show();
@@ -650,6 +1140,7 @@ function beginGame() {
 	numberFinished = 0;
 	top8 = [];
 	top4 = [];
+	top2 = [];
 	finalRanking = [];
 	pickMovieOne();
 	pickMovieTwo();

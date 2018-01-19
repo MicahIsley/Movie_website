@@ -18,6 +18,49 @@
 					<div class="row">
 						<div id="movieBattle">Movie Super Battle</div>
 					</div>
+					<div class="row">
+						<button type="submit" class="btn btn-danger" id="logoutButton"><a href="auth/logout">Logout</a></button>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="gameModeSelection">
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="message">Game Mode</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-5">
+							<div class="gameModeButton" id="soloMode">Solo</div>
+							<div class="gameModeButton" id="groupMode">Group</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="multiplayerLobby">
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="col-sm-4" id="onlinePlayerLobby">
+							<div class="row">
+								<div>Online Players</div>
+							</div>
+							<div class="row">
+								<div id="onlinePlayers"></div>
+							</div>
+						</div>
+						<div class="col-sm-4 col-sm-offset-2" id="yourGroupSection">
+							<div class="row">
+								<div>Your Group</div>
+							</div>
+							<div class="row">
+								<div id="yourGroupMembers"></div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+							<div id="readyButton">Ready</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row" id="categorySelection">
@@ -210,6 +253,22 @@
 									<div class="posterSlot" id="winner14"></div>
 								</div>
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="multiplayerMatchups">
+				<div class="col-xs-12">
+					<div class="row">
+						<div id="roundHeading"></div>
+					</div>
+					<div class="row moviePair">
+						<div class="col-xs-5">
+							<div class="posterSlot" id="leftSlot"></div>
+						</div>
+						<div class="col-xs-1" id="multiplayerVs">Vs.</div>
+						<div class="col-xs-5">
+							<div class="posterSlot" id="rightSlot"></div>
 						</div>
 					</div>
 				</div>

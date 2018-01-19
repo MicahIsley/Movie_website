@@ -20,13 +20,54 @@ body {
 .message {
 	text-align: center;
 	font-size: 28px;
-	margin-bottom: 50px;
 	color: white;
 	font-family: 'Josefin Sans', sans-serif;
 }
 
+#onlinePlayerLobby {
+	text-align: center;
+	background: white;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+
+#multiplayerLobby {
+	display: none;
+}
+
+#yourGroupSection {
+	background: white;
+	text-align: center;
+}
+
+#readyButton {
+	text-align: center;
+	background: green;
+	color: white;
+	height: 75px;
+	width: 150px;
+	border-radius: 5px;
+	padding-top: 25px;
+}
+
+#categorySelection {
+	display: none;
+	color: white;
+}
+
 .categoryLogo {
 	height: 100px;
+}
+
+.gameModeButton {
+	background: white;
+	text-align: center;
+	font-size: 26px;
+	width: 100px;
+	margin-left: 10%;
+	margin-top: 10px;
 }
 
 .moviePoster {
@@ -96,10 +137,6 @@ body {
 	margin-top: 20px;
 }
 
-#categorySelection {
-	color: white;
-}
-
 #firstRound {
 	margin-bottom: 25px;
 	display: none;
@@ -109,6 +146,12 @@ body {
 	display: none;
 	color: white;
 	margin-bottom: 50px;
+}
+
+#roundHeading {
+	color: white;
+	text-align: center;
+	font-size: 36px;
 }
 
 .moviePair {
@@ -137,14 +180,15 @@ body {
 	
 }
 
-#categorySelection {
-}
-
 #thirdRound {
 	display: none;
 }
 
 #finalRound {
+	display: none;
+}
+
+#multiplayerMatchups {
 	display: none;
 }
 
