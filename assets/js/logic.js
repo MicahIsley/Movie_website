@@ -686,11 +686,11 @@ function determineRoundWinner() {
 					if (sortScores[i].image === rightId) {
 						if(top2.length < 2){
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}else if (top2.length === 2){
 							sortScores[i].rank = 2;
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}
 					}
 					if (sortScores[i].image === leftId) {
@@ -701,20 +701,20 @@ function determineRoundWinner() {
 						}else if(top4.length === 4 && top2.length < 2){
 							top2.push(sortScores[i]);
 						}else if(top2.length === 2){
-							sortScores[1].rank = 1;
+							sortScores[i].rank = 1;
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}
 					}else{}
 				}else if(winningSide === "right") {
 					if (sortScores[i].image === leftId) {
 						if(top2.length < 2){
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}else if (top2.length === 2){
 							sortScores[i].rank = 2;
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}
 					}
 					if (sortScores[i].image === rightId) {
@@ -725,9 +725,9 @@ function determineRoundWinner() {
 						}else if(top4.length === 4 && top2.length < 2){
 							top2.push(sortScores[i]);
 						}else if(top2.length === 2){
-							sortScores[1].rank = 1;
+							sortScores[i].rank = 1;
 							finalRanking.push(sortScores[i]);
-							console.log(finalRanking);
+							console.log(sortScores[i]);
 						}
 					}else{}
 				}else if(winningSide === "tie") {
@@ -735,11 +735,11 @@ function determineRoundWinner() {
 						if (sortScores[i].image === rightId) {
 							if(top2.length < 2){
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}else if (top2.length === 2){
 								sortScores[i].rank = 2;
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}
 						}
 						if (sortScores[i].image === leftId) {
@@ -750,9 +750,9 @@ function determineRoundWinner() {
 							}else if(top4.length === 4 && top2.length < 2){
 								top2.push(sortScores[i]);
 							}else if(top2.length === 2){
-								sortScores[1].rank = 1;
+								sortScores[i].rank = 1;
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}
 							winningSide = "left";
 						}else{}
@@ -760,11 +760,11 @@ function determineRoundWinner() {
 						if (sortScores[i].image === leftId) {
 							if(top2.length < 2){
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}else if (top2.length === 2){
 								sortScores[i].rank = 2;
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}
 						}
 						if (sortScores[i].image === rightId) {
@@ -775,17 +775,21 @@ function determineRoundWinner() {
 							}else if(top4.length === 4 && top2.length < 2){
 								top2.push(sortScores[i]);
 							}else if(top2.length === 2){
-								sortScores[1].rank = 1;
+								sortScores[i].rank = 1;
 								finalRanking.push(sortScores[i]);
-								console.log(finalRanking);
+								console.log(sortScores[i]);
 							}
 							winningSide = "right";
 						}else{}
 					}
 				}
 			}
-			if(top8.length === 8){
+			if(top8.length === 8 && top4.length < 4){
 				sortBracketLoserScores();
+			}else if(top4.length === 4 && top2.length < 2){
+				sortTop8LoserScores();
+			}else if(top2.length === 2){
+				sortTop4LoserScores();
 			}
 			displayWinningSide(winningSide);
 		}else{
@@ -814,6 +818,7 @@ function displayWinningSide(winningSide){
 }
 
 function sortBracketLoserScores() {
+	console.log("sort bracket Losers");
 	finalRanking.sort(function(a, b){return b.rank-a.rank});
 	for (var i = 0; i < finalRanking.length; i++){
 		finalRanking[i].rank = 17 - i;
@@ -821,6 +826,7 @@ function sortBracketLoserScores() {
 }
 
 function sortTop8LoserScores() {
+	console.log("sort Top 8 losers");
 	console.log(finalRanking);
 	finalRanking.slice(9, 12).sort(function(a, b){return b.rank-a.rank});
 	for (var i = 9; i < 13; i++){
@@ -829,9 +835,11 @@ function sortTop8LoserScores() {
 }
 
 function sortTop4LoserScores() {
+	console.log("sort top 4 losers");
 	finalRanking.slice(13, 14).sort(function(a, b){return b.rank-a.rank});
-	for (var i = 12; i < 15; i++){
+	for (var i = 13; i < 15; i++){
 		finalRanking[i].rank = 17 - i;
+		console.log(finalRanking);
 	}
 }
 
@@ -906,7 +914,6 @@ $(document).on("click", ".top8Poster", function(){
 		if(mode === "solo") {
 			startFinalRound();
 		}
-		sortTop8LoserScores();
 	}else{}
 });
 
@@ -999,9 +1006,7 @@ $(document).on("click", ".top4Poster", function(){
 		multiplayerRound ++;
 		createVotingDatabase();
 	}
-	if(finalRanking.length === (scores.length-2)){
-		sortTop4LoserScores();
-	}
+	console.log(finalRanking.length + " " + scores.length-2);
 });
 
 $(document).on("click", ".top2Poster", function(){
@@ -1054,7 +1059,6 @@ function displayFinalRanking(){
 	console.log(finalRanking.length + " " + scores.length);
 	console.log(finalRanking);
 	console.log(scores);
-	$("#overallWinner").append("<img id='winner src='" + finalRanking[0].image + ".jpg'>");
 	if (finalRanking.length === scores.length){
 		finalRanking.sort(function(a, b){return a.rank-b.rank});
 		console.log(finalRanking);
@@ -1062,6 +1066,7 @@ function displayFinalRanking(){
 			finalRanking[i].rank = i + 1;
 			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 		}
+		$("#overallWinner").append("<img id='winner' src='" + finalRanking[0].image + ".jpg'>");
 		saveRankingToDatabase();
 	}
 }
@@ -1085,7 +1090,7 @@ function saveRankingToDatabase() {
 		method: "POST",
 		url: "/rankings/" + username,
 		data: {
-			user: "user",
+			user: username,
 			ranking: finalRanking
 		}
 	}).done(function(data) {

@@ -2,6 +2,35 @@ body {
 	background: #0f0f25;
 }
 
+#signInButton{
+	background: #be3229;
+	color: white;
+	text-align: center;
+	font-size: 36px;
+	border-radius: 5px;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #676268;
+}
+
+#signInButton:hover {
+	background: #3574ad;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 #avengersLogo {
 	height: 200px;
 }
@@ -62,12 +91,21 @@ body {
 }
 
 .gameModeButton {
-	background: white;
+	background: #ff1414;
+	color: white;
 	text-align: center;
 	font-size: 26px;
 	width: 100px;
 	margin-left: 10%;
 	margin-top: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	border-radius: 5px;
+}
+
+.gameModeButton:hover {
+	background: #a03333;
 }
 
 .moviePoster {
