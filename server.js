@@ -42,7 +42,7 @@ app.use(passport.session());
 // Static directory
 app.use(express.static("assets"));
 
-mongoose.connect("mongodb://localhost/node-auth");
+mongoose.connect("https://murmuring-ridge-54107.herokuapp.com//node-auth");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
