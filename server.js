@@ -42,7 +42,7 @@ app.use(passport.session());
 // Static directory
 app.use(express.static("assets"));
 
-mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds119088.mlab.com:19088/heroku_77d6738c");
+mongoose.connect("mongodb://database:database@ds119088.mlab.com:19088/heroku_77d6738c");
 var db = mongoose.connection;
 
 db.on("error", function(error) {
