@@ -118,6 +118,13 @@ var marvelMovies = [
 		appearances: 0,
 		image: "thor3",
 		rank: 0
+	},
+	{
+		name: "Black Panther",
+		score: 0,
+		appearances: 0,
+		image: "blackPanther",
+		rank: 0
 	}
 ];
 var pixarMovies = [
@@ -520,7 +527,9 @@ function sortCompiledScores() {
 	for(i=0; i<sortScores.length; i++){
 		sortScores[i].rank = i + 1;
 	}
-	finalRanking.push(sortScores[sortScores.length - 1]);
+	for(i = 16; i < sortScores.length; i ++){
+		finalRanking.push(sortScores[i]);
+	}
 	displayMultiplayerBracket();
 }
 
@@ -534,6 +543,7 @@ function displayBracket() {
 			$("#" + (i+1) + "Seed").prepend("<img class='bracketPoster posterPoster' id='" + sortScores[i].image + " " + (i + 1) + "' src='images/" + sortScores[i].image + ".jpg'>");
 		}else if(i >= 16) {
 			finalRanking.push(sortScores[i]);
+			console.log(finalRanking);
 		}
 	}
 }
@@ -1066,7 +1076,7 @@ function displayFinalRanking(){
 			finalRanking[i].rank = i + 1;
 			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 		}
-		$("#overallWinner").append("<img id='winner' src='" + finalRanking[0].image + ".jpg'>");
+		$("#overallWinner").append("<img id='winner' src='images" + finalRanking[0].image + ".jpg'>");
 		saveRankingToDatabase();
 	}
 }
@@ -1116,6 +1126,7 @@ $(".category").click(function(){
 		selectedCategory = marvelMovies;
 		beginGame();
 	}
+	$("#mainTitle").hide();
 });
 
 function beginGame() {

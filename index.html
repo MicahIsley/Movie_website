@@ -8,6 +8,11 @@
 	</head>
 	<body>
 		<div class="container-fluid">
+			<div class="col-xs-12">
+				<div class="row" id="logoutRow">
+						<button type="submit" class="btn btn-danger" id="logoutButton"><a href="auth/logout">Logout</a></button>
+				</div>
+			</div>
 			<div class="row" id="mainTitle">
 				<div class="col-xs-12">
 					<div class="row">
@@ -18,9 +23,6 @@
 					<div class="row">
 						<div id="movieBattle">Movie Super Battle</div>
 					</div>
-					<div class="row">
-						<button type="submit" class="btn btn-danger" id="logoutButton"><a href="auth/logout">Logout</a></button>
-					</div>
 				</div>
 			</div>
 			<div class="row" id="gameModeSelection">
@@ -30,8 +32,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-5">
-							<div class="gameModeButton" id="soloMode">Solo</div>
-							<div class="gameModeButton" id="groupMode">Group</div>
+							<div class="gameModeButton" id="groupMode">Play</div>
 						</div>
 					</div>
 				</div>
@@ -39,7 +40,7 @@
 			<div class="row" id="multiplayerLobby">
 				<div class="col-xs-12">
 					<div class="row">
-						<div class="col-sm-4" id="onlinePlayerLobby">
+						<div class="col-sm-4 col-sm-offset-1" id="onlinePlayerLobby">
 							<div class="row">
 								<div>Online Players</div>
 							</div>
@@ -57,7 +58,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
+						<div class="col-xs-4 col-xs-offset-5">
 							<div id="readyButton">Ready</div>
 						</div>
 					</div>
@@ -81,7 +82,7 @@
 			<div class="row" id="firstRound">
 				<div class="col-xs-12">
 					<div class="row">
-						<div class="message">Choose which movie you like better</div>
+						<div class="message" id="firstChoose">Choose which movie you like better</div>
 					</div>
 					<div class="col-xs-5 col-md-3 col-md-offset-2 col-lg-3 col-lg-offset-2">
 						<div id="movie1">
@@ -93,7 +94,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" id="secondRound">
+			<!--<div class="row" id="secondRound">
 				<div class="row">
 					<div class="message">Top 16! Choose your favorite!</div>
 				</div>
@@ -256,7 +257,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<div class="row" id="multiplayerMatchups">
 				<div class="col-xs-12">
 					<div class="row">

@@ -2,6 +2,10 @@ body {
 	background: #0f0f25;
 }
 
+#logoutRow{
+	float: right;
+}
+
 #signInButton{
 	background: #be3229;
 	color: white;
@@ -11,6 +15,7 @@ body {
 	border-width: 3px;
 	border-style: solid;
 	border-color: #676268;
+	margin-top: 15%;
 }
 
 #signInButton:hover {
@@ -33,6 +38,14 @@ a:hover {
 
 #avengersLogo {
 	height: 200px;
+}
+
+#loginTitle {
+	text-align: center;
+	font-size: 66px;
+	font-family: 'Josefin Sans', sans-serif;
+	background: white;
+	margin-top: 15%;
 }
 
 #mainTitle {
@@ -58,8 +71,15 @@ a:hover {
 	background: white;
 	border-radius: 5px;
 	border-style: solid;
-	border-width: 3px;
-	border-color: black;
+	border-width: 5px;
+	border-color: #2dadb1;;
+	padding: 10px;
+}
+
+.onlinePlayer {
+	background: red;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 #multiplayerLobby {
@@ -72,13 +92,18 @@ a:hover {
 }
 
 #readyButton {
+	font-size: 25px;
 	text-align: center;
-	background: green;
+	background: #3eaf3e;
 	color: white;
-	height: 75px;
+	height: 50px;
 	width: 150px;
 	border-radius: 5px;
-	padding-top: 25px;
+	padding-top: 6px;
+}
+
+#firstChoose {
+	margin-bottom: 10%;
 }
 
 #categorySelection {
