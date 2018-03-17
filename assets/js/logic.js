@@ -300,12 +300,30 @@ function getUserData() {
 function getCurrentUsername() {
 	$.get("/api/userInfo/" + currentUserId.googleId, function(data) {
 		currentUser = data.username;
-		displayOnline();
+		checkForOnlineDuplicates();
 	});
 };
 
-function displayOnline() {
+function checkForOnlineDuplicates(){
+	console.log("hey");
+	$.get("/online", function(data) {
+		console.log(data);
+		if(data.length === 0){
+			displayOnline();
+		}else{
+			for(i=0; i < data.length; i++){
+				if(data[i].username === currentUser){
+					console.log("Already online");
+				}else{
+					displayOnline();
+				}
+		}
+		}
+	});
+}
 
+function displayOnline() {
+	console.log("displayOnline");
 	$.ajax({
 		method: "POST",
 		url: "/online/" + currentUser,
@@ -314,7 +332,6 @@ function displayOnline() {
 		}
 	}).done(function(data) {
 	});
-	$("#onlinePlayers").append(currentUser);
 };
 
 $("#logoutButton").click(function() {
@@ -357,8 +374,11 @@ $("#groupMode").click(function() {
 
 $(document).on("click", ".onlinePlayer", function(){
 	var addPlayer = $(this).attr("id");
-	multiplayerGroup.push(addPlayer);
 	$("#yourGroupMembers").empty();
+	console.log(multiplayerGroup);
+	if (multiplayerGroup.indexOf(addPlayer) === -1){
+		multiplayerGroup.push(addPlayer);
+	}else{}
 	for(i=0; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "</div>");
 	}
@@ -1076,7 +1096,7 @@ function displayFinalRanking(){
 			finalRanking[i].rank = i + 1;
 			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 		}
-		$("#overallWinner").append("<img id='winner' src='images" + finalRanking[0].image + ".jpg'>");
+		$("#overallWinner").append("<img id='winner' src='images/" + finalRanking[0].image + ".jpg'>");
 		saveRankingToDatabase();
 	}
 }

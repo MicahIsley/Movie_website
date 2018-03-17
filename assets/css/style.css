@@ -42,17 +42,25 @@ a:hover {
 
 #loginTitle {
 	text-align: center;
-	font-size: 66px;
-	font-family: 'Josefin Sans', sans-serif;
+	font-size: 76px;
+	font-family: 'Bangers', cursive;
 	background: white;
-	margin-top: 15%;
+	margin-top: 10%;
+	padding-bottom: 25px;
+	border-color: red;
+	border-width: 5px 0px 5px 0px;
+	border-style: solid;
 }
 
 #mainTitle {
 	text-align: center;
 	font-size: 66px;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Bangers', cursive;
 	background: white;
+	padding-bottom: 25px;
+	border-color: red;
+	border-width: 5px 0px 5px 0px;
+	border-style: solid;
 }
 
 .logo {
