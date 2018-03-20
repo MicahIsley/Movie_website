@@ -74,19 +74,14 @@ a:hover {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
-#onlinePlayerLobby {
-	text-align: center;
-	background: white;
-	border-radius: 5px;
-	border-style: solid;
-	border-width: 5px;
-	border-color: #2dadb1;;
-	padding: 10px;
-}
 
 .onlinePlayer {
-	background: red;
-    margin-left: 25%;
+	margin-left: 10%;
+    margin-right: 25%;
+}
+
+.groupMember {
+	margin-left: 10%;
     margin-right: 25%;
 }
 
@@ -94,12 +89,18 @@ a:hover {
 	display: none;
 }
 
-#yourGroupSection {
-	background: white;
+#readyButton {
+	font-size: 25px;
 	text-align: center;
+	background: #3eaf3e;
+	color: white;
+	height: 50px;
+	width: 150px;
+	border-radius: 5px;
+	padding-top: 6px;
 }
 
-#readyButton {
+#multiButton {
 	font-size: 25px;
 	text-align: center;
 	background: #3eaf3e;
@@ -158,45 +159,18 @@ a:hover {
 }
 
 .posterPoster {
-	height: 150px;
-	margin-left: 5px;
-	-webkit-transition: border .2s ease-in;
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
 }
 
 .posterPoster:hover {
+	transform: scale(1.2);
 	border-style: solid;
-	border-color: #f3f5f6;
-	border-width: 5px;
-}
-
-.top8Poster {
-	height: 150px;
-}
-
-.top8Poster:hover {
-	border-style: solid;
-	border-color: #f3f5f6;
-	border-width: 5px;
-}
-
-.top4Poster {
-	height: 150px;
-	width: auto;
-}
-
-.top4Poster:hover {
-	border-style: solid;
-	border-color: #f3f5f6;
-	border-width: 5px;
-}
-
-.top2Poster {
-	height: 150px;
-}
-
-.top2Poster {
-	border-style: solid;
-	border-color: #f3f5f6;
+	border-color: #be3229;
 	border-width: 5px;
 }
 
@@ -225,17 +199,6 @@ a:hover {
 	font-size: 36px;
 }
 
-.moviePair {
-	background: #be3229;
-	border-radius: 5px;
-	border-style: solid;
-	border-color: #676268;
-	border-width: 3px;
-	margin: 5px;
-	padding: 5px;
-	text-align: center;
-}
-
 .finalPair {
 	background: #be3229;
 	border-radius: 5px;
@@ -261,6 +224,29 @@ a:hover {
 
 #multiplayerMatchups {
 	display: none;
+}
+
+#leftSlot {
+	background: green;
+    width: 273px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 100px;
+}
+
+#rightSlot {
+	background: green;
+    width: 273px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 100px;
+}
+
+.circleCheck {
+	height: 50px;
+	margin-left: 40%;
 }
 
 #finalBattle {
@@ -307,6 +293,25 @@ a:hover {
 	width: 100px;
 	padding-left: 25px;
 	margin-left: 48%;
+}
+
+.multiDisplay {
+	display: none;
+	background: white;
+	padding-bottom: 20px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #2dadb1;;
+}
+
+.onlineTitle {
+	text-align: center;
+	font-size: 28px;
+	font-family: 'Open Sans', sans-serif;
+	border-width: 0px 0px 2px 0px;
+	border-color: black;
+	border-style: solid;
 }
 
 #footer {
