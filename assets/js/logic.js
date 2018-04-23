@@ -521,6 +521,7 @@ function postToMultiplayer() {
 function checkForAllData() {
 	$.get("/multiplayer", function(data) {
 		if(data.length === multiplayerSize) {
+			console.log(data);
 			compileRankings(data);
 		}
 	});
