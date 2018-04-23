@@ -542,7 +542,6 @@ function compileRankings(data) {
 			name: data[0].ranking[i].name
 			}
 		compiledRank.push(compiledObject);
-		console.log(compiledRank);
 	}
 	sortCompiledScores();
 }
@@ -556,6 +555,7 @@ function sortCompiledScores() {
 	for(i = 16; i < sortScores.length; i ++){
 		finalRanking.push(sortScores[i]);
 	}
+	console.log(compiledRank);
 	displayMultiplayerBracket();
 }
 
