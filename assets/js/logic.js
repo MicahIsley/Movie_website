@@ -556,7 +556,7 @@ function sortCompiledScores() {
 	for(i = 16; i < sortScores.length; i ++){
 		finalRanking.push(sortScores[i]);
 	}
-	console.log(compiledRank);
+	console.log(sortScores);
 	displayMultiplayerBracket();
 }
 
