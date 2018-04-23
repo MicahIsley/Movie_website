@@ -372,7 +372,7 @@ $("#groupMode").click(function() {
 	mode = "group";
 });
 
-$(document).on("click touch", ".onlinePlayer", function(){
+$(document).on("click", ".onlinePlayer", function(){
 	var addPlayer = $(this).attr("id");
 	$("#yourGroupMembers").empty();
 	console.log(multiplayerGroup);
