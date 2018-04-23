@@ -583,7 +583,7 @@ function displayMultiplayerBracket() {
 	$("#firstRound").hide();
 	$("#multiplayerMatchups").show();
 	if(top8.length < 8){
-		$("#roundHeading").text("Top 16" + multiplayerRound);
+		$("#roundHeading").text("Top 16" + sortScores);
 		$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + sortScores[multiplayerRound].image + ".jpg'>");
 		$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
 	}else if(top8.length === 8 && top4.length < 4){
