@@ -360,7 +360,7 @@ function findOnline() {
 findOnline();
 getUserData();
 
-$("#groupMode").click(function() {
+$("#gameModeButton").click(function() {
 	multiplayerGroup.push(currentUser);
 	$("#gameModeSelection").hide();
 	$("#multiplayerLobby").show();
@@ -876,14 +876,14 @@ function determineRoundWinner() {
 function displayWinningSide(winningSide){
 	console.log(winningSide);
 	if(winningSide === "left"){
-		$("#leftSlot").css("background", "green");
+		//$("#leftSlot").css("background", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 2000);
 		}else{
 			setTimeout("clearVotingData()", 2000);
 		}
 	}else if(winningSide === "right"){
-		$("#rightSlot").css("background", "green");
+		//$("#rightSlot").css("background", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 2000);
 		}else{

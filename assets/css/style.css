@@ -36,6 +36,10 @@ a:hover {
 	text-decoration: none;
 }
 
+#logoutButton {
+	margin-right: 15px;
+}
+
 #avengersLogo {
 	height: 200px;
 }
@@ -125,13 +129,12 @@ a:hover {
 	height: 100px;
 }
 
-.gameModeButton {
+#gameModeButton {
 	background: #ff1414;
 	color: white;
 	text-align: center;
 	font-size: 26px;
 	width: 100px;
-	margin-left: 10%;
 	margin-top: 10px;
 	border-style: solid;
 	border-color: black;
@@ -227,7 +230,7 @@ a:hover {
 	display: none;
 }
 
-#leftSlot {
+/*#leftSlot {
 	background: green;
     width: 273px;
     border-style: solid;
@@ -243,11 +246,14 @@ a:hover {
     border-width: 3px;
     border-color: black;
     border-radius: 100px;
-}
+}*/
 
 .circleCheck {
 	height: 50px;
-	margin-left: 40%;
+	padding-left: 50px;
+	padding-right: 50px;
+	margin-left: 20%;
+	background: green;
 }
 
 #finalBattle {
@@ -327,6 +333,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 500px) {
+	#signInButton {
+		font-size: 34px;
+	}
+
 	#avengersLogo {
 		height: 80px;
 	}
@@ -338,6 +348,10 @@ a:hover {
 	.moviePoster {
 		height: 220px;
 
+	}
+
+	.posterPoster {
+		height: 220px;
 	}
 
 	.winner {
