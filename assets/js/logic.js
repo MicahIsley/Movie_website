@@ -742,6 +742,7 @@ function clearVotingData() {
 };
 
 function determineRoundWinner() {
+	console.log("determineRoundWinner");
 	$.get("/voting", function(data) {
 		if(data[0].votes === multiplayerSize){
 			clearTimeout(votingTimeout);
