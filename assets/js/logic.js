@@ -404,7 +404,7 @@ $("#multiButton").click(function() {
 function pickMovieOne() {
 	$("#movie1").empty();
 	movie1 = scores[Math.floor(Math.random() * scores.length)];
-	if(movie1.appearances < 3) {
+	if(movie1.appearances < 1) {
 		displayMovieOne();
 	}else{
 		if(numberFinished >= scores.length-1){
@@ -421,7 +421,7 @@ function pickMovieTwo() {
 	if(movie1 === movie2) {
 		pickMovieTwo();
 	}else{
-		if(movie2.appearances < 3) {
+		if(movie2.appearances < 1) {
 			displayMovieTwo();
 		}else{
 			if(numberFinished >= scores.length){
@@ -476,7 +476,7 @@ function displayRanking() {
 function checkEnding() {
 	numberFinished = 0;
 	for(i=0; i<scores.length; i++) {
-		if(scores[i].appearances === 3){
+		if(scores[i].appearances === 1){
 			numberFinished ++;
 			if(numberFinished === scores.length){
 				bracketStage();
@@ -609,8 +609,8 @@ function displayBracket() {
 function displayMultiplayerBracket() {
 	$("#leftSlot").empty();
 	$("#rightSlot").empty();
-	$("#leftSlot").css("background", "transparent");
-	$("#rightSlot").css("background", "transparent");
+	$("#leftSlot").css("border-color", "transparent");
+	$("#rightSlot").css("border-color", "transparent");
 	$("#firstRound").hide();
 	$("#multiplayerMatchups").show();
 	if(top8.length < 8){
@@ -877,14 +877,14 @@ function determineRoundWinner() {
 function displayWinningSide(winningSide){
 	console.log(winningSide);
 	if(winningSide === "left"){
-		//$("#leftSlot").css("background", "green");
+		$("#leftSlot").css("border-color", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 2000);
 		}else{
 			setTimeout("clearVotingData()", 2000);
 		}
 	}else if(winningSide === "right"){
-		//$("#rightSlot").css("background", "green");
+		$("#rightSlot").css("border-color", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 2000);
 		}else{

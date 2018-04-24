@@ -1,5 +1,5 @@
 body {
-	background: #0f0f25;
+	background: #5c5cff;
 }
 
 #logoutRow{
@@ -178,10 +178,6 @@ a:hover {
 	border-width: 5px;
 }
 
-.winner {
-	height: 500px;
-}
-
 .row {
 	margin-top: 20px;
 }
@@ -230,30 +226,26 @@ a:hover {
 	display: none;
 }
 
-/*#leftSlot {
-	background: green;
-    width: 273px;
+#leftSlot {
+	width: 281px;
     border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    border-radius: 100px;
+    border-width: 5px;
+    border-color: #0e0e26;
 }
 
 #rightSlot {
-	background: green;
-    width: 273px;
+	width: 281px;
     border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    border-radius: 100px;
-}*/
+    border-width: 5px;
+    border-color: #0e0e26;
+}
 
 .circleCheck {
 	height: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
 	margin-left: 20%;
-	background: green;
+	border-radius: 100px;
 }
 
 #finalBattle {
@@ -321,6 +313,10 @@ a:hover {
 	border-style: solid;
 }
 
+#winner {
+	height: 550px;
+}
+
 #footer {
 	color: white;
 	background: black;
@@ -354,8 +350,13 @@ a:hover {
 		height: 220px;
 	}
 
-	.winner {
-		height: 420px;
+	#winner {
+		height: 350px;
+		margin-left: 8%;
+	}
+
+	#rankingDisplay {
+		margin-left: 8%;
 	}
 
 	#replayButton {
