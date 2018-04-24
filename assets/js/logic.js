@@ -404,7 +404,7 @@ $("#multiButton").click(function() {
 function pickMovieOne() {
 	$("#movie1").empty();
 	movie1 = scores[Math.floor(Math.random() * scores.length)];
-	if(movie1.appearances < 1) {
+	if(movie1.appearances < 3) {
 		displayMovieOne();
 	}else{
 		if(numberFinished >= scores.length-1){
@@ -421,7 +421,7 @@ function pickMovieTwo() {
 	if(movie1 === movie2) {
 		pickMovieTwo();
 	}else{
-		if(movie2.appearances < 1) {
+		if(movie2.appearances < 3) {
 			displayMovieTwo();
 		}else{
 			if(numberFinished >= scores.length){
@@ -476,7 +476,7 @@ function displayRanking() {
 function checkEnding() {
 	numberFinished = 0;
 	for(i=0; i<scores.length; i++) {
-		if(scores[i].appearances === 1){
+		if(scores[i].appearances === 3){
 			numberFinished ++;
 			if(numberFinished === scores.length){
 				bracketStage();
