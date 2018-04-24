@@ -3,6 +3,7 @@ var User = require("../models/User.js");
 var Online = require("../models/Online.js");
 var Multiplayer = require("../models/Multiplayer.js");
 var Voting = require("../models/Voting.js");
+var Compiled = require("../models/Compiled.js");
 var express = require('express');
 
 module.exports = function(app) {
@@ -13,6 +14,18 @@ module.exports = function(app) {
 				console.log("Error saving data to the database." + err);
 			} else {
 				console.log("Ranking Data Saved");
+				res.send(doc);
+			}
+		});
+	});
+
+	app.post("/compiled/:name", function(req, res) {
+		var newCompiled = new Compiled(req.body);
+		newCompiled.save(function (err, doc) {
+			if(err) {
+				console.log("Error saving data to the database." + err);
+			} else {
+				console.log("Compiled Data Saved");
 				res.send(doc);
 			}
 		});
@@ -78,6 +91,17 @@ module.exports = function(app) {
 
 	app.get("/rankings", function(req, res) {
 		Ranking.find({}, function(error, doc) {
+			if (error) {
+				res.send(error);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
+	app.get("/compiled", function(req, res) {
+		Compiled.find({}, function(error, doc) {
 			if (error) {
 				res.send(error);
 			}

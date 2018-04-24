@@ -279,9 +279,11 @@ var multiplayerSize;
 var mode;
 var onlineTimeout;
 var firstRoundTimeout;
+var downloadCompiledTimeout;
 var votingTimeout;
 var compiledRank = [];
 var multiplayerRound = 0;
+var player;
 
 function getUserData() {
 	$.ajax('/user', {
@@ -358,12 +360,6 @@ function findOnline() {
 findOnline();
 getUserData();
 
-$("#soloMode").click(function() {
-	$("#gameModeSelection").hide();
-	$("#categorySelection").show();
-	mode = "solo";
-});
-
 $("#groupMode").click(function() {
 	multiplayerGroup.push(currentUser);
 	$("#gameModeSelection").hide();
@@ -386,6 +382,9 @@ $(document).on("click", ".onlinePlayer", function(){
 
 $("#readyButton").click(function() {
 	multiplayerSize = $("#yourGroupMembers > div").length;
+	if(multiplayerSize === 1){
+		player === "one";
+	}
 	$.ajax({
 		method: "PUT",
 		url: "/online/updateReady/" + currentUser
@@ -553,10 +552,42 @@ function sortCompiledScores() {
 	for(i=0; i<sortScores.length; i++){
 		sortScores[i].rank = i + 1;
 	}
+	console.log(sortScores);
+	console.log(player);
+	uploadCompiledScores();
+	//displayMultiplayerBracket();
+}
+
+function uploadCompiledScores() {
+	$.ajax({
+		method: "POST",
+		url: "/compiled/one",
+		data: {
+			user: "one",
+			ranking: sortScores
+		}
+		}).done(function(data) {
+			console.log(data);
+			downloadCompiledScores();
+		});
+}
+
+function downloadCompiledScores() {
+	sortScores = [];
+	$.get("/compiled", function(data) {
+		console.log(data[0].ranking.length);
+		for(i=0; i < data[0].ranking.length; i++){
+			sortScores.push(data[0].ranking[i]);
+		}
+		console.log(sortScores);
+		pushEliminated();
+	});
+}
+
+function pushEliminated(){
 	for(i = 16; i < sortScores.length; i ++){
 		finalRanking.push(sortScores[i]);
 	}
-	console.log(sortScores);
 	displayMultiplayerBracket();
 }
 
@@ -583,7 +614,7 @@ function displayMultiplayerBracket() {
 	$("#firstRound").hide();
 	$("#multiplayerMatchups").show();
 	if(top8.length < 8){
-		$("#roundHeading").text("Top 16" + sortScores[0].name + " " + sortScores[15].name);
+		$("#roundHeading").text("Top 16");
 		$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + sortScores[multiplayerRound].image + ".jpg'>");
 		$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
 	}else if(top8.length === 8 && top4.length < 4){
