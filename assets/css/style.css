@@ -1,25 +1,9 @@
 body {
-	background: #5c5cff;
+	background: #012896;
 }
 
 #logoutRow{
 	float: right;
-}
-
-#signInButton{
-	background: #be3229;
-	color: white;
-	text-align: center;
-	font-size: 36px;
-	border-radius: 5px;
-	border-width: 3px;
-	border-style: solid;
-	border-color: #676268;
-	margin-top: 15%;
-}
-
-#signInButton:hover {
-	background: #3574ad;
 }
 
 a {
@@ -78,6 +62,10 @@ a:hover {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
+#categoryMessage {
+	font-size: 24px;
+
+}
 
 .onlinePlayer {
 	margin-left: 10%;
@@ -90,32 +78,6 @@ a:hover {
     margin-right: 25%;
 }
 
-#multiplayerLobby {
-	display: none;
-}
-
-#readyButton {
-	font-size: 25px;
-	text-align: center;
-	background: #3eaf3e;
-	color: white;
-	height: 50px;
-	width: 150px;
-	border-radius: 5px;
-	padding-top: 6px;
-}
-
-#multiButton {
-	font-size: 25px;
-	text-align: center;
-	background: #3eaf3e;
-	color: white;
-	height: 50px;
-	width: 150px;
-	border-radius: 5px;
-	padding-top: 6px;
-}
-
 #firstChoose {
 	margin-bottom: 10%;
 }
@@ -126,24 +88,33 @@ a:hover {
 }
 
 .categoryLogo {
-	height: 100px;
+	height: 80px;
+	border-color: transparent;
+	border-width: 3px;
+	border-style: solid;
 }
 
-#gameModeButton {
+.redButton {
 	background: #ff1414;
 	color: white;
 	text-align: center;
 	font-size: 26px;
 	width: 100px;
 	margin-top: 10px;
+	margin-left: 8%;
 	border-style: solid;
 	border-color: black;
 	border-width: 3px;
 	border-radius: 5px;
 }
 
-.gameModeButton:hover {
-	background: #a03333;
+.redButton:hover {
+	border-color: white;
+}
+
+#multiButton {
+	width: 150px;
+  	text-align: center;
 }
 
 .moviePoster {
@@ -295,18 +266,19 @@ a:hover {
 }
 
 .multiDisplay {
-	display: none;
 	background: white;
 	padding-bottom: 20px;
+	margin-right: 5px;
 	border-radius: 5px;
 	border-style: solid;
-	border-width: 5px;
-	border-color: #2dadb1;;
+	border-width: 2px;
+	border-color: black;
+	height: 200px;
 }
 
 .onlineTitle {
 	text-align: center;
-	font-size: 28px;
+	font-size: 20px;
 	font-family: 'Open Sans', sans-serif;
 	border-width: 0px 0px 2px 0px;
 	border-color: black;
@@ -317,7 +289,14 @@ a:hover {
 	height: 550px;
 }
 
+#yourGroupMembers {
+	margin-left: 15%;
+}
+
 #footer {
+	position: relative;
+    bottom: 0px;
+    width: 100%;
 	color: white;
 	background: black;
 	height: 100px;
@@ -333,8 +312,24 @@ a:hover {
 		font-size: 34px;
 	}
 
+	#gameModeButton {
+		margin-left: 0%;
+	}
+
+	.message {
+		text-align: center;
+	}
+
 	#avengersLogo {
 		height: 80px;
+	}
+
+	.multiDisplay {
+		padding-bottom: 10px;
+	}
+
+	.onlineTitle {
+		font-size: 22px;
 	}
 
 	#mainTitle {

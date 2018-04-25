@@ -276,7 +276,7 @@ var currentUserId;
 var currentUser;
 var multiplayerGroup = [];
 var multiplayerSize;
-var mode;
+var mode = "group";
 var onlineTimeout;
 var firstRoundTimeout;
 var downloadCompiledTimeout;
@@ -307,7 +307,7 @@ function getCurrentUsername() {
 };
 
 function checkForOnlineDuplicates(){
-	console.log("hey");
+	$("#yourGroupMembers").append("<div class='row groupMember'>" + currentUser + "</div>");
 	$.get("/online", function(data) {
 		console.log(data);
 		if(data.length === 0){
@@ -360,14 +360,6 @@ function findOnline() {
 findOnline();
 getUserData();
 
-$("#gameModeButton").click(function() {
-	multiplayerGroup.push(currentUser);
-	$("#gameModeSelection").hide();
-	$("#multiplayerLobby").show();
-	$("#yourGroupMembers").append("<div class='row groupMember'>" + currentUser + "</div>");
-	mode = "group";
-});
-
 $(document).on("click", ".onlinePlayer", function(){
 	var addPlayer = $(this).attr("id");
 	$("#yourGroupMembers").empty();
@@ -381,17 +373,14 @@ $(document).on("click", ".onlinePlayer", function(){
 });
 
 $("#readyButton").click(function() {
+	multiplayerGroup.push(currentUser);
 	multiplayerSize = $("#yourGroupMembers > div").length;
-	if(multiplayerSize === 1){
-		player === "one";
-	}
 	$.ajax({
 		method: "PUT",
 		url: "/online/updateReady/" + currentUser
 	}).done(function(data) {
 	});
 	$("#multiplayerLobby").hide();
-	$("#categorySelection").show();
 	clearTimeout(onlineTimeout);
 	clearMultiplayer();
 });
@@ -402,13 +391,15 @@ $("#multiButton").click(function() {
 });
 
 function pickMovieOne() {
+	console.log("pickMovieOne");
 	$("#movie1").empty();
 	movie1 = scores[Math.floor(Math.random() * scores.length)];
 	if(movie1.appearances < 1) {
 		displayMovieOne();
 	}else{
 		if(numberFinished >= scores.length-1){
-				$("#movie1").append("Bye");
+			$("#movie1").append("Bye");
+			pickMovieTwo();
 		}else{
 			pickMovieOne();
 		}
@@ -416,6 +407,7 @@ function pickMovieOne() {
 }
 
 function pickMovieTwo() {
+	console.log("pickMovieTwo");
 	$("#movie2").empty();
 	movie2 = scores[Math.floor(Math.random() * scores.length)];
 	if(movie1 === movie2) {
@@ -441,6 +433,7 @@ function displayMovieOne() {
 		}else{}
 	}
 	$("#movie1").append("<img class='moviePoster' id='" + movie1Poster + "' src='images/" + movie1Poster + ".jpg'>");
+	pickMovieTwo();
 }
 
 function displayMovieTwo() {
@@ -460,51 +453,55 @@ $(document).on("click", ".moviePoster", function(){
 			scores[i].score ++;
 		}
 	}
-	displayRanking();
-});
-
-function displayRanking() {
-	$("#rankingDisplay").empty();
-	sortScores = scores.slice(0);
-	sortScores.sort(function(a, b){return b.score-a.score});
-	for(i=0; i<sortScores.length; i++){
-		sortScores[i].rank = i + 1;
-	}
 	checkEnding();
-}
+});
 
 function checkEnding() {
 	numberFinished = 0;
 	for(i=0; i<scores.length; i++) {
 		if(scores[i].appearances === 1){
 			numberFinished ++;
+			console.log(numberFinished);
 			if(numberFinished === scores.length){
 				bracketStage();
 			}else{}
 		}else{}
 	}
 	pickMovieOne();
-	pickMovieTwo();
 }
 
 function bracketStage(){
+	console.log("bracketStage");
 	if( mode === "solo") {
 		displayBracket();
 	} else if( mode === "group") {
+		console.log("bracketStage");
 		postToMultiplayer();
 		clearVotingData();
 	}
 };
 
 function clearMultiplayer() {
-	$.ajax({
-		method: "DELETE",
-		url: "/multiplayer/deleteAll"
-	}).done(function(data) {
+	console.log("Clear Multiplayer");
+	$.get("/multiplayer", function(data) {
+		console.log(data);
+		if(data.length === 0){
+			beginGame();
+		}else{
+			console.log("hiiii");
+			$.ajax({
+				method: "DELETE",
+				url: "/multiplayer/deleteAll"
+			}).done(function(data) {
+				console.log("Begin Game");
+				beginGame();
+			});
+		}
 	});
 };
 
 function postToMultiplayer() {
+	console.log("postToMultiplayer");
 	$.ajax({
 		method: "POST",
 		url: "/multiplayer/" + currentUser,
@@ -554,8 +551,24 @@ function sortCompiledScores() {
 	}
 	console.log(sortScores);
 	console.log(player);
-	uploadCompiledScores();
+	checkAndDeleteCompiledScores();
 	//displayMultiplayerBracket();
+}
+
+function checkAndDeleteCompiledScores() {
+	$.get("/compiled", function(data) {
+		console.log(data);
+		if(data.length > 0) {
+			$.ajax({
+				method: "DELETE",
+				url: "/compiled/deleteAll"
+			}).done(function(data) {
+				uploadCompiledScores();
+			});
+		}else{
+			uploadCompiledScores();
+		}
+	});
 }
 
 function uploadCompiledScores() {
@@ -725,6 +738,7 @@ function clearVotingData() {
 	$.get("/voting", function(data) {
 		console.log(data.length);
 		if(data.length === 0){
+			console.log(multiplayerRound);
 			if(multiplayerRound > 0) {
 					displayMultiplayerBracket();
 			}else{}
@@ -1184,15 +1198,15 @@ $("#replayButton").click(function(){
 });
 
 $(".category").click(function(){
-	var categoryId = $(this).attr("id");
-	if(categoryId === "pixarMovies"){
-		selectedCategory = pixarMovies;
-		beginGame();
-	}else if(categoryId === "marvelMovies"){
+	categoryId  = $(this).attr("id");
+	console.log(selectedCategory);
+	$(".category").children().css("border-color", "transparent");
+	$(this).children().css({"border-width": "3px", "border-color": "black", "border-style": "solid"});
+	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
-		beginGame();
+	}else if(categoryId === "pixarMovies"){
+		selectedCategory = pixarMovies;
 	}
-	$("#mainTitle").hide();
 });
 
 function beginGame() {
@@ -1225,5 +1239,4 @@ function beginGame() {
 	top2 = [];
 	finalRanking = [];
 	pickMovieOne();
-	pickMovieTwo();
 }

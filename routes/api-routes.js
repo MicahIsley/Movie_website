@@ -75,11 +75,29 @@ module.exports = function(app) {
 	});
 
 	app.delete("/multiplayer/deleteAll", function(req, res) {
-		Multiplayer.remove({}, function(err) {});
+		Multiplayer.remove({}, function(err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
 	});
 
 	app.delete("/voting/deleteAll", function(req, res) {
 		Voting.remove({}, function(err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
+	app.delete("/compiled/deleteAll", function(req, res) {
+		Compiled.remove({}, function(err, doc) {
 			if (err) {
 				res.send(err);
 			}
