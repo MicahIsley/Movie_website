@@ -89,9 +89,16 @@ a:hover {
 
 .categoryLogo {
 	height: 80px;
+	width: 154px;
 	border-color: transparent;
 	border-width: 3px;
 	border-style: solid;
+}
+
+#top2017Icon {
+	background: #ffbf3e;
+	text-align: center;
+	font-size: 24px;
 }
 
 .redButton {
@@ -309,7 +316,10 @@ a:hover {
 
 @media only screen and (max-width: 500px) {
 	#signInButton {
-		font-size: 34px;
+		font-size: 30px;
+		height: 75px;
+		width: 140px;
+		padding-top: 11px;
 	}
 
 	#gameModeButton {
@@ -360,4 +370,8 @@ a:hover {
 
 	.categoryLogo {
 		height: 80px;
+	}
+
+	#top2017Icon {
+		margin-top: -20px;
 	}
