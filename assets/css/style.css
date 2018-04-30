@@ -28,6 +28,12 @@ a:hover {
 	height: 200px;
 }
 
+#currentUser {
+	color: green;
+	margin-top: 0px;
+	font-size: 18px
+}
+
 #loginTitle {
 	text-align: center;
 	font-size: 76px;
@@ -122,6 +128,18 @@ a:hover {
 #multiButton {
 	width: 150px;
   	text-align: center;
+}
+
+.byePoster {
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	text-align: center;
+	background: white;
+    font-size: 72px;
+    padding-top: 35%;
 }
 
 .moviePoster {
@@ -348,7 +366,10 @@ a:hover {
 
 	.moviePoster {
 		height: 220px;
+	}
 
+	.byePoster {
+		height: 220px;
 	}
 
 	.posterPoster {
@@ -358,6 +379,10 @@ a:hover {
 	#winner {
 		height: 350px;
 		margin-left: 8%;
+	}
+
+	#rightSlot {
+		width: auto;
 	}
 
 	#rankingDisplay {

@@ -1,5 +1,19 @@
 var scores = [];
-var marvelMovies = [{name: "Ant Man",score: 0,appearances: 0,image: "antMan",rank: 0},{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
+var marvelMovies = [
+	{
+		name: "Ant Man",
+		score: 0,
+		appearances: 0,
+		image: "antMan",
+		rank: 0
+	},
+	{
+		name: "Avengers",
+		score: 0,
+		appearances: 0,
+		image: "avengers",
+		rank: 0
+	},
 	{
 		name: "Avengers: Age of Ultron",
 		score: 0,
@@ -454,7 +468,7 @@ function getCurrentUsername() {
 };
 
 function checkForOnlineDuplicates(){
-	$("#yourGroupMembers").append("<div class='row groupMember'>" + currentUser + "</div>");
+	$("#yourGroupMembers").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
 	$.get("/online", function(data) {
 		if(data.length === 0){
 			displayOnline();
@@ -496,7 +510,10 @@ function findOnline() {
 	$.get("/online", function(data) {
 		$("#onlinePlayers").empty();
 		for(i=0; i < data.length; i++) {
-			$("#onlinePlayers").append("<div class='row onlinePlayer' id='" + data[i].username + "'>" + data[i].username + "</div>");
+			if(data[i].username === currentUser){
+			}else{
+				$("#onlinePlayers").append("<div class='row onlinePlayer' id='" + data[i].username + "'>" + data[i].username + "</div>");
+			}
 		}
 	});
 	onlineTimeout = setTimeout("findOnline()", 1000);
@@ -537,7 +554,7 @@ function pickMovieOne() {
 		displayMovieOne();
 	}else{
 		if(numberFinished >= scores.length-1){
-			$("#movie1").append("Bye");
+			$("#movie1").append("<div class='byePoster'>Bye</div>");
 			pickMovieTwo();
 		}else{
 			pickMovieOne();
@@ -554,8 +571,10 @@ function pickMovieTwo() {
 		if(movie2.appearances < 1) {
 			displayMovieTwo();
 		}else{
+			console.log("finished " + numberFinished);
+			console.log("scores length " + scores.length)
 			if(numberFinished >= scores.length){
-				$("#movie2").append("Bye");
+				$("#movie2").append("<div class='byePoster'>Bye</div>");
 			}else{
 				pickMovieTwo();
 			}
@@ -1047,7 +1066,6 @@ $(document).on("click", ".top2Poster", function(){
 });
 
 function displayFinalRanking(){
-	$("#finalRound").hide();
 	$("#championDisplay").show();
 	$("#multiplayerMatchups").hide();
 	$("#leftSlot").empty();
@@ -1092,11 +1110,7 @@ function saveRankingToDatabase() {
 };
 
 $("#replayButton").click(function(){
-	$("#categorySelection").show();
-	$("#firstRound").hide();
-	$("#secondRound").hide();
-	$("#thirdRound").hide();
-	$("#finalRound").hide();
+	$("#multiplayerLobby").show();
 	$("#championDisplay").hide();
 });
 
@@ -1120,18 +1134,13 @@ function beginGame() {
 	}
 	$("#categorySelection").hide();
 	$("#firstRound").show();
-	$("#secondRound").hide();
-	$("#thirdRound").hide();
-	$("#finalRound").hide();
 	$("#championDisplay").hide();
 	$(".moviePoster").remove();
 	$(".bracketPoster").remove();
 	$(".top8Poster").remove();
 	$(".top4Poster").remove();
 	$(".top2Poster").remove();
-	$(".winner").remove();
-	$("#top4Left").css("visibility", "visible");
-	$("#top4Right").css("visibility", "visible");
+	$("#winner").remove();
 	for(var i=0; i < scores.length; i++) {
 		scores[i].appearances = 0;
 		scores[i].score = 0;
@@ -1142,6 +1151,9 @@ function beginGame() {
 	top4 = [];
 	top2 = [];
 	finalRanking = [];
+	compiledRank = [];
+	sortScores = [];
+	multiplayerRound = 0;
 	pickMovieOne();
 }
 
