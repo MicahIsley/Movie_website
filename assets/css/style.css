@@ -7,10 +7,6 @@ html {
 	height: 100%;
 }
 
-#logoutRow{
-	float: right;
-}
-
 a {
 	text-decoration: none;
 	color: white;
@@ -25,12 +21,49 @@ a:hover {
 	text-decoration: none;
 }
 
-#logoutButton {
-	margin-right: 15px;
+.byePoster {
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	text-align: center;
+	background: white;
+    font-size: 72px;
+    padding-top: 35%;
 }
 
-#avengersLogo {
-	height: 200px;
+.categoryLogo {
+	height: 80px;
+	width: 154px;
+}
+
+.categoryLogo:hover {
+	box-shadow: 0px 0px 20px 6px white;
+}
+
+#categoryMessage {
+	font-size: 24px;
+}
+
+#categorySelection {
+	display: none;
+	color: white;
+}
+
+#championDisplay {
+	display: none;
+	margin-left: 6%;
+}
+
+.circleCheck {
+	height: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	margin-left: 20%;
+	border-radius: 100px;
+	margin-top: 40px;
+	margin-bottom: -90px;
 }
 
 #currentUser {
@@ -39,12 +72,48 @@ a:hover {
 	font-size: 18px
 }
 
-#groupMembersRow {
-	margin-top: -10px;
+#firstChoose {
+	margin-bottom: 10%;
+}
+
+#firstRound {
+	margin-bottom: 25px;
+	display: none;
+}
+
+#footer {
+	position: relative;
+    bottom: 0px;
+    width: 100%;
+	color: white;
+	background: black;
+	height: 100px;
+	margin-top: 50px;
+	padding-top: 35px;
+	text-align: center;
+	font-size: 20px;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 .glyphicon {
 	margin-left: 25%;
+}
+
+.groupMember {
+	margin-left: 10%;
+    margin-right: 25%;
+}
+
+#groupMembersRow {
+	margin-top: -10px;
+}
+
+#leftSlot {
+	width: 281px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #0e0e26;
+    margin-bottom: 50px;
 }
 
 #loginTitle {
@@ -59,8 +128,12 @@ a:hover {
 	border-style: solid;
 }
 
-#signInButton {
-	margin-left: 8%;
+#logoutButton {
+	margin-right: 15px;
+}
+
+#logoutRow{
+	float: right;
 }
 
 #mainTitle {
@@ -74,10 +147,6 @@ a:hover {
 	border-style: solid;
 }
 
-.logo {
-	height: 100px;
-}
-
 .message {
 	text-align: center;
 	font-size: 28px;
@@ -85,9 +154,40 @@ a:hover {
 	font-family: 'Josefin Sans', sans-serif;
 }
 
-#categoryMessage {
-	font-size: 24px;
+.moviePoster {
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
+}
 
+.moviePoster:hover {
+	transform: scale(1.2);
+	border-style: solid;
+	border-color: #be3229;
+	border-width: 5px;
+}
+
+#multiButton {
+	width: 150px;
+  	text-align: center;
+}
+
+.multiDisplay {
+	background: white;
+	padding-bottom: 20px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	height: 200px;
+}
+
+#multiplayerMatchups {
+	display: none;
 }
 
 .onlinePlayer {
@@ -95,36 +195,33 @@ a:hover {
     cursor: pointer;
 }
 
-.groupMember {
-	margin-left: 10%;
-    margin-right: 25%;
-}
-
-#firstChoose {
-	margin-bottom: 10%;
-}
-
-#categorySelection {
-	display: none;
-	color: white;
-}
-
-.categoryLogo {
-	height: 80px;
-	width: 154px;
-}
-
-.categoryLogo:hover {
-	box-shadow: 0px 0px 20px 6px white;
-}
-
-#top2017Icon {
-	background: #ffbf3e;
+.onlineTitle {
 	text-align: center;
 	font-size: 20px;
-	height: 66px;
-	width: 140px;
-	margin-left: 7px;
+	font-family: 'Open Sans', sans-serif;
+	border-width: 0px 0px 2px 0px;
+	border-color: black;
+	border-style: solid;
+}
+
+.posterPoster {
+	height: 400px;
+	border-style: solid;
+	border-color: grey;
+	border-width: 5px;
+	border-radius: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
+}
+
+.posterPoster:hover {
+	transform: scale(1.2);
+	border-style: solid;
+	border-color: #be3229;
+	border-width: 5px;
+}
+
+#rankingDisplay {
+	color: white;
 }
 
 .redButton {
@@ -145,163 +242,6 @@ a:hover {
 	border-color: white;
 }
 
-#multiButton {
-	width: 150px;
-  	text-align: center;
-}
-
-.byePoster {
-	height: 400px;
-	border-style: solid;
-	border-color: grey;
-	border-width: 5px;
-	border-radius: 5px;
-	text-align: center;
-	background: white;
-    font-size: 72px;
-    padding-top: 35%;
-}
-
-.moviePoster {
-	height: 400px;
-	border-style: solid;
-	border-color: grey;
-	border-width: 5px;
-	border-radius: 5px;
-	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
-}
-
-.moviePoster:hover {
-	transform: scale(1.2);
-	border-style: solid;
-	border-color: #be3229;
-	border-width: 5px;
-}
-
-.posterPoster {
-	height: 400px;
-	border-style: solid;
-	border-color: grey;
-	border-width: 5px;
-	border-radius: 5px;
-	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
-}
-
-.posterPoster:hover {
-	transform: scale(1.2);
-	border-style: solid;
-	border-color: #be3229;
-	border-width: 5px;
-}
-
-.row {
-	margin-top: 20px;
-}
-
-#firstRound {
-	margin-bottom: 25px;
-	display: none;
-}
-
-#secondRound {
-	display: none;
-	color: white;
-	margin-bottom: 50px;
-}
-
-#roundHeading {
-	color: white;
-	text-align: center;
-	font-size: 36px;
-}
-
-.finalPair {
-	background: #be3229;
-	border-radius: 5px;
-	border-style: solid;
-	border-color: #676268;
-	border-width: 3px;
-	padding: 5px;
-	text-align: center;
-	padding-bottom: 10px;
-}
-
-#top4Left {
-	
-}
-
-#thirdRound {
-	display: none;
-}
-
-#finalRound {
-	display: none;
-}
-
-#multiplayerMatchups {
-	display: none;
-}
-
-#leftSlot {
-	width: 281px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #0e0e26;
-    margin-bottom: 50px;
-}
-
-#rightSlot {
-	width: 281px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #0e0e26;
-    margin-bottom: 50px;
-}
-
-.circleCheck {
-	height: 50px;
-	padding-left: 50px;
-	padding-right: 50px;
-	margin-left: 20%;
-	border-radius: 100px;
-	margin-top: 40px;
-	margin-bottom: -90px;
-}
-
-#finalBattle {
-	height: 200px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-
-}
-
-#finalVs {
-	margin-right: 17px;
-}
-
-#championDisplay {
-	display: none;
-	margin-left: 6%;
-}
-
-.vs {
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-	margin-right: 20px;
-	margin-top: 60px;
-
-}
-
-.top4Vs {
-	font-size: 20px;
-	font-weight: bold;
-}
-
-#rankingDisplay {
-	color: white;
-}
-
 #replayButton {
 	background: #1d6bb6;
 	color: white;
@@ -318,24 +258,32 @@ a:hover {
 	border-color: white;
 }
 
-.multiDisplay {
-	background: white;
-	padding-bottom: 20px;
-	margin-right: 5px;
-	border-radius: 5px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	height: 200px;
+#rightSlot {
+	width: 281px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #0e0e26;
+    margin-bottom: 50px;
 }
 
-.onlineTitle {
+#roundHeading {
+	color: white;
 	text-align: center;
-	font-size: 20px;
-	font-family: 'Open Sans', sans-serif;
-	border-width: 0px 0px 2px 0px;
-	border-color: black;
-	border-style: solid;
+	font-size: 36px;
+}
+
+.row {
+	margin-top: 20px;
+}
+
+#signInButton {
+	margin-left: 8%;
+}
+
+#top2017Icon {
+	background: #ffbf3e;
+	text-align: center;
+	font-size: 24px;
 }
 
 #winner {
@@ -346,43 +294,33 @@ a:hover {
 	margin-left: 15%;
 }
 
-#footer {
-	position: relative;
-    bottom: 0px;
-    width: 100%;
-	color: white;
-	background: black;
-	height: 100px;
-	margin-top: 50px;
-	padding-top: 35px;
-	text-align: center;
-	font-size: 20px;
-	font-family: 'Josefin Sans', sans-serif;
-}
-
 @media only screen and (max-width: 500px) {
-	#signInButton {
-		font-size: 30px;
-		height: 75px;
-		width: 140px;
-		padding-top: 11px;
+	#avengersLogo {
+		height: 80px;
 	}
 
-	.redButton {
-		margin-left: 39%;
-		margin-top: 10px;
+	.byePoster {
+		height: 220px;
+	}
+
+	.categoryLogo {
+		height: 80px;
 	}
 
 	#gameModeButton {
 		margin-left: 0%;
 	}
 
+	#mainTitle {
+		font-size: 26px;
+	}
+
 	.message {
 		text-align: center;
 	}
 
-	#avengersLogo {
-		height: 80px;
+	.moviePoster {
+		height: 220px;
 	}
 
 	.multiDisplay {
@@ -393,43 +331,39 @@ a:hover {
 		font-size: 22px;
 	}
 
-	#mainTitle {
-		font-size: 26px;
-	}
-
-	.moviePoster {
-		height: 220px;
-	}
-
-	.byePoster {
-		height: 220px;
-	}
-
 	.posterPoster {
 		height: 220px;
-	}
-
-	#winner {
-		height: 350px;
-		margin-left: 8%;
-	}
-
-	#rightSlot {
-		width: auto;
 	}
 
 	#rankingDisplay {
 		margin-left: 8%;
 	}
 
+	.redButton {
+		margin-left: 39%;
+		margin-top: 10px;
+	}
+
 	#replayButton {
 		margin-left: 30%;
 	}
 
-	.categoryLogo {
-		height: 80px;
+	#rightSlot {
+		width: auto;
+	}
+
+	#signInButton {
+		font-size: 30px;
+		height: 75px;
+		width: 140px;
+		padding-top: 11px;
 	}
 
 	#top2017Icon {
 		margin-top: -20px;
+	}
+
+	#winner {
+		height: 350px;
+		margin-left: 8%;
 	}

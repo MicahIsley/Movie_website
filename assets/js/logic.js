@@ -1,422 +1,68 @@
 var scores = [];
 var marvelMovies = [
-	{
-		name: "Ant Man",
-		score: 0,
-		appearances: 0,
-		image: "antMan",
-		rank: 0
-	},
-	{
-		name: "Avengers",
-		score: 0,
-		appearances: 0,
-		image: "avengers",
-		rank: 0
-	},
-	{
-		name: "Avengers: Age of Ultron",
-		score: 0,
-		appearances: 0,
-		image: "avengers2",
-		rank: 0
-	},
-	{
-		name: "Captain America: The First Avenger",
-		score: 0,
-		appearances: 0,
-		image: "captainAmerica",
-		rank: 0
-	},
-	{
-		name: "Captain America: The Winter Soldier",
-		score: 0,
-		appearances: 0,
-		image: "captainAmerica2",
-		rank: 0
-	},
-	{
-		name: "Captain America: Civil War",
-		score: 0,
-		appearances: 0,
-		image: "captainAmerica3",
-		rank: 0
-	},
-	{
-		name: "Doctor Strange",
-		score: 0,
-		appearances: 0,
-		image: "doctorStrange",
-		rank: 0
-	},
-	{
-		name: "Guardians of the Galaxy",
-		score: 0,
-		appearances: 0,
-		image: "guardians",
-		rank: 0
-	},
-	{
-		name: "Guardians of the Galaxy Vol.2",
-		score: 0,
-		appearances: 0,
-		image: "guardians2",
-		rank: 0
-	},
-	{
-		name: "The Incredible Hulk",
-		score: 0,
-		appearances: 0,
-		image: "hulk",
-		rank: 0
-	},
-	{
-		name: "Iron Man",
-		score: 0,
-		appearances: 0,
-		image: "ironMan",
-		rank: 0
-	},
-	{
-		name: "Iron Man 2",
-		score: 0,
-		appearances: 0,
-		image: "ironMan2",
-		rank: 0
-	},
-	{
-		name: "Iron Man 3",
-		score: 0,
-		appearances: 0,
-		image: "ironMan3",
-		rank: 0
-	},
-	{
-		name: "Spiderman: Homecoming",
-		score: 0,
-		appearances: 0,
-		image: "spidermanHomecoming",
-		rank: 0
-	},
-	{
-		name: "Thor",
-		score: 0,
-		appearances: 0,
-		image: "thor",
-		rank: 0
-	},
-	{
-		name: "Thor: The Dark World",
-		score: 0,
-		appearances: 0,
-		image: "thor2",
-		rank: 0
-	},
-	{
-		name: "Thor: Ragnarok",
-		score: 0,
-		appearances: 0,
-		image: "thor3",
-		rank: 0
-	},
-	{
-		name: "Black Panther",
-		score: 0,
-		appearances: 0,
-		image: "blackPanther",
-		rank: 0
-	},
-	{
-		name: "Avengers: Infinity War",
-		score: 0,
-		appearances: 0,
-		image: "avengers3",
-		rank: 0
-	}
+	{name: "Ant Man",score: 0,appearances: 0,image: "antMan",rank: 0},
+	{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
+	{name: "Avengers: Age of Ultron",score: 0,appearances: 0,image: "avengers2",rank: 0},
+	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
+	{name: "Black Panther",score: 0,appearances: 0,image: "blackPanther",rank: 0},
+	{name: "Captain America: The First Avenger",score: 0,appearances: 0,image: "captainAmerica",rank: 0},
+	{name: "Captain America: The Winter Soldier",score: 0,appearances: 0,image: "captainAmerica2",rank: 0},
+	{name: "Captain America: Civil War",score: 0,appearances: 0,image: "captainAmerica3",rank: 0},
+	{name: "Doctor Strange",score: 0,appearances: 0,image: "doctorStrange",rank: 0},
+	{name: "Guardians of the Galaxy",score: 0,appearances: 0,image: "guardians",rank: 0},
+	{name: "Guardians of the Galaxy Vol.2",score: 0,appearances: 0,image: "guardians2",rank: 0},
+	{name: "The Incredible Hulk",score: 0,appearances: 0,image: "hulk",rank: 0},
+	{name: "Iron Man",score: 0,appearances: 0,image: "ironMan",rank: 0},
+	{name: "Iron Man 2",score: 0,appearances: 0,image: "ironMan2",rank: 0},
+	{name: "Iron Man 3",score: 0,appearances: 0,image: "ironMan3",rank: 0},
+	{name: "Spiderman: Homecoming",score: 0,appearances: 0,image: "spidermanHomecoming",rank: 0},
+	{name: "Thor",score: 0,appearances: 0,image: "thor",rank: 0},
+	{name: "Thor: The Dark World",score: 0,appearances: 0,image: "thor2",rank: 0},
+	{name: "Thor: Ragnarok",score: 0,appearances: 0,image: "thor3",rank: 0}
 ];
 var pixarMovies = [
-	{
-		name: "Toy Story",
-		score: 0,
-		appearances: 0,
-		image: "toyStory",
-		rank: 0		
-	},
-	{
-		name: "A Bug's Life",
-		score: 0,
-		appearances: 0,
-		image: "aBugsLife",
-		rank: 0		
-	},
-	{
-		name: "Toy Story 2",
-		score: 0,
-		appearances: 0,
-		image: "toyStory2",
-		rank: 0		
-	},
-	{
-		name: "Monsters, Inc.",
-		score: 0,
-		appearances: 0,
-		image: "monstersInc",
-		rank: 0		
-	},
-	{
-		name: "Finding Nemo",
-		score: 0,
-		appearances: 0,
-		image: "findingNemo",
-		rank: 0		
-	},
-	{
-		name: "The Incredibles",
-		score: 0,
-		appearances: 0,
-		image: "theIncredibles",
-		rank: 0		
-	},
-	{
-		name: "Cars",
-		score: 0,
-		appearances: 0,
-		image: "cars",
-		rank: 0		
-	},
-	{
-		name: "Ratatouille",
-		score: 0,
-		appearances: 0,
-		image: "ratatouille",
-		rank: 0		
-	},
-	{
-		name: "Wall-E",
-		score: 0,
-		appearances: 0,
-		image: "wallE",
-		rank: 0		
-	},
-	{
-		name: "Up",
-		score: 0,
-		appearances: 0,
-		image: "up",
-		rank: 0		
-	},
-	{
-		name: "Toy Story 3",
-		score: 0,
-		appearances: 0,
-		image: "toyStory3",
-		rank: 0		
-	},
-	{
-		name: "Cars 2",
-		score: 0,
-		appearances: 0,
-		image: "cars2",
-		rank: 0		
-	},
-	{
-		name: "Brave",
-		score: 0,
-		appearances: 0,
-		image: "brave",
-		rank: 0		
-	},
-	{
-		name: "Monsters University",
-		score: 0,
-		appearances: 0,
-		image: "monstersUniversity",
-		rank: 0		
-	},
-	{
-		name: "Inside Out",
-		score: 0,
-		appearances: 0,
-		image: "insideOut",
-		rank: 0		
-	},
-	{
-		name: "The Good Dinosaur",
-		score: 0,
-		appearances: 0,
-		image: "theGoodDinosaur",
-		rank: 0		
-	},
-	{
-		name: "Finding Dory",
-		score: 0,
-		appearances: 0,
-		image: "findingDory",
-		rank: 0		
-	},
-	{
-		name: "Cars 3",
-		score: 0,
-		appearances: 0,
-		image: "cars3",
-		rank: 0		
-	},
-	{
-		name: "Coco",
-		score: 0,
-		appearances: 0,
-		image: "coco",
-		rank: 0		
-	}/*,
-	{
-		name: "Incredibles 2",
-		score: 0,
-		appearances: 0,
-		image: "incredibles2",
-		rank: 0	
-	}*/
+	{name: "A Bug's Life",score: 0,appearances: 0,image: "aBugsLife",rank: 0},
+	{name: "Brave",score: 0,appearances: 0,image: "brave",rank: 0},
+	{name: "Cars",score: 0,appearances: 0,image: "cars",rank: 0	},
+	{name: "Cars 2",score: 0,appearances: 0,image: "cars2",rank: 0},
+	{name: "Cars 3",score: 0,appearances: 0,image: "cars3",rank: 0},
+	{name: "Coco",score: 0,appearances: 0,image: "coco",rank: 0	},
+	{name: "Finding Dory",score: 0,appearances: 0,image: "findingDory",rank: 0},
+	{name: "Finding Nemo",score: 0,appearances: 0,image: "findingNemo",rank: 0},
+	{name: "The Good Dinosaur",score: 0,appearances: 0,image: "theGoodDinosaur",rank: 0},
+	{name: "The Incredibles",score: 0,appearances: 0,image: "theIncredibles",rank: 0},
+	/*{name: "Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},*/
+	{name: "Inside Out",score: 0,appearances: 0,image: "insideOut",rank: 0},
+	{name: "Monsters, Inc.",score: 0,appearances: 0,image: "monstersInc",rank: 0},
+	{name: "Monsters University",score: 0,appearances: 0,image: "monstersUniversity",rank: 0},
+	{name: "Ratatouille",score: 0,appearances: 0,image: "ratatouille",rank: 0},
+	{name: "Toy Story",score: 0,appearances: 0,image: "toyStory",rank: 0},
+	{name: "Toy Story 2",score: 0,appearances: 0,image: "toyStory2",rank: 0},
+	{name: "Toy Story 3",score: 0,appearances: 0,image: "toyStory3",rank: 0},
+	{name: "Up",score: 0,appearances: 0,image: "up",rank: 0	},
+	{name: "Wall-E",score: 0,appearances: 0,image: "wallE",rank: 0}
 ];
 var top2017 = [
-	{
-		name: "Star Wars: The Last Jedi",
-		score: 0,
-		appearances: 0,
-		image: "starWars8",
-		rank: 0	
-	},
-	{
-		name: "Beauty and the Beast",
-		score: 0,
-		appearances: 0,
-		image: "beautyAndTheBeast",
-		rank: 0	
-	},
-	{
-		name: "Wonder Woman",
-		score: 0,
-		appearances: 0,
-		image: "wonderWoman",
-		rank: 0	
-	},
-	{
-		name: "Jumanji: Welcome to the Jungle",
-		score: 0,
-		appearances: 0,
-		image: "jumanji2",
-		rank: 0	
-	},
-	{
-		name: "Guardians of the Galaxy Vol.2",
-		score: 0,
-		appearances: 0,
-		image: "guardians2",
-		rank: 0	
-	},
-	{
-		name: "Spider-man: Homecoming",
-		score: 0,
-		appearances: 0,
-		image: "spidermanHomecoming",
-		rank: 0	
-	},
-	{
-		name: "It",
-		score: 0,
-		appearances: 0,
-		image: "it",
-		rank: 0	
-	},
-	{
-		name: "Thor: Ragnarok",
-		score: 0,
-		appearances: 0,
-		image: "thor3",
-		rank: 0	
-	},
-	{
-		name: "Despicable Me 3",
-		score: 0,
-		appearances: 0,
-		image: "despicableMe3",
-		rank: 0
-	},
-	{
-		name: "Justice League",
-		score: 0,
-		appearances: 0,
-		image: "justiceLeague",
-		rank: 0	
-	},
-	{
-		name: "Logan",
-		score: 0,
-		appearances: 0,
-		image: "logan",
-		rank: 0	
-	},
-	{
-		name: "The Fate of the Furious",
-		score: 0,
-		appearances: 0,
-		image: "fastAndFurious8",
-		rank: 0	
-	},
-	{
-		name: "Coco",
-		score: 0,
-		appearances: 0,
-		image: "coco",
-		rank: 0	
-	},
-	{
-		name: "Dunkirk",
-		score: 0,
-		appearances: 0,
-		image: "dunkirk",
-		rank: 0	
-	},
-	{
-		name: "Get Out",
-		score: 0,
-		appearances: 0,
-		image: "getOut",
-		rank: 0	
-	},
-	{
-		name: "The LEGO Batman Movie",
-		score: 0,
-		appearances: 0,
-		image: "legoBatman",
-		rank: 0	
-	},
-	{
-		name: "The Boss Baby",
-		score: 0,
-		appearances: 0,
-		image: "theBossBaby",
-		rank: 0	
-	},
-	{	
-		name: "The Greatest Showman",
-		score: 0,
-		appearances: 0,
-		image: "theGreatestShowman",
-		rank: 0
-	},
-	{
-		name: "Pirates of the Caribbean: Dead Men Tell No Tales",
-		score: 0,
-		appearances: 0,
-		image: "pirates5",
-		rank: 0	
-	},
-	{
-		name: "Kong: Skull Island",
-		score: 0,
-		appearances: 0,
-		image: "kongSkullIsland",
-		rank: 0	
-	}
+	{name: "Star Wars: The Last Jedi",score: 0,appearances: 0,image: "starWars8",rank: 0},
+	{name: "Beauty and the Beast",score: 0,appearances: 0,image: "beautyAndTheBeast",rank: 0},
+	{name: "Wonder Woman",score: 0,appearances: 0,image: "wonderWoman",rank: 0},
+	{name: "Jumanji: Welcome to the Jungle",score: 0,appearances: 0,image: "jumanji2",rank: 0},
+	{name: "Guardians of the Galaxy Vol.2",score: 0,appearances: 0,image: "guardians2",rank: 0},
+	{name: "Spider-man: Homecoming",score: 0,appearances: 0,image: "spidermanHomecoming",rank: 0},
+	{name: "It",score: 0,appearances: 0,image: "it",rank: 0},
+	{name: "Thor: Ragnarok",score: 0,appearances: 0,image: "thor3",rank: 0},
+	{name: "Despicable Me 3",score: 0,appearances: 0,image: "despicableMe3",rank: 0},
+	{name: "Justice League",score: 0,appearances: 0,image: "justiceLeague",rank: 0},
+	{name: "Logan",score: 0,appearances: 0,image: "logan",rank: 0},
+	{name: "The Fate of the Furious",score: 0,appearances: 0,image: "fastAndFurious8",rank: 0},
+	{name: "Coco",score: 0,appearances: 0,image: "coco",rank: 0},
+	{name: "Dunkirk",score: 0,appearances: 0,image: "dunkirk",rank: 0},
+	{name: "Get Out",score: 0,appearances: 0,image: "getOut",rank: 0},
+	{name: "The LEGO Batman Movie",score: 0,appearances: 0,image: "legoBatman",rank: 0},
+	{name: "The Boss Baby",score: 0,appearances: 0,image: "theBossBaby",rank: 0},
+	{name: "The Greatest Showman",score: 0,appearances: 0,image: "theGreatestShowman",rank: 0},
+	{name: "Pirates of the Caribbean: Dead Men Tell No Tales",score: 0,appearances: 0,image: "pirates5",rank: 0},
+	{name: "Kong: Skull Island",score: 0,appearances: 0,image: "kongSkullIsland",rank: 0}
 ];
 
 //Global Variables
@@ -445,6 +91,17 @@ var multiplayerRound = 0;
 var player;
 
 //Login/logout functions
+
+window.onunload = function(){
+	$.ajax({
+		method: "DELETE",
+		url: "/online/delete/" + currentUser,
+		data: {
+			username: currentUser,
+		}
+	}).done(function(data) {
+	});
+};
 
 function getUserData() {
 	$.ajax('/user', {
