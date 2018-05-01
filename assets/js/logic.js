@@ -468,7 +468,7 @@ function getCurrentUsername() {
 };
 
 function checkForOnlineDuplicates(){
-	$("#yourGroupMembers").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
+	$("#currentUser").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
 	$.get("/online", function(data) {
 		if(data.length === 0){
 			displayOnline();
@@ -512,7 +512,7 @@ function findOnline() {
 		for(i=0; i < data.length; i++) {
 			if(data[i].username === currentUser){
 			}else{
-				$("#onlinePlayers").append("<div class='row onlinePlayer' id='" + data[i].username + "'>" + data[i].username + "</div>");
+				$("#onlinePlayers").append("<div class='row onlinePlayer'>" + data[i].username + "<div class='glyphicon glyphicon-plus-sign' id='" + data[i].username + "'></div></div>");
 			}
 		}
 	});
@@ -521,20 +521,32 @@ function findOnline() {
 
 //Multiplayer Function
 
-$(document).on("click", ".onlinePlayer", function(){
+$(document).on("click", ".glyphicon-plus-sign", function(){
 	var addPlayer = $(this).attr("id");
 	$("#yourGroupMembers").empty();
 	if (multiplayerGroup.indexOf(addPlayer) === -1){
 		multiplayerGroup.push(addPlayer);
 	}else{}
 	for(i=0; i < multiplayerGroup.length; i++){
-		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "</div>");
+		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
+	}
+	console.log(multiplayerGroup);
+});
+
+$(document).on("click", ".glyphicon-minus-sign", function(){
+	var removePlayer = $(this).attr("id");
+	console.log(removePlayer);
+	multiplayerGroup.splice(removePlayer);
+	console.log(multiplayerGroup);
+	$("#yourGroupMembers").empty();
+	for(i=0; i < multiplayerGroup.length; i++){
+		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
 	}
 });
 
 $("#readyButton").click(function() {
 	multiplayerGroup.push(currentUser);
-	multiplayerSize = $("#yourGroupMembers > div").length;
+	multiplayerSize = $("#yourGroupMembers > div").length + 1;
 	$.ajax({
 		method: "PUT",
 		url: "/online/updateReady/" + currentUser
@@ -985,14 +997,14 @@ function determineRoundWinner() {
 
 function displayWinningSide(winningSide){
 	if(winningSide === "left"){
-		$("#leftSlot").css("border-color", "green");
+		$("#leftSlot").children().css("border-color", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 500);
 		}else{
 			setTimeout("clearVotingData()", 500);
 		}
 	}else if(winningSide === "right"){
-		$("#rightSlot").css("border-color", "green");
+		$("#rightSlot").children().css("border-color", "green");
 		if(finalRanking.length === selectedCategory.length) {
 			setTimeout("displayFinalRanking()", 500);
 		}else{
@@ -1116,8 +1128,8 @@ $("#replayButton").click(function(){
 
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
-	$(".category").children().css("border-color", "transparent");
-	$(this).children().css({"border-width": "3px", "border-color": "black", "border-style": "solid"});
+	$(".category").children().css("border-width", "0px");
+	$(this).children().css({"border-width": "7px", "border-color": "green", "border-style": "ridge"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){

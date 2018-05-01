@@ -1,5 +1,10 @@
 body {
-	background: #012896;
+	background: linear-gradient(#3264f1, black);
+	height: 100%;
+}
+
+html {
+	height: 100%;
 }
 
 #logoutRow{
@@ -34,6 +39,14 @@ a:hover {
 	font-size: 18px
 }
 
+#groupMembersRow {
+	margin-top: -10px;
+}
+
+.glyphicon {
+	margin-left: 25%;
+}
+
 #loginTitle {
 	text-align: center;
 	font-size: 76px;
@@ -44,6 +57,10 @@ a:hover {
 	border-color: red;
 	border-width: 5px 0px 5px 0px;
 	border-style: solid;
+}
+
+#signInButton {
+	margin-left: 8%;
 }
 
 #mainTitle {
@@ -75,7 +92,6 @@ a:hover {
 
 .onlinePlayer {
 	margin-left: 10%;
-    margin-right: 25%;
     cursor: pointer;
 }
 
@@ -96,15 +112,19 @@ a:hover {
 .categoryLogo {
 	height: 80px;
 	width: 154px;
-	border-color: transparent;
-	border-width: 3px;
-	border-style: solid;
+}
+
+.categoryLogo:hover {
+	box-shadow: 0px 0px 20px 6px white;
 }
 
 #top2017Icon {
 	background: #ffbf3e;
 	text-align: center;
-	font-size: 24px;
+	font-size: 20px;
+	height: 66px;
+	width: 140px;
+	margin-left: 7px;
 }
 
 .redButton {
@@ -113,8 +133,8 @@ a:hover {
 	text-align: center;
 	font-size: 26px;
 	width: 100px;
-	margin-top: 10px;
-	margin-left: 8%;
+	margin-top: 40px;
+	margin-left: 48%;
 	border-style: solid;
 	border-color: black;
 	border-width: 3px;
@@ -227,6 +247,7 @@ a:hover {
     border-style: solid;
     border-width: 5px;
     border-color: #0e0e26;
+    margin-bottom: 50px;
 }
 
 #rightSlot {
@@ -234,6 +255,7 @@ a:hover {
     border-style: solid;
     border-width: 5px;
     border-color: #0e0e26;
+    margin-bottom: 50px;
 }
 
 .circleCheck {
@@ -242,6 +264,8 @@ a:hover {
 	padding-right: 50px;
 	margin-left: 20%;
 	border-radius: 100px;
+	margin-top: 40px;
+	margin-bottom: -90px;
 }
 
 #finalBattle {
@@ -288,6 +312,10 @@ a:hover {
 	width: 100px;
 	padding-left: 25px;
 	margin-left: 48%;
+}
+
+#replayButton:hover {
+	border-color: white;
 }
 
 .multiDisplay {
@@ -338,6 +366,11 @@ a:hover {
 		height: 75px;
 		width: 140px;
 		padding-top: 11px;
+	}
+
+	.redButton {
+		margin-left: 39%;
+		margin-top: 10px;
 	}
 
 	#gameModeButton {
