@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(#3264f1, black);
+	background: #3264f1;
 	height: 100%;
 }
 
@@ -70,6 +70,34 @@ a:hover {
 	color: green;
 	margin-top: 0px;
 	font-size: 18px
+}
+
+#customDisplay {
+	background: white;
+	padding-left: 10px;
+}
+
+#customGameIcon {
+	background: green;
+	text-align: center;
+	font-size: 24px;
+}
+
+.customMoviePoster {
+	margin: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
+}
+
+.customMoviePoster:hover {
+	margin: 0px;
+	transform: scale(1.2);
+	border-style: solid;
+	border-color: #be3229;
+	border-width: 5px;
+}
+
+.customName {
+	margin-left: 5px;
 }
 
 #firstChoose {

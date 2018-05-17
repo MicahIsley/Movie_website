@@ -64,6 +64,7 @@ var top2017 = [
 	{name: "Pirates of the Caribbean: Dead Men Tell No Tales",score: 0,appearances: 0,image: "pirates5",rank: 0},
 	{name: "Kong: Skull Island",score: 0,appearances: 0,image: "kongSkullIsland",rank: 0}
 ];
+var customMovies = [];
 
 //Global Variables
 
@@ -240,8 +241,6 @@ function pickMovieTwo() {
 		if(movie2.appearances < 1) {
 			displayMovieTwo();
 		}else{
-			console.log("finished " + numberFinished);
-			console.log("scores length " + scores.length)
 			if(numberFinished >= scores.length){
 				$("#movie2").append("<div class='byePoster'>Bye</div>");
 			}else{
@@ -258,7 +257,11 @@ function displayMovieOne() {
 			scores[i].appearances ++;
 		}else{}
 	}
-	$("#movie1").append("<img class='moviePoster' id='" + movie1Poster + "' src='images/" + categoryId + "/" + movie1Poster + ".jpg'>");
+	if(selectedCategory === customMovies){
+		$("#movie1").append("<img class='moviePoster' id='" + movie1Poster + "' src='" + movie1.image + "'>");
+	}else{
+		$("#movie1").append("<img class='moviePoster' id='" + movie1Poster + "' src='images/" + categoryId + "/" + movie1Poster + ".jpg'>");
+	}
 	pickMovieTwo();
 }
 
@@ -269,7 +272,11 @@ function displayMovieTwo() {
 			scores[i].appearances ++;
 		}else{}
 	}
-	$("#movie2").append("<img class='moviePoster' id='" + movie2Poster + "' src='images/" + categoryId + "/" + movie2Poster + ".jpg'>");
+	if(selectedCategory === customMovies){
+		$("#movie2").append("<img class='moviePoster' id='" + movie2Poster + "' src='" + movie2.image + "'>");
+	}else{
+		$("#movie2").append("<img class='moviePoster' id='" + movie2Poster + "' src='images/" + categoryId + "/" + movie2Poster + ".jpg'>");
+	}
 }
 
 $(document).on("click", ".moviePoster", function(){
@@ -362,11 +369,23 @@ function compileRankings(data) {
 }
 
 function pushEliminated(){
-	for(i = 16; i < sortScores.length; i ++){
-		finalRanking.push(sortScores[i]);
+	if(sortScores.length >= 16){
+		for(i = 16; i < sortScores.length; i ++){
+			finalRanking.push(sortScores[i]);
+		}
+	}else if(sortScores.length >=8 && sortScores.length < 16){
+		for(i = 0; i < sortScores.length; i ++){
+			if(i < 8){
+				top8.push(sortScores[i]);
+				multiplayerRound = 8;
+			}else{
+				finalRanking.push(sortScores[i]);
+			}
+		}
 	}
-	displayMultiplayerBracket();
 	console.log(finalRanking);
+	console.log(sortScores);
+	displayMultiplayerBracket();
 }
 
 function sortCompiledScores() {
@@ -428,22 +447,42 @@ function displayMultiplayerBracket() {
 	$("#rightSlot").css("border-color", "transparent");
 	$("#firstRound").hide();
 	$("#multiplayerMatchups").show();
-	if(top8.length < 8){
-		$("#roundHeading").text("Top 16");
-		$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[multiplayerRound].image + ".jpg'>");
-		$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
-	}else if(top8.length === 8 && top4.length < 4){
-		$("#roundHeading").text("Top 8");
-		$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='images/" + categoryId + "/" + top8[multiplayerRound - 8].image + ".jpg'>");
-		$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top8[15 - multiplayerRound].image + ".jpg'>");
-	}else if(top4.length === 4 && top2.length < 2) {
-		$("#roundHeading").text("Top 4");
-		$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='images/" + categoryId + "/" + top4[multiplayerRound - 12].image + ".jpg'>");
-		$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top4[15 - multiplayerRound].image + ".jpg'>");
-	}else if(top2.length === 2){
-		$("#roundHeading").text("Top 2");
-		$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='images/" + categoryId + "/" + top2[multiplayerRound - 14].image + ".jpg'>");
-		$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top2[15 - multiplayerRound].image + ".jpg'>");
+	if(selectedCategory === customMovies){
+		if(top8.length < 8){
+			$("#roundHeading").text("Top 16");
+			$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='" + sortScores[multiplayerRound].image + "'>");
+			$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='" + sortScores[15 - multiplayerRound].image + "'>");
+		}else if(top8.length === 8 && top4.length < 4){
+			$("#roundHeading").text("Top 8");
+			$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='" + top8[multiplayerRound - 8].image + "'>");
+			$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='" + top8[15 - multiplayerRound].image + "'>");
+		}else if(top4.length === 4 && top2.length < 2) {
+			$("#roundHeading").text("Top 4");
+			$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='" + top4[multiplayerRound - 12].image + "'>");
+			$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='" + top4[15 - multiplayerRound].image + "'>");
+		}else if(top2.length === 2){
+			$("#roundHeading").text("Top 2");
+			$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='" + top2[multiplayerRound - 14].image + "'>");
+			$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='" + top2[15 - multiplayerRound].image + "'>");
+		}
+	}else{
+		if(multiplayerRound < 8){
+			$("#roundHeading").text("Top 16");
+			$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[multiplayerRound].image + ".jpg'>");
+			$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
+		}else if(multiplayerRound >= 8 && multiplayerRound < 12){
+			$("#roundHeading").text("Top 8");
+			$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='images/" + categoryId + "/" + top8[multiplayerRound - 8].image + ".jpg'>");
+			$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top8[15 - multiplayerRound].image + ".jpg'>");
+		}else if(multiplayerRound >=12 && multiplayerRound < 14) {
+			$("#roundHeading").text("Top 4");
+			$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='images/" + categoryId + "/" + top4[multiplayerRound - 12].image + ".jpg'>");
+			$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top4[15 - multiplayerRound].image + ".jpg'>");
+		}else if(top2.length === 2){
+			$("#roundHeading").text("Top 2");
+			$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='images/" + categoryId + "/" + top2[multiplayerRound - 14].image + ".jpg'>");
+			$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top2[15 - multiplayerRound].image + ".jpg'>");
+		}
 	}
 }
 
@@ -462,6 +501,7 @@ $(document).on("click", ".bracketPoster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
+	console.log(multiplayerRound);
 	createVotingDatabase();
 });
 
@@ -704,6 +744,7 @@ $(document).on("click", ".top8Poster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
+	console.log(multiplayerRound);
 	createVotingDatabase();
 });
 
@@ -719,6 +760,7 @@ $(document).on("click", ".top4Poster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
+	console.log(multiplayerRound);
 	createVotingDatabase();
 });
 
@@ -747,7 +789,11 @@ function displayFinalRanking(){
 			finalRanking[i].rank = i + 1;
 			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 		}
-		$("#overallWinner").append("<img id='winner' src='images/" + categoryId + "/" + finalRanking[0].image + ".jpg'>");
+		if(selectedCategory === customMovies){
+			$("#overallWinner").append("<img id='winner' src='" + finalRanking[0].image + "'>");
+		}else{
+			$("#overallWinner").append("<img id='winner' src='images/" + categoryId + "/" + finalRanking[0].image + ".jpg'>");
+		}
 		saveRankingToDatabase();
 	}
 }
@@ -793,8 +839,24 @@ $(".category").click(function(){
 		selectedCategory = pixarMovies;
 	}else if(categoryId === "top2017"){
 		selectedCategory = top2017;
+	}else if(categoryId === "customGame"){
+		getCustomList();
 	}
 });
+
+function getCustomList() {
+	$.get("/customList", function(data) {
+		console.log(data);
+		if(data.length === 0){
+			console.log("you need to make a list");
+		}else{}
+		for(var i=0; i < data[0].customList.length; i++){
+			customMovies.push(data[0].customList[i]);
+		}
+		console.log(customMovies);
+		selectedCategory = customMovies;
+	});
+}
 
 function beginGame() {
 	scores = [];

@@ -4,6 +4,7 @@ var Online = require("../models/Online.js");
 var Multiplayer = require("../models/Multiplayer.js");
 var Voting = require("../models/Voting.js");
 var Compiled = require("../models/Compiled.js");
+var Custom = require("../models/Custom.js");
 var express = require('express');
 
 module.exports = function(app) {
@@ -38,6 +39,18 @@ module.exports = function(app) {
 				console.log("Error saving data to the database." + err);
 			} else {
 				console.log("Multiplayer Data Saved");
+				res.send(doc);
+			}
+		});
+	});
+
+	app.post("/custom/:name", function(req, res) {
+		var newCustom = new Custom(req.body);
+		newCustom.save(function (err, doc) {
+			if(err) {
+				console.log("Error saving data to the database." + err);
+			} else {
+				console.log("Custom List Data Saved");
 				res.send(doc);
 			}
 		});
@@ -85,6 +98,17 @@ module.exports = function(app) {
 		});
 	});
 
+	app.delete("/custom/deleteAll", function(req, res) {
+		Custom.remove({}, function(err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
 	app.delete("/voting/deleteAll", function(req, res) {
 		Voting.remove({}, function(err, doc) {
 			if (err) {
@@ -109,6 +133,17 @@ module.exports = function(app) {
 
 	app.get("/rankings", function(req, res) {
 		Ranking.find({}, function(error, doc) {
+			if (error) {
+				res.send(error);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
+	app.get("/customList", function(req, res) {
+		Custom.find({}, function(error, doc) {
 			if (error) {
 				res.send(error);
 			}
