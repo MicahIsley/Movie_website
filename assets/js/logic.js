@@ -1,6 +1,7 @@
 var scores = [];
 var marvelMovies = [
 	{name: "Ant Man",score: 0,appearances: 0,image: "antMan",rank: 0},
+	{name: "Ant Man 2",score: 0, appearances: 0,image: "antMan2",rank: 0},
 	{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
 	{name: "Avengers: Age of Ultron",score: 0,appearances: 0,image: "avengers2",rank: 0},
 	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
@@ -31,7 +32,7 @@ var pixarMovies = [
 	{name: "Finding Nemo",score: 0,appearances: 0,image: "findingNemo",rank: 0},
 	{name: "The Good Dinosaur",score: 0,appearances: 0,image: "theGoodDinosaur",rank: 0},
 	{name: "The Incredibles",score: 0,appearances: 0,image: "theIncredibles",rank: 0},
-	/*{name: "Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},*/
+	{name: "Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},
 	{name: "Inside Out",score: 0,appearances: 0,image: "insideOut",rank: 0},
 	{name: "Monsters, Inc.",score: 0,appearances: 0,image: "monstersInc",rank: 0},
 	{name: "Monsters University",score: 0,appearances: 0,image: "monstersUniversity",rank: 0},
@@ -858,12 +859,21 @@ function getCustomList() {
 	});
 }
 
+$("#customGame").click(function(){
+	$("#categorySelection").hide();
+	$("#customSelection").show();
+});
+
+$("#backButton").click(function(){
+	$("#categorySelection").show();
+	$("#customSelection").hide();
+});
+
 function beginGame() {
 	scores = [];
 	for(var i=0; i < selectedCategory.length; i++){
 		scores.push(selectedCategory[i]);
 	}
-	$("#categorySelection").hide();
 	$("#firstRound").show();
 	$("#championDisplay").hide();
 	$(".moviePoster").remove();
