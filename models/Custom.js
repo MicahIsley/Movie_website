@@ -10,6 +10,10 @@ var CustomSchema = new Schema({
 	customList: {
 		type: [],
 		required: true
+	},
+	listName: {
+		type: String,
+		required: true
 	}
 });
 

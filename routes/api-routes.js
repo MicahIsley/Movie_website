@@ -87,6 +87,17 @@ module.exports = function(app) {
 		/*Online.remove({}, function(err) {});*/
 	});
 
+	app.delete("/custom/delete/:id", function(req, res) {
+		Custom.remove({ _id: req.params.id}, function (err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
 	app.delete("/multiplayer/deleteAll", function(req, res) {
 		Multiplayer.remove({}, function(err, doc) {
 			if (err) {

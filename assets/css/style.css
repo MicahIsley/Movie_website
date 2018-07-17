@@ -22,8 +22,24 @@ a:hover {
 }
 
 #backButton {
-	height: 50px;
-	width: 100px;
+	height: 40px;
+	width: 80px;
+	background: white;
+	text-align: center;
+	padding-top: 8px;
+	border-color: black;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 5px;
+}
+
+#backButton:hover {
+	border-color: red;
+}
+
+button {
+	background: none;
+	border: none;
 }
 
 .byePoster {
@@ -41,6 +57,10 @@ a:hover {
 .categoryLogo {
 	height: 80px;
 	width: 154px;
+	margin: 5px;
+	border-width: 5px;
+	border-color: black;
+	border-style: solid;
 }
 
 .categoryLogo:hover {
@@ -85,6 +105,22 @@ a:hover {
 	background: green;
 	text-align: center;
 	font-size: 24px;
+	padding-top: 15px;
+}
+
+.customListData {
+	width: 100px;
+	padding: 5px;
+	border-width: 3px;
+	border-color: black;
+	border-style: solid;
+	margin-right: 10px;
+	background: green;
+	font-size: 20px;
+}
+
+.customListRow {
+	margin-top: 5px;
 }
 
 .customMoviePoster {
@@ -106,6 +142,10 @@ a:hover {
 
 #customSelection {
 	display: none;
+}
+
+.deleteList {
+	font-weight: bold;
 }
 
 #firstChoose {
@@ -133,6 +173,22 @@ a:hover {
 
 .glyphicon {
 	margin-left: 25%;
+}
+
+#goToCustomPage {
+	height: 40px;
+	width: 80px;
+	border-color: black;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 5px;
+	background: red;
+	text-align: center;
+	padding-top: 8px;
+}
+
+#goToCustomPage:hover {
+	border-color: white;
 }
 
 .groupMember {
@@ -165,6 +221,7 @@ a:hover {
 }
 
 #logoutButton {
+	margin-top: 10px;
 	margin-right: 15px;
 }
 
@@ -173,6 +230,8 @@ a:hover {
 }
 
 #mainTitle {
+	margin-top: 10px;
+	margin-bottom: 10px;
 	text-align: center;
 	font-size: 66px;
 	font-family: 'Bangers', cursive;
@@ -306,10 +365,6 @@ a:hover {
 	color: white;
 	text-align: center;
 	font-size: 36px;
-}
-
-.row {
-	margin-top: 20px;
 }
 
 #signInButton {

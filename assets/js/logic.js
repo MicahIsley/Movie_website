@@ -1,7 +1,7 @@
 var scores = [];
 var marvelMovies = [
 	{name: "Ant Man",score: 0,appearances: 0,image: "antMan",rank: 0},
-	{name: "Ant Man 2",score: 0, appearances: 0,image: "antMan2",rank: 0},
+	{name: "Ant Man and The Wasp",score: 0, appearances: 0,image: "antMan2",rank: 0},
 	{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
 	{name: "Avengers: Age of Ultron",score: 0,appearances: 0,image: "avengers2",rank: 0},
 	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
@@ -32,7 +32,7 @@ var pixarMovies = [
 	{name: "Finding Nemo",score: 0,appearances: 0,image: "findingNemo",rank: 0},
 	{name: "The Good Dinosaur",score: 0,appearances: 0,image: "theGoodDinosaur",rank: 0},
 	{name: "The Incredibles",score: 0,appearances: 0,image: "theIncredibles",rank: 0},
-	{name: "Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},
+	{name: "The Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},
 	{name: "Inside Out",score: 0,appearances: 0,image: "insideOut",rank: 0},
 	{name: "Monsters, Inc.",score: 0,appearances: 0,image: "monstersInc",rank: 0},
 	{name: "Monsters University",score: 0,appearances: 0,image: "monstersUniversity",rank: 0},
@@ -189,14 +189,11 @@ $(document).on("click", ".glyphicon-plus-sign", function(){
 	for(i=0; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
 	}
-	console.log(multiplayerGroup);
 });
 
 $(document).on("click", ".glyphicon-minus-sign", function(){
 	var removePlayer = $(this).attr("id");
-	console.log(removePlayer);
 	multiplayerGroup.splice(removePlayer);
-	console.log(multiplayerGroup);
 	$("#yourGroupMembers").empty();
 	for(i=0; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
@@ -384,8 +381,6 @@ function pushEliminated(){
 			}
 		}
 	}
-	console.log(finalRanking);
-	console.log(sortScores);
 	displayMultiplayerBracket();
 }
 
@@ -436,8 +431,6 @@ function downloadCompiledScores() {
 			sortScores.push(data[0].ranking[i]);
 		}
 		pushEliminated();
-		console.log("Sort Scores");
-		console.log(sortScores);
 	});
 }
 
@@ -502,7 +495,6 @@ $(document).on("click", ".bracketPoster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
-	console.log(multiplayerRound);
 	createVotingDatabase();
 });
 
@@ -556,7 +548,6 @@ function createVotingDatabase() {
 function clearVotingData() {
 	$.get("/voting", function(data) {
 		if(data.length === 0){
-			console.log(multiplayerRound);
 			if(multiplayerRound > 0) {
 					displayMultiplayerBracket();
 			}else{}
@@ -745,7 +736,6 @@ $(document).on("click", ".top8Poster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
-	console.log(multiplayerRound);
 	createVotingDatabase();
 });
 
@@ -832,8 +822,8 @@ $("#replayButton").click(function(){
 
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
-	$(".category").children().css("border-width", "0px");
-	$(this).children().css({"border-width": "7px", "border-color": "green", "border-style": "ridge"});
+	$(".category").children().css({"border-width": "5px", "border-color": "black", "border-style": "solid"});
+	$(this).children().css({"border-width": "5px", "border-color": "white", "border-style": "ridge"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){
@@ -847,17 +837,45 @@ $(".category").click(function(){
 
 function getCustomList() {
 	$.get("/customList", function(data) {
-		console.log(data);
 		if(data.length === 0){
 			console.log("you need to make a list");
 		}else{}
-		for(var i=0; i < data[0].customList.length; i++){
-			customMovies.push(data[0].customList[i]);
+		for(var i=0; i < data.length; i++){
+			if(data[i].user === currentUser){
+				$("#customListDisplay").append("<div class='row customListRow' id='div" + i + "'><button class='customListData' id='"+i+"'>" + data[i].listName + "</button><button class='deleteList' id='" + data[i]._id + "'>X</button></div>");
+			}
 		}
-		console.log(customMovies);
-		selectedCategory = customMovies;
 	});
 }
+
+$(document).on("click", ".customListData", function(){
+	customMovies = [];
+	var listId = $(this).attr("id");
+	$.get("/customList", function(data) {
+		for(i=0; i<data[listId].customList.length; i++){
+			customMovies.push(data[listId].customList[i]);
+		}
+	});
+	$(".customListData").css({"border-color": "black", "border-width": "3px"});
+	$(this).css({"border-color": "yellow", "border-width": "5px"});
+	selectedCategory = customMovies;
+});
+
+$(document).on("click", ".deleteList", function(){
+	var deleteDivId = $(this).parent().attr("id");
+	var deleteListId = $(this).attr("id");
+	$.ajax({
+		method: "DELETE",
+		url: "/custom/delete/" + deleteListId,
+		data: {
+			id: deleteListId,
+		}
+	}).done(function(data) {
+		console.log(data);
+		$("#" + deleteDivId).remove();
+	});
+});
+
 
 $("#customGame").click(function(){
 	$("#categorySelection").hide();
@@ -867,6 +885,8 @@ $("#customGame").click(function(){
 $("#backButton").click(function(){
 	$("#categorySelection").show();
 	$("#customSelection").hide();
+	$("#customListDisplay").empty();
+
 });
 
 function beginGame() {
