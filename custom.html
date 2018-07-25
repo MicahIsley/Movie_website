@@ -9,36 +9,60 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-8">
-					<input type="text" name="movie" class="form-control" id="movieField" placeholder="Movie">
-					<button id="submit">Submit</button>
-				</div>
-				<div class="col-xs-4">
-					<a href="/index"><button id="back">Back</button></a>
+			<div class="row" id="customSearchRow">
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-3">
+							<div class="message">Search For Movies</div>
+						</div>
+						<div class="col-xs-2 col-xs-offset-2">
+							<a href="/index"><button class="redButton" id="customBackButton">Back</button></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-7 col-xs-offset-1">
+							<input type="text" name="movie" class="form-control" id="movieField" placeholder="Movie">
+						</div>
+						<div class="col-xs-2">
+							<button class="redButton" id="submit">Submit</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="customResultsRow">
 				<div class="col-xs-6" id="moviePoster">
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-6" id="customRightSide">
 					<div class="row">
-						<div>Custom Movie List</div>
+						<div class="message">Custom Movie List</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3">
+							<div class="message">Title:</div>
+						</div>
+						<div class="col-xs-7">
+							<input type="text" name="title" class="form-control" id="titleField" placeholder="">
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-xs-11" id="customDisplay">
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-8">
-							<input type="text" name="title" class="form-control" id="titleField" placeholder="">
-						</div>
 						<div class="col-xs-4">
-							<button id="finished">Finished</button>
+							<button class="redButton" id="finished">Finished</button>
+						</div>
+						<div class-"col-xs-6">
+							<div id="errorMessage"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+	<footer>
+		<div>Built by Micah Isley</div>
+	</footer>
 </html>
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>

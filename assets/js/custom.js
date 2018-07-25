@@ -22,6 +22,12 @@ function getCurrentUsername() {
 	});
 };
 
+$("#movieField").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#submit").click();
+    }
+});
+
 $("#submit").click(function(){
 	var query = $("#movieField").val().trim();
 	$.ajax({
@@ -78,7 +84,7 @@ $("#finished").click(function(){
 });
 
 function postCustomList() {
-	if(custom.length >= 8){
+	if(custom.length >= 8 && listTitle.length > 0){
 		$.ajax({
 		method: "POST",
 		url: "/custom/customList",
@@ -89,9 +95,19 @@ function postCustomList() {
 		}
 		}).done(function(data) {
 		});
+	}else if(custom.length >=8 && listTitle.length === 0){
+		$("#errorMessage").empty();
+		$("#errorMessage").append("You must title your list");
+	}else if(custom.length < 8 && listTitle.length > 0){
+		$("#errorMessage").empty();
+		$("#errorMessage").append("Your list must have at least 8 movies");
 	}else{
-		console.log("Your list must be atleast 8 movies long");
+		$("#errorMessage").empty();
+		$("#errorMessage").append("You must title your list and pick at least 8 movies");
 	}
+	setTimeout(function(){ 
+		$("#errorMessage").empty();
+	}, 3000);
 };
 
 getUserData();
