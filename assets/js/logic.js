@@ -773,13 +773,27 @@ function displayFinalRanking(){
 	$("#multiplayerMatchups").hide();
 	$("#leftSlot").empty();
 	$("#rightSlot").empty();
-	$("#rankingDisplay").empty();
+	$("#firstPlace").empty();
+	$("#secondPlace").empty();
+	$("#thirdPlace").empty();
+	$("#topTen").empty();
+	$("#bottomRankings").empty();
 	if (finalRanking.length === scores.length){
 		finalRanking.sort(function(a, b){return a.rank-b.rank});
 		console.log(finalRanking);
 		for(i=0; i<finalRanking.length; i++){
 			finalRanking[i].rank = i + 1;
-			$("#rankingDisplay").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
+			if(i===0){
+				$("#firstPlace").append("<p><div id='firstIcon'>1st </div>" + finalRanking[i].name + "</p>");
+			}else if(i===1){
+				$("#secondPlace").append("<p><div id='secondIcon'>2nd </div>" + finalRanking[i].name + "</p>");
+			}else if(i===2){
+				$("#thirdPlace").append("<p><div id='thirdIcon'>3rd </div>" + finalRanking[i].name + "</p>");
+			}else if(i > 2 && i < 10){
+				$("#topTen").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
+			}else{
+				$("#bottomRankings").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
+			}
 		}
 		if(selectedCategory === customMovies){
 			$("#overallWinner").append("<img id='winner' src='" + finalRanking[0].image + "'>");
@@ -888,22 +902,6 @@ $("#backButton").click(function(){
 	$("#customSelection").hide();
 	$("#customListDisplay").empty();
 
-});
-
-$("html").click(function(){
-	if(profileMenu === "visible"){
-		$("#profileMenu").hide();
-		console.log("hiding");
-		profileMenu = "hidden";
-	}
-});
-
-$("#profileIcon").click(function(){
-	if(profileMenu === "hidden"){
-		$("#profileMenu").show();
-		profileMenu = "visible";
-		console.log("show");
-	}
 });
 
 function beginGame() {
