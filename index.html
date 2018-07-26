@@ -11,21 +11,19 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row" id="topRow">
-				<div class="col-xs-12">
-					<div class="row" id="logoutRow">
-							<div id="profileIcon">M Icon</div>
-					</div>
+				<div class="col-xs-1 col-xs-offset-10" id="logoutRow">
+					<div id="profileIcon">M</div>
 				</div>
 			</div>
-			<div class="row" id="mainTitle">
+			<div class="row" id="mainTitleRow">
 				<div class="col-xs-12">
 					<div class="row">
-						<div class="col-xs-6 col-xs-offset-3">
+						<div class="col-xs-6 col-xs-offset-3" id="mainTitle">
 							<div id="movieBattle">Movie Super Battle</div>
 						</div>
-						<div class="col-xs-3" id="profileMenu">
-								<button type="submit" class="btn btn-danger" id="logoutButton"><a href="auth/logout">Logout</a></button>
-							</div>
+						<div class="col-xs-1 col-xs-offset-1" id="profileMenu">
+							<!--<div class="profileMenuOption" id="userProfileButton">Profile</div>-->
+							<button type="submit" class="profileMenuOption" id="logoutButton"><a href="auth/logout">Logout</a></button>
 						</div>
 					</div>
 				</div>

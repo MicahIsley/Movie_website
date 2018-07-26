@@ -10,7 +10,7 @@ html {
 
 a {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 a:hover {
@@ -287,15 +287,8 @@ footer {
 	padding-bottom: 25px;
 }
 
-#logoutButton {
-	margin-top: 10px;
-	margin-right: 15px;
-	margin-bottom: 10px;
-	box-shadow: 0px 3px 3px black;
-}
-
 #logoutRow{
-	float: right;
+	margin-top: 10px;
 }
 
 #mainScreen {
@@ -309,6 +302,10 @@ footer {
 	font-size: 66px;
 	font-family: 'Bangers', cursive;
 	padding-bottom: 25px;
+	background: #007eff;
+}
+
+#mainTitleRow {
 	background: #007eff;
 	box-shadow: 0px 5px 5px black;
 	position: relative;
@@ -421,8 +418,41 @@ footer {
 	border-width: 5px;
 }
 
+#profileIcon {
+	background: orange;
+	border-radius: 25px;
+	width: 45px;
+	height: 45px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 10px;
+	margin-left: 25%;
+	margin-bottom: 5px;
+}
+
+#profileIcon:hover{
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	color: white;
+}
+
 #profileMenu {
-	display: block;
+	display: none;
+	background: white;
+	text-align: center;
+	box-shadow: 0px 3px 3px black;
+}
+
+.profileMenuOption {
+	margin: 5px;
+	color: black;
+	background: lightgrey;
+}
+
+.profileMenuOption:hover {
+	color: white;
 }
 
 #rankingDisplay {

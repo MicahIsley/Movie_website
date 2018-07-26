@@ -91,7 +91,6 @@ var votingTimeout;
 var compiledRank = [];
 var multiplayerRound = 0;
 var player;
-var profileMenu = "hidden";
 
 //Login/logout functions
 
@@ -902,6 +901,15 @@ $("#backButton").click(function(){
 	$("#customSelection").hide();
 	$("#customListDisplay").empty();
 
+});
+
+$('#profileIcon').click( function(event){
+    event.stopPropagation();
+    $('#profileMenu').toggle();
+});
+
+$(document).click( function(){
+    $('#profileMenu').hide();
 });
 
 function beginGame() {
