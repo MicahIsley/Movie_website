@@ -837,7 +837,7 @@ $("#replayButton").click(function(){
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
 	$(".category").children().css({"border-width": "5px", "border-color": "black", "border-style": "solid"});
-	$(this).children().css({"border-width": "5px", "border-color": "white", "border-style": "ridge"});
+	$(this).children().css({"border-width": "5px", "border-color": "blue", "border-style": "ridge"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){

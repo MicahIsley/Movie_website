@@ -71,7 +71,7 @@ button {
 }
 
 .categoryLogo:hover {
-	box-shadow: 0px 0px 20px 6px white;
+	box-shadow: 0px 0px 20px 6px blue;
 }
 
 #categoryMessage {
@@ -308,9 +308,11 @@ footer {
 
 .message {
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 	color: white;
 	font-family: 'Josefin Sans', sans-serif;
+	text-shadow: #000 0px 0px 5px;
+    -webkit-font-smoothing: antialiased;
 }
 
 #movieBattle {
