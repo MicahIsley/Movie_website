@@ -588,7 +588,7 @@ footer {
 
 	.categoryLogo {
 		height: 70px;
-		width: 140px;
+		width: 120px;
 	}
 
 	#championDisplay {
@@ -617,12 +617,12 @@ footer {
 
 	.message {
 		text-align: center;
-		font-size: 24px;
+		font-size: 20px;
 		font-weight: bolder;
 	}
 
 	#movieBattleLogo {
-		height: 55px;
+		height: 42px;
 	}
 
 	#movieBattleLogoLogin {
@@ -635,11 +635,14 @@ footer {
 
 	.multiDisplay {
 		padding-bottom: 10px;
+		height: 180px;
 	}
 
 	#multiplayerLobby {
 		height: 80vh;
 		padding-left: 25px;
+		padding-top: 0px;
+		font
 	}
 
 	#multiplayerMatchups {
@@ -652,6 +655,12 @@ footer {
 
 	.posterPoster {
 		height: 250px;
+	}
+
+	#profileIcon {
+		height: 40px;
+		width: 40px;
+		padding-top: 8px;
 	}
 
 	#rankingDisplay {
