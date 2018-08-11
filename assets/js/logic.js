@@ -787,11 +787,11 @@ function displayFinalRanking(){
 		for(i=0; i<finalRanking.length; i++){
 			finalRanking[i].rank = i + 1;
 			if(i===0){
-				$("#firstPlace").append("<p><div id='firstIcon'>1st </div>" + finalRanking[i].name + "</p>");
+				$("#firstPlace").append("<p><div class='top3' id='firstIcon'>1st </div>" + finalRanking[i].name + "</p>");
 			}else if(i===1){
-				$("#secondPlace").append("<p><div id='secondIcon'>2nd </div>" + finalRanking[i].name + "</p>");
+				$("#secondPlace").append("<p><div class='top3' id='secondIcon'>2nd </div>" + finalRanking[i].name + "</p>");
 			}else if(i===2){
-				$("#thirdPlace").append("<p><div id='thirdIcon'>3rd </div>" + finalRanking[i].name + "</p>");
+				$("#thirdPlace").append("<p><div class='top3' id='thirdIcon'>3rd </div>" + finalRanking[i].name + "</p>");
 			}else if(i > 2 && i < 10){
 				$("#topTen").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
 			}else{

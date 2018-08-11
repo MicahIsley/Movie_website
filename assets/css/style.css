@@ -665,8 +665,7 @@ footer {
 
 	#rankingDisplay {
 		margin-left: 5%;
-		font-size: 12px;
-		height: 500px;
+		font-size: 9px;
 	}
 
 	.redButton {
@@ -699,6 +698,10 @@ footer {
 
 	#top2017Icon {
 		font-size: 20px;
+	}
+
+	.top3 {
+		font-size: 10px;
 	}
 
 	#topRow {
