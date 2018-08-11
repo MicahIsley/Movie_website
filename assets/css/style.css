@@ -71,7 +71,7 @@ button {
 }
 
 .categoryLogo:hover {
-	box-shadow: 0px 0px 20px 6px blue;
+	box-shadow: 0px 0px 20px 6px yellow;
 }
 
 #categoryMessage {
@@ -84,7 +84,12 @@ button {
 
 #championDisplay {
 	display: none;
-	margin-left: 6%;
+	height: 70vh;
+	background: url(../images/resultsBackground.jpg) no-repeat center center fixed;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
 }
 
 .circleCheck {
@@ -224,8 +229,9 @@ button {
 	height: 70vh;
 	margin-bottom: 0px;
 	display: none;
-	background-image: url("../images/dc-comics.jpg");
+	background-image: url("../images/Versus-wide.jpg");
 	background-repeat: no-repeat;
+	background-position: center;
 
 
 }
@@ -311,7 +317,7 @@ footer {
 	font-size: 30px;
 	color: white;
 	font-family: 'Josefin Sans', sans-serif;
-	text-shadow: #000 0px 0px 5px;
+	text-shadow: #000 0px 0px 10px;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -386,8 +392,10 @@ footer {
 
 #multiplayerMatchups {
 	display: none;
-	background: #ababab;
-	height: 700px;
+	background-image: url("../images/Versus-wide.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 70vh;
 }
 
 .onlinePlayer {
@@ -435,6 +443,7 @@ footer {
 	padding-top: 10px;
 	margin-left: 25%;
 	margin-bottom: 5px;
+	cursor: pointer;
 }
 
 #profileIcon:hover{
@@ -465,7 +474,10 @@ footer {
 
 #rankingDisplay {
 	color: black;
-	margin-top: 40px;
+	margin-top: 20px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+
 }
 
 .redButton {
@@ -490,13 +502,14 @@ footer {
 #replayButton {
 	background: #1d6bb6;
 	color: white;
-	border-color: #be3229;
+	border-color: black;
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 5px;
-	width: 100px;
-	padding-left: 25px;
+	width: 80px;
+	padding-left: 6px;
 	margin-left: 48%;
+	margin-top: 10px;
 }
 
 #replayButton:hover {
@@ -557,7 +570,7 @@ footer {
 }
 
 #winner {
-	height: 500px;
+	height: 430px;
 }
 
 #yourGroupMembers {
@@ -574,11 +587,24 @@ footer {
 	}
 
 	.categoryLogo {
-		height: 80px;
+		height: 70px;
+		width: 140px;
+	}
+
+	#championDisplay {
+		height: 80vh;
 	}
 
 	.customMoviePoster {
 		height: 115px;
+	}
+
+	#firstChoose {
+		margin-bottom: 20%;
+	}
+
+	#firstRound {
+		height: 80vh;
 	}
 
 	#gameModeButton {
@@ -591,14 +617,33 @@ footer {
 
 	.message {
 		text-align: center;
+		font-size: 24px;
+		font-weight: bolder;
+	}
+
+	#movieBattleLogo {
+		height: 55px;
+	}
+
+	#movieBattleLogoLogin {
+		height: 150px;
 	}
 
 	.moviePoster {
-		height: 220px;
+		height: 250px;
 	}
 
 	.multiDisplay {
 		padding-bottom: 10px;
+	}
+
+	#multiplayerLobby {
+		height: 80vh;
+		padding-left: 25px;
+	}
+
+	#multiplayerMatchups {
+		height: 80vh;
 	}
 
 	.onlineTitle {
@@ -606,11 +651,13 @@ footer {
 	}
 
 	.posterPoster {
-		height: 220px;
+		height: 250px;
 	}
 
 	#rankingDisplay {
-		margin-left: 8%;
+		margin-left: 5%;
+		font-size: 12px;
+		height: 500px;
 	}
 
 	.redButton {
@@ -619,11 +666,19 @@ footer {
 	}
 
 	#replayButton {
-		margin-left: 30%;
+		margin-left: 33%;
+	    height: 50px;
+	    font-size: 24px;
+	    padding-left: 10px;
+	    width: 100px;
 	}
 
 	#rightSlot {
 		width: auto;
+	}
+
+	#roundHeading {
+		margin-bottom: 20%;
 	}
 
 	#signInButton {
@@ -634,10 +689,14 @@ footer {
 	}
 
 	#top2017Icon {
-		margin-top: -20px;
+		font-size: 20px;
+	}
+
+	#topRow {
+		height: 10vh;
 	}
 
 	#winner {
-		height: 350px;
+		height: 150px;
 		margin-left: 8%;
 	}

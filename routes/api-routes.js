@@ -81,10 +81,15 @@ module.exports = function(app) {
 	});
 
 	app.delete("/online/delete/:user", function(req, res) {
-		Online.remove({ username: req.params.user}, function (err) {
-			if (err) return handleError(err);
+		Online.remove({ username: req.params.user}, function (err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
 		});
-		/*Online.remove({}, function(err) {});*/
+
 	});
 
 	app.delete("/custom/delete/:id", function(req, res) {
@@ -111,6 +116,17 @@ module.exports = function(app) {
 
 	app.delete("/custom/deleteAll", function(req, res) {
 		Custom.remove({}, function(err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
+	app.delete("/online/deleteAll", function(req, res) {
+		Online.remove({}, function(err, doc) {
 			if (err) {
 				res.send(err);
 			}

@@ -94,16 +94,17 @@ var player;
 
 //Login/logout functions
 
-window.onunload = function(){
+
+$( window ).on('beforeunload', function() {
 	$.ajax({
-		method: "DELETE",
-		url: "/online/delete/" + currentUser,
-		data: {
-			username: currentUser,
-		}
+	method: "DELETE",
+	url: "/online/delete/" + currentUser,
+	data: {
+		username: currentUser,
+	}
 	}).done(function(data) {
 	});
-};
+});
 
 function getUserData() {
 	$.ajax('/user', {
@@ -122,13 +123,15 @@ function getUserData() {
 function getCurrentUsername() {
 	$.get("/api/userInfo/" + currentUserId.googleId, function(data) {
 		currentUser = data.username;
-		checkForOnlineDuplicates();
+		//checkForOnlineDuplicates();
+		displayOnline();
 	});
 };
 
-function checkForOnlineDuplicates(){
+/*function checkForOnlineDuplicates(){
 	$("#currentUser").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
 	$.get("/online", function(data) {
+		console.log(data);
 		if(data.length === 0){
 			displayOnline();
 		}else{
@@ -141,7 +144,7 @@ function checkForOnlineDuplicates(){
 			}
 		}
 	});
-}
+}*/
 
 function displayOnline() {
 	$.ajax({
@@ -151,6 +154,7 @@ function displayOnline() {
 			username: currentUser,
 		}
 	}).done(function(data) {
+		$("#currentUser").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
 	});
 };
 
