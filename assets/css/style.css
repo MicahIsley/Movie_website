@@ -229,7 +229,8 @@ button {
 	height: 70vh;
 	margin-bottom: 0px;
 	display: none;
-	background-image: url("../images/Versus-wide.jpg");
+	background-image: url("../images/versus-background.gif");
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
 
@@ -569,6 +570,18 @@ footer {
 	z-index: 1;
 }
 
+#versusRow {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -110px;
+}
+
+#versusSymbol {
+	height: 400px;
+}
+
 #winner {
 	height: 430px;
 }
@@ -600,7 +613,7 @@ footer {
 	}
 
 	#firstChoose {
-		margin-bottom: 20%;
+		margin-bottom: 0px;
 	}
 
 	#firstRound {
@@ -621,16 +634,25 @@ footer {
 		font-weight: bolder;
 	}
 
+	#mobilCol {
+		padding-left: 7px;
+	}
+
+	#movie2 {
+		margin-left: 55%;
+    	margin-top: 30%;
+	}
+
 	#movieBattleLogo {
 		height: 42px;
 	}
 
 	#movieBattleLogoLogin {
-		height: 150px;
+		height: 110px;
 	}
 
 	.moviePoster {
-		height: 250px;
+		height: 220px;
 	}
 
 	.multiDisplay {
@@ -708,7 +730,22 @@ footer {
 		height: 10vh;
 	}
 
+	#versusRow {
+	   margin-top: -120px;
+	   margin-left: -85px;
+	}
+
+	#versusSymbol {
+		height: 300px;
+	}
+
 	#winner {
 		height: 150px;
 		margin-left: 8%;
 	}
+
+@media only screen and (max-width: 320px) {
+	.moviePoster {
+		height: 170px;
+	}
+}
