@@ -38,9 +38,14 @@ a:hover {
 	border-color: red;
 }
 
+#beginnerText {
+	height: 150px;
+}
+
 #beginnerTextBox {
+	padding-top: 5%;
 	text-align: center;
-    font-size: 45px;
+    font-size: 35px;
     color: white;
     background: blue;
     border-width: 5px;
@@ -49,13 +54,14 @@ a:hover {
     margin-top: 10%;
 }
 
-#bottomRankings {
-	margin-top: 45px;
+#bracketText {
+	height: 150px;
 }
 
 #bracketTextBox {
+	padding-top: 5%;
 	text-align: center;
-    font-size: 45px;
+    font-size: 35px;
     color: white;
     background: blue;
     border-width: 5px;
@@ -250,7 +256,6 @@ button {
 }
 
 #firstIcon {
-	font-size: 24px;
     color: gold;
     font-weight: bold;
 }
@@ -440,7 +445,23 @@ footer {
 }
 
 .okTextButton {
+	margin-top: 25px;
 	margin-left: 0px;
+	margin-bottom: 20px;
+	background: #ff1414;
+	color: white;
+	text-align: center;
+	font-size: 26px;
+	width: 100px;
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	border-radius: 5px;
+	box-shadow: 0px 3px 3px black;
+}
+
+.okTextButton:hover {
+	border-color: white;
 }
 
 .onlinePlayer {
@@ -522,6 +543,7 @@ footer {
 	margin-top: 20px;
 	background: rgba(255, 255, 255, 0.5);
 	border-radius: 10px;
+	padding: 15px;
 
 }
 
@@ -552,9 +574,9 @@ footer {
 	border-style: solid;
 	border-radius: 5px;
 	width: 80px;
-	padding-left: 6px;
 	margin-left: 48%;
 	margin-top: 10px;
+	text-align: center;
 }
 
 #replayButton:hover {
@@ -576,7 +598,6 @@ footer {
 }
 
 #secondIcon {
-	font-size: 24px;
     color: silver;
     font-weight: bold;
 }
@@ -592,8 +613,7 @@ footer {
 }
 
 #thirdIcon {
-	font-size: 24px;
-    color: brown;
+    color: #e69148;
     font-weight: bold;
 }
 
@@ -603,6 +623,18 @@ footer {
 	text-align: center;
 	font-size: 24px;
 	padding-top: 4px;
+}
+
+.top3 {
+	text-shadow: #000 0px 0px 10px;
+    -webkit-font-smoothing: antialiased;
+    font-size: 40px;
+    text-align: center;
+}
+
+.top3Name {
+	font-size: 24px;
+	text-align: center;
 }
 
 #topRow {
@@ -628,6 +660,8 @@ footer {
 
 #winner {
 	height: 430px;
+	border-radius: 5px;
+    margin-left: 5%;
 }
 
 #yourGroupMembers {
@@ -721,6 +755,10 @@ footer {
 		font-size: 22px;
 	}
 
+	#overallWinner {
+		text-align: center;
+	}
+
 	.posterPoster {
 		height: 250px;
 	}
@@ -732,8 +770,9 @@ footer {
 	}
 
 	#rankingDisplay {
-		margin-left: 5%;
 		font-size: 9px;
+		margin-top: 0px;
+		padding: 5px;
 	}
 
 	.redButton {
@@ -743,10 +782,10 @@ footer {
 
 	#replayButton {
 		margin-left: 33%;
-	    height: 50px;
-	    font-size: 24px;
-	    padding-left: 10px;
+	    height: 40px;
+	    font-size: 20px;
 	    width: 100px;
+	    text-align: center;
 	}
 
 	#rightSlot {
@@ -769,7 +808,11 @@ footer {
 	}
 
 	.top3 {
-		font-size: 10px;
+		font-size: 25px;
+	}
+
+	.top3Name {
+		font-size: 14px;
 	}
 
 	#topRow {
@@ -787,7 +830,6 @@ footer {
 
 	#winner {
 		height: 150px;
-		margin-left: 8%;
 	}
 
 @media only screen and (max-width: 320px) {

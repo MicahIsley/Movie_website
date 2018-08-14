@@ -462,7 +462,6 @@ function downloadCompiledScores() {
 }
 
 function displayMultiplayerBracket() {
-	$("#firstBracketText").show();
 	$("#leftSlot").empty();
 	$("#rightSlot").empty();
 	$("#leftSlot").css("border-color", "transparent");
@@ -811,15 +810,15 @@ function displayFinalRanking(){
 		for(i=0; i<finalRanking.length; i++){
 			finalRanking[i].rank = i + 1;
 			if(i===0){
-				$("#firstPlace").append("<p><div class='top3' id='firstIcon'>1st </div>" + finalRanking[i].name + "</p>");
+				$("#firstPlace").append("<div class='row top3' id='firstIcon'>1st </div><div class='row top3Name'>" + finalRanking[i].name + "</div></div>");
 			}else if(i===1){
-				$("#secondPlace").append("<p><div class='top3' id='secondIcon'>2nd </div>" + finalRanking[i].name + "</p>");
+				$("#secondPlace").append("<div class='row top3' id='secondIcon'>2nd </div><div class='row top3Name'>" + finalRanking[i].name + "</div></div>");
 			}else if(i===2){
-				$("#thirdPlace").append("<p><div class='top3' id='thirdIcon'>3rd </div>" + finalRanking[i].name + "</p>");
-			}else if(i > 2 && i < 10){
-				$("#topTen").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
+				$("#thirdPlace").append("<div class='row top3' id='thirdIcon'>3rd </div><div class='row top3Name'>" + finalRanking[i].name + "</div></div>");
+			}else if(i > 2 && i < 12){
+				$("#topTen").append("<div class='row'>" + (i+1) + ". " + finalRanking[i].name + "</div>");
 			}else{
-				$("#bottomRankings").append("<p>" + (i+1) + ". " + finalRanking[i].name + "</p>");
+				$("#bottomRankings").append("<div class='row'>" + (i+1) + ". " + finalRanking[i].name + "</div>");
 			}
 		}
 		if(selectedCategory === customMovies){
