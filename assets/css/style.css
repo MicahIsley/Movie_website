@@ -38,8 +38,30 @@ a:hover {
 	border-color: red;
 }
 
+#beginnerTextBox {
+	text-align: center;
+    font-size: 45px;
+    color: white;
+    background: blue;
+    border-width: 5px;
+    border-color: red;
+    border-style: solid;
+    margin-top: 10%;
+}
+
 #bottomRankings {
 	margin-top: 45px;
+}
+
+#bracketTextBox {
+	text-align: center;
+    font-size: 45px;
+    color: white;
+    background: blue;
+    border-width: 5px;
+    border-color: red;
+    border-style: solid;
+    margin-top: 10%;
 }
 
 button {
@@ -214,6 +236,14 @@ button {
 	margin-left: 0px;
 }
 
+#firstBracketText {
+	position: absolute;
+	background: #000000b3;
+	height: 70vh;
+	width: 101.6vw;
+	z-index: 3;
+}
+
 #firstChoose {
 	margin-bottom: 25px;
 	margin-top: 10px;
@@ -233,8 +263,14 @@ button {
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
+}
 
-
+#firstTimeText {
+	position: absolute;
+	background: #000000b3;
+	height: 70vh;
+	width: 101.6vw;
+	z-index: 3;
 }
 
 footer {
@@ -384,7 +420,7 @@ footer {
 #multiplayerLobby {
 	height: 70vh;
 	padding-top: 50px;
-	background-image: url("../images/comicBackground.png");
+	background-image: url("../images/blueComic.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
@@ -393,10 +429,18 @@ footer {
 
 #multiplayerMatchups {
 	display: none;
-	background-image: url("../images/Versus-wide.jpg");
+	background-image: url("../images/versus-background.gif");
+	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 70vh;
+}
+
+#multiplayerMenu {
+}
+
+.okTextButton {
+	margin-left: 0px;
 }
 
 .onlinePlayer {
@@ -570,7 +614,7 @@ footer {
 	z-index: 1;
 }
 
-#versusRow {
+.versusRow {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -578,7 +622,7 @@ footer {
 	margin-left: -110px;
 }
 
-#versusSymbol {
+.versusSymbol {
 	height: 400px;
 }
 
@@ -618,6 +662,8 @@ footer {
 
 	#firstRound {
 		height: 80vh;
+		background-image: url("../images/blue-red-digonal-bg.jpg");
+		background-size: 100% 100%;
 	}
 
 	#gameModeButton {
@@ -730,12 +776,12 @@ footer {
 		height: 10vh;
 	}
 
-	#versusRow {
+	.versusRow {
 	   margin-top: -120px;
 	   margin-left: -85px;
 	}
 
-	#versusSymbol {
+	.versusSymbol {
 		height: 300px;
 	}
 

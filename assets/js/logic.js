@@ -91,6 +91,8 @@ var votingTimeout;
 var compiledRank = [];
 var multiplayerRound = 0;
 var player;
+var pageNumber = 0;
+var pageText = ["Welcome to the first round! Pick one movie from each pair.", "Then we'll turn the results into a single-elimination bracket.", "Let's Play!", "Hey1 ", "Pick one movie from each pair, just like before", "Only this time, the ones you don't pick are elimated forever!", "Keep playing until only one movie is standing!", "Let the Superbattle begin!"];
 
 //Login/logout functions
 
@@ -217,6 +219,25 @@ $("#readyButton").click(function() {
 	clearMultiplayer();
 });
 
+//Intro funtions
+
+$(".okTextButton").click(function() {
+	console.log(pageNumber);
+	if(pageNumber < 4){
+		$("#beginnerText").empty();
+		$("#beginnerText").append(pageText[pageNumber]);
+	}else if(pageNumber >= 4){
+		$("#bracketText").empty();
+		$("#bracketText").append(pageText[pageNumber]);
+	}
+	pageNumber ++;
+	if(pageNumber === 4){
+		$("#firstTimeText").hide();
+	}else if(pageNumber === 9){
+		$("#firstBracketText").hide();
+	}
+});
+
 //Round-robin functions
 
 function pickMovieOne() {
@@ -301,7 +322,9 @@ function checkEnding() {
 			}else{}
 		}else{}
 	}
-	pickMovieOne();
+	if(numberFinished < scores.length){
+		pickMovieOne();
+	}
 }
 
 //Bracket Functions
@@ -439,6 +462,7 @@ function downloadCompiledScores() {
 }
 
 function displayMultiplayerBracket() {
+	$("#firstBracketText").show();
 	$("#leftSlot").empty();
 	$("#rightSlot").empty();
 	$("#leftSlot").css("border-color", "transparent");
