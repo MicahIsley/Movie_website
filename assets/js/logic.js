@@ -872,9 +872,11 @@ $(".category").click(function(){
 	}else if(categoryId === "top2017"){
 		selectedCategory = top2017;
 	}else if(categoryId === "customGame"){
-		getCustomList();
+		//getCustomList();
 	}
 });
+
+
 
 function getCustomList() {
 	$.get("/customList", function(data) {
@@ -917,26 +919,33 @@ $(document).on("click", ".deleteList", function(){
 	});
 });
 
-
-$("#customGame").click(function(){
-	$("#categorySelection").hide();
-	$("#customSelection").show();
-});
-
-$("#backButton").click(function(){
-	$("#categorySelection").show();
-	$("#customSelection").hide();
-	$("#customListDisplay").empty();
-
-});
-
 $('#profileIcon').click( function(event){
     event.stopPropagation();
     $('#profileMenu').toggle();
+    $("#multiplayerMenu").hide();
+    $("#customSelection").hide();
 });
+
+$("#onlineTab").click(function(event){
+	event.stopPropagation();
+	$("#multiplayerMenu").toggle();
+	$("#profileMenu").hide();
+	$("#customSelection").hide();
+});
+
+$("#customTab").click(function(event){
+	event.stopPropagation();
+	$("#customSelection").toggle();
+	$("#multiplayerMenu").hide();
+	$("#profileMenu").hide();
+	getCustomList();
+})
 
 $(document).click( function(){
     $('#profileMenu').hide();
+    $('#multiplayerMenu').hide();
+    $("#customSelection").hide();
+    $("#customListDisplay").empty();
 });
 
 function beginGame() {

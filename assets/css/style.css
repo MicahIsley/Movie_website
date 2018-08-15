@@ -419,20 +419,18 @@ footer {
 }
 
 .multiDisplay {
-	background: white;
+	background: #ffffffa6;
 	padding-bottom: 20px;
-	margin-right: 10px;
 	border-radius: 5px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: black;
-	box-shadow: 0px 5px 5px black;
-	height: 200px;
+	height: 60vh;
 }
 
 #multiplayerLobby {
 	height: 70vh;
-	padding-top: 50px;
+	padding-top: 30px;
 	background-image: url("../images/blueComic.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -450,6 +448,7 @@ footer {
 }
 
 #multiplayerMenu {
+	display: none;
 }
 
 .okTextButton {
@@ -631,6 +630,28 @@ footer {
 #thirdIcon {
     color: #e69148;
     font-weight: bold;
+}
+
+#toolBarRow {
+	position: fixed;
+	bottom: 10vh;
+	width: 100%;
+}
+
+.toolBarTab {
+	background: red;
+	height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	text-align: center;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.toolBarTab:hover {
+	border-color: white;
 }
 
 #top2017Icon {
