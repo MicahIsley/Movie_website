@@ -87,9 +87,14 @@ button {
     padding-top: 35%;
 }
 
+.category {
+	background-size: 100% 100%;
+	padding: 35px;
+}
+
 .categoryLogo {
-	height: 80px;
-	width: 154px;
+	height: 90px;
+	width: 165px;
 	margin: 5px;
 	border-width: 5px;
 	border-radius: 5px;
@@ -99,11 +104,13 @@ button {
 }
 
 .categoryLogo:hover {
-	box-shadow: 0px 0px 20px 6px yellow;
+	box-shadow: 0px 0px 20px 6px white;
 }
 
-#categoryMessage {
-	padding-left: 5%;
+#categoryRow {
+	position: fixed;
+    left: 50%;
+    margin-left: -260px;
 }
 
 #categorySelection {
@@ -186,7 +193,7 @@ button {
 	margin: 0px;
 	transform: scale(1.2);
 	border-style: solid;
-	border-color: #be3229;
+	border-color: #f3ec2f;
 	border-width: 5px;
 }
 
@@ -251,8 +258,9 @@ button {
 }
 
 #firstChoose {
+	background: #00000075;
 	margin-bottom: 25px;
-	margin-top: 10px;
+	padding-top: 10px;
 }
 
 #firstIcon {
@@ -401,7 +409,7 @@ footer {
 .moviePoster:hover {
 	transform: scale(1.2);
 	border-style: solid;
-	border-color: #be3229;
+	border-color: #f3ec2f;
 	border-width: 5px;
 }
 
@@ -434,7 +442,7 @@ footer {
 
 #multiplayerMatchups {
 	display: none;
-	background-image: url("../images/versus-background.gif");
+	background-image: url("../images/green-orange-bg.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -446,7 +454,7 @@ footer {
 
 .okTextButton {
 	margin-top: 25px;
-	margin-left: 0px;
+	margin-left: 43%;
 	margin-bottom: 20px;
 	background: #ff1414;
 	color: white;
@@ -494,7 +502,7 @@ footer {
 .posterPoster:hover {
 	transform: scale(1.2);
 	border-style: solid;
-	border-color: #be3229;
+	border-color: #f3ec2f;
 	border-width: 5px;
 }
 
@@ -547,6 +555,11 @@ footer {
 
 }
 
+#readyButton {
+	margin-left: 40%;
+	margin-top: 5px;
+}
+
 .redButton {
 	background: #ff1414;
 	color: white;
@@ -592,9 +605,12 @@ footer {
 }
 
 #roundHeading {
+	padding-top: 5px;
 	color: white;
 	text-align: center;
-	font-size: 36px;
+	font-size: 45px;
+    background: #00000075;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 #secondIcon {
@@ -619,7 +635,7 @@ footer {
 
 #top2017Icon {
 	color: black;
-	background: #fff943;
+	background: orange;
 	text-align: center;
 	font-size: 24px;
 	padding-top: 4px;

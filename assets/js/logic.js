@@ -470,37 +470,37 @@ function displayMultiplayerBracket() {
 	$("#multiplayerMatchups").show();
 	if(selectedCategory === customMovies){
 		if(top8.length < 8){
-			$("#roundHeading").text("Top 16");
+			$("#roundHeading").text("The Sensational Sixteen");
 			$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='" + sortScores[multiplayerRound].image + "'>");
 			$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='" + sortScores[15 - multiplayerRound].image + "'>");
 		}else if(top8.length === 8 && top4.length < 4){
-			$("#roundHeading").text("Top 8");
+			$("#roundHeading").text("The Esteemed Eight");
 			$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='" + top8[multiplayerRound - 8].image + "'>");
 			$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='" + top8[15 - multiplayerRound].image + "'>");
 		}else if(top4.length === 4 && top2.length < 2) {
-			$("#roundHeading").text("Top 4");
+			$("#roundHeading").text("The Formidable Four");
 			$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='" + top4[multiplayerRound - 12].image + "'>");
 			$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='" + top4[15 - multiplayerRound].image + "'>");
 		}else if(top2.length === 2){
-			$("#roundHeading").text("Top 2");
+			$("#roundHeading").text("The Final Superbattle");
 			$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='" + top2[multiplayerRound - 14].image + "'>");
 			$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='" + top2[15 - multiplayerRound].image + "'>");
 		}
 	}else{
 		if(multiplayerRound < 8){
-			$("#roundHeading").text("Top 16");
+			$("#roundHeading").text("The Sensational Sixteen");
 			$("#leftSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[multiplayerRound].image + ".jpg'>");
 			$("#rightSlot").append("<img class='bracketPoster posterPoster' id='" + sortScores[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + sortScores[15 - multiplayerRound].image + ".jpg'>");
 		}else if(multiplayerRound >= 8 && multiplayerRound < 12){
-			$("#roundHeading").text("Top 8");
+			$("#roundHeading").text("The Esteemed Eight");
 			$("#leftSlot").append("<img class='top8Poster posterPoster' id='" + top8[multiplayerRound - 8].image + "' src='images/" + categoryId + "/" + top8[multiplayerRound - 8].image + ".jpg'>");
 			$("#rightSlot").append("<img class='top8Poster posterPoster' id='" + top8[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top8[15 - multiplayerRound].image + ".jpg'>");
 		}else if(multiplayerRound >=12 && multiplayerRound < 14) {
-			$("#roundHeading").text("Top 4");
+			$("#roundHeading").text("The Formidable Four");
 			$("#leftSlot").append("<img class='top4Poster posterPoster' id='" + top4[multiplayerRound - 12].image + "' src='images/" + categoryId + "/" + top4[multiplayerRound - 12].image + ".jpg'>");
 			$("#rightSlot").append("<img class='top4Poster posterPoster' id='" + top4[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top4[15 - multiplayerRound].image + ".jpg'>");
 		}else if(top2.length === 2){
-			$("#roundHeading").text("Top 2");
+			$("#roundHeading").text("The Final Superbattle");
 			$("#leftSlot").append("<img class='top2Poster posterPoster' id='" + top2[multiplayerRound - 14].image + "' src='images/" + categoryId + "/" + top2[multiplayerRound - 14].image + ".jpg'>");
 			$("#rightSlot").append("<img class='top2Poster posterPoster' id='" + top2[15 - multiplayerRound].image + "' src='images/" + categoryId + "/" + top2[15 - multiplayerRound].image + ".jpg'>");
 		}
@@ -863,8 +863,8 @@ $("#replayButton").click(function(){
 
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
-	$(".category").children().css({"border-width": "5px", "border-color": "black", "border-style": "solid"});
-	$(this).children().css({"border-width": "5px", "border-color": "blue", "border-style": "ridge"});
+	$(".category").css({"background-image": "none"});
+	$(this).css({"background-image": "url('../images/pow.png')"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){
