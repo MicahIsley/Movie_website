@@ -464,8 +464,6 @@ function downloadCompiledScores() {
 function displayMultiplayerBracket() {
 	$("#leftSlot").empty();
 	$("#rightSlot").empty();
-	$("#leftSlot").css("border-color", "transparent");
-	$("#rightSlot").css("border-color", "transparent");
 	$("#firstRound").hide();
 	$("#multiplayerMatchups").show();
 	if(selectedCategory === customMovies){
@@ -508,6 +506,8 @@ function displayMultiplayerBracket() {
 }
 
 $(document).on("click", ".bracketPoster", function(){
+	$("#leftSlot").removeClass("roundWinner");
+	$("#rightSlot").removeClass("roundWinner");
 	$(this).removeClass("bracketPoster");
 	var movieId = $(this).first().attr('id');
 	var spliceId = movieId.split(" ");
@@ -520,7 +520,10 @@ $(document).on("click", ".bracketPoster", function(){
 	var loser = $(this).parent().parent().siblings().children().children();
 	loser.removeClass("bracketPoster");
 	loser.css("-webkit-filter", "grayscale(1)");
-	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
+	var classWinner = $(this).parent();
+	$(classWinner).addClass("roundWinner");
+	console.log(classWinner);
+	//$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
 	createVotingDatabase();
 });
@@ -528,9 +531,13 @@ $(document).on("click", ".bracketPoster", function(){
 //Voting
 
 function postVote() {
-	if($("#leftSlot").contents().length === 2) {
+	console.log($("#leftSlot").attr("class"));
+	console.log($("#rightSlot").attr("class"));
+	if($("#leftSlot").attr("class") === "roundWinner") {
+		console.log("postLeftVote");
 		postVoteLeft();
-	}else if($("#rightSlot").contents().length === 2) {
+	}else if($("#rightSlot").attr("class") === "roundWinner") {
+		console.log("postRightVote");
 		postVoteRight();
 	}
 };
@@ -756,18 +763,24 @@ function sortTop4LoserScores() {
 
 $(document).on("click", ".top8Poster", function(){
 	$(this).removeClass("top8Poster");
+	$("#leftSlot").removeClass("roundWinner");
+	$("#rightSlot").removeClass("roundWinner");
 	var top4MovieName = $(this).attr("id");
 	var loserIdTop8Name = $(this).parent().parent().siblings().children().children().attr("id");
 	var loser = $(this).parent().parent().siblings().children().children();
 	loser.removeClass("bracketPoster");
 	loser.css("-webkit-filter", "grayscale(1)");
-	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
+	var classWinner = $(this).parent();
+	$(classWinner).addClass("roundWinner");
+	//$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
 	createVotingDatabase();
 });
 
 $(document).on("click", ".top4Poster", function(){
 	var top4MoviePoster = $(this);
+	$("#leftSlot").removeClass("roundWinner");
+	$("#rightSlot").removeClass("roundWinner");
 	var top2Image = $(this).attr("id");
 	var rightLoserTop4Name = $(this).parent().parent().next().next().children().children().attr("id");
 	var leftLoserTop4Name = $(this).parent().parent().prev().prev().children().children().attr("id");
@@ -776,7 +789,9 @@ $(document).on("click", ".top4Poster", function(){
 	var loser = $(this).parent().parent().siblings().children().children();
 	loser.removeClass("bracketPoster");
 	loser.css("-webkit-filter", "grayscale(1)");
-	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
+	var classWinner = $(this).parent();
+	$(classWinner).addClass("roundWinner");
+	//$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
 	console.log(multiplayerRound);
 	createVotingDatabase();
@@ -784,10 +799,14 @@ $(document).on("click", ".top4Poster", function(){
 
 $(document).on("click", ".top2Poster", function(){
 	$(this).removeClass("top2Poster");
+	$("#leftSlot").removeClass("roundWinner");
+	$("#rightSlot").removeClass("roundWinner");
 	var loser = $(this).parent().parent().siblings().children().children();
 	loser.removeClass("bracketPoster");
 	loser.css("-webkit-filter", "grayscale(1)");
-	$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
+	var classWinner = $(this).parent();
+	$(classWinner).addClass("roundWinner");
+	//$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	var winnerName = $(this).attr("id");
 	var leftFinalLoserName = $(this).parent().parent().next().next().children().children().attr("id");
 	var rightFinalLoserName = $(this).parent().parent().prev().prev().children().children().attr("id");
@@ -879,6 +898,7 @@ $(".category").click(function(){
 
 
 function getCustomList() {
+	$("#customListDisplay").empty();
 	$.get("/customList", function(data) {
 		if(data.length === 0){
 			console.log("you need to make a list");
@@ -945,7 +965,6 @@ $(document).click( function(){
     $('#profileMenu').hide();
     $('#multiplayerMenu').hide();
     $("#customSelection").hide();
-    $("#customListDisplay").empty();
 });
 
 function beginGame() {
