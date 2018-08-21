@@ -114,6 +114,17 @@ module.exports = function(app) {
 		});
 	});
 
+	app.delete("/rankings/deleteAll", function(req, res) {
+		Ranking.remove({}, function(err, doc) {
+			if (err) {
+				res.send(err);
+			}
+			else {
+				res.send(doc);
+			}
+		});
+	});
+
 	app.delete("/custom/deleteAll", function(req, res) {
 		Custom.remove({}, function(err, doc) {
 			if (err) {

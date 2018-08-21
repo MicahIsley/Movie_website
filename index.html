@@ -17,11 +17,11 @@
 				</div>
 				<div class="col-xs-2" id="logoutRow">
 					<div class="row">
-						<div id="profileIcon">M</div>
+						<div id="profileIcon"></div>
 					</div>
 					<div class="row" id="profileMenu">
-						<!--<div class="profileMenuOption" id="userProfileButton">Profile</div>-->
 						<button type="submit" class="profileMenuOption" id="logoutButton"><a href="auth/logout">Logout</a></button>
+						<div class="profileMenuOption" id="profileButton">Profile</div>
 					</div>
 				</div>
 			</div>
@@ -60,6 +60,23 @@
 								<div class="redButton" id="readyButton">Start</div>
 							</div>
 						</div>
+						<div class="col-sm-8 col-sm-offset-2" id="profileDisplay">
+							<div class="row">
+								<div class="col-sm-2">
+									<div class="row averageTab" id="marvelProfileTab">Marvel</div>
+									<div class="row averageTab" id="pixarProfileTab">Pixar</div>
+								</div>
+								<div class="col-sm-9" id="averageDisplay">
+									<div class="row" id="averageHeader">Average Results</div>
+									<div class="row">
+										<div class="col-sm-6" id="averageDisplay1"></div>
+										<div class="col-sm-6" id="averageDisplay2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-sm-4 col-sm-offset-8">
 							<div class="row" id="multiplayerMenu">
 								<div class="col-xs-6 col-sm-5 col-sm-offset-1 multiDisplay">
@@ -98,13 +115,13 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row" id="toolBarRow">
-					<div class="col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-5">
-						<div class="toolBarTab" id="onlineTab">Online</div>
-					</div>
-					<div class="col-sm-1 col-xs-3">
-						<div class="toolBarTab" id="customTab">Custom</div>
+					<div class="row" id="toolBarRow">
+						<div class="col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-5">
+							<div class="toolBarTab" id="onlineTab">Online</div>
+						</div>
+						<div class="col-sm-1 col-xs-3">
+							<div class="toolBarTab" id="customTab">Custom</div>
+						</div>
 					</div>
 				</div>
 			</div>

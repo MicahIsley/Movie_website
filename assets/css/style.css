@@ -22,6 +22,27 @@ a:hover {
 	text-decoration: none;
 }
 
+#averageDisplay {
+	margin-left: 15px;
+}
+
+#averageHeader {
+	text-align: center;
+	font-size: 20px;
+}
+
+.averageRow {
+	margin-top: 10px;
+}
+
+.averageTab {
+    font-size: 24px;
+    border-width: 0px 3px 3px 0px;
+    border-color: black;
+    border-style: solid;
+    text-align: center;
+}
+
 #backButton {
 	height: 40px;
 	width: 80px;
@@ -508,8 +529,17 @@ footer {
 	border-width: 5px;
 }
 
+#profileDisplay {
+	display: none;
+	background: white;
+	height: 60vh;
+	border-width: 3px 3px 3px 3px;
+    border-color: black;
+    border-style: solid;
+}
+
 #profileIcon {
-	background: orange;
+	background: transparent;
 	border-radius: 25px;
 	width: 45px;
 	height: 45px;

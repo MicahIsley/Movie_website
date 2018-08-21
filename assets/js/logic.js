@@ -93,7 +93,7 @@ var multiplayerRound = 0;
 var player;
 var pageNumber = 0;
 var pageText = ["Welcome to the first round! Pick one movie from each pair.", "Then we'll turn the results into a single-elimination bracket.", "Let's Play!", "Hey1 ", "Pick one movie from each pair, just like before", "Only this time, the ones you don't pick are elimated forever!", "Keep playing until only one movie is standing!", "Let the Superbattle begin!"];
-
+var averageRank = [];
 //Login/logout functions
 
 
@@ -126,9 +126,17 @@ function getCurrentUsername() {
 	$.get("/api/userInfo/" + currentUserId.googleId, function(data) {
 		currentUser = data.username;
 		//checkForOnlineDuplicates();
+		displayProfileLetter();
 		displayOnline();
 	});
 };
+
+function displayProfileLetter() {
+	var colorArray = ["blue", "orange", "green", "red"];
+	$("#profileIcon").append(currentUser[0]);
+	var color = colorArray[Math.floor(Math.random()*colorArray.length)];
+	$("#profileIcon").css("background", color);
+}
 
 /*function checkForOnlineDuplicates(){
 	$("#currentUser").append("<div id='currentUser' class='row groupMember'>" + currentUser + "</div>");
@@ -183,6 +191,84 @@ function findOnline() {
 	});
 	onlineTimeout = setTimeout("findOnline()", 1000);
 };
+
+$("#marvelProfileTab").click(function(){
+	averageRank = [];
+	$.get("/rankings", function(data) {
+		var numMarvelRuns = 0;
+		for(i=0; i< data.length; i++){
+			if(data[i].category === "marvelMovies" && data[i].user === currentUser){
+				numMarvelRuns ++;
+				console.log(numMarvelRuns);
+			}else{}
+		}
+		for(i=0; i < marvelMovies.length; i++){
+			var rankName = marvelMovies[i];
+			var combinedRank = 0;
+			for(j=0; j < data.length; j ++){
+				if(data[j].user === currentUser){
+					for(k=0; k < data[j].ranking.length; k ++){
+						if(data[j].ranking[k].name === rankName.name){
+							combinedRank = parseInt(data[j].ranking[k].rank) + parseInt(combinedRank);
+						}
+					}
+				}else{}
+			}
+			var combinedObject = {
+				name: rankName.name,
+				rank: Math.round(((combinedRank/numMarvelRuns) * 100)) / 100
+			}
+			averageRank.push(combinedObject);
+		}
+		sortAverageRank();
+	});
+});
+
+$("#pixarProfileTab").click(function(){
+	averageRank = [];
+	$.get("/rankings", function(data) {
+		var numPixarRuns = 0;
+		for(i=0; i< data.length; i++){
+			if(data[i].category === "pixarMovies" && data[i].user === currentUser){
+				numPixarRuns ++;
+				console.log(numPixarRuns);
+			}else{}
+		}
+		for(i=0; i < pixarMovies.length; i++){
+			var rankName = pixarMovies[i];
+			var combinedRank = rankName.rank;
+			for(j=0; j < data.length; j ++){
+				if(data[j].user === currentUser){
+					for(k=0; k < data[j].ranking.length; k ++){
+						if(data[j].ranking[k].name === rankName.name){
+							combinedRank = parseInt(data[j].ranking[k].rank) + parseInt(combinedRank);
+						}
+					}
+				}
+			}
+			var combinedObject = {
+				name: rankName.name,
+				rank: Math.round(((combinedRank/numPixarRuns) * 100)) / 100
+			}
+			averageRank.push(combinedObject);
+		}
+		sortAverageRank();
+	});
+});
+
+function sortAverageRank(){
+	averageRank.sort(function(a, b){return a.rank-b.rank});
+	console.log(averageRank);
+	$("#averageDisplay1").empty();
+	$("#averageDisplay2").empty();
+	for(i=0; i < averageRank.length; i++){
+		if(i < averageRank.length/2){
+			$("#averageDisplay1").append("<div class='row averageRow'><div class='col-xs-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-2 avgRank'>" + averageRank[i].rank + "</div></div>");
+		}else if(i >= averageRank.length/2){
+			$("#averageDisplay2").append("<div class='row averageRow'><div class='col-xs-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-2 avgRank'>" + averageRank[i].rank + "</div></div>");
+		}
+	}
+}
 
 //Multiplayer Function
 
@@ -522,7 +608,6 @@ $(document).on("click", ".bracketPoster", function(){
 	loser.css("-webkit-filter", "grayscale(1)");
 	var classWinner = $(this).parent();
 	$(classWinner).addClass("roundWinner");
-	console.log(classWinner);
 	//$(this).parent().append("<div><img class='circleCheck' src='/images/circleCheck.png'></div>");
 	multiplayerRound ++;
 	createVotingDatabase();
@@ -531,13 +616,9 @@ $(document).on("click", ".bracketPoster", function(){
 //Voting
 
 function postVote() {
-	console.log($("#leftSlot").attr("class"));
-	console.log($("#rightSlot").attr("class"));
 	if($("#leftSlot").attr("class") === "roundWinner") {
-		console.log("postLeftVote");
 		postVoteLeft();
 	}else if($("#rightSlot").attr("class") === "roundWinner") {
-		console.log("postRightVote");
 		postVoteRight();
 	}
 };
@@ -864,14 +945,17 @@ function displayFinalRanking(){
 }*/
 
 function saveRankingToDatabase() {
+	console.log(currentUser);
 	$.ajax({
 		method: "POST",
-		url: "/rankings/" + username,
+		url: "/rankings/" + currentUser,
 		data: {
-			user: username,
+			user: currentUser,
+			category: categoryId,
 			ranking: finalRanking
 		}
 	}).done(function(data) {
+		console.log(data);
 	});
 };
 
@@ -940,10 +1024,17 @@ $(document).on("click", ".deleteList", function(){
 });
 
 $('#profileIcon').click( function(event){
-    event.stopPropagation();
+    //event.stopPropagation();
+    console.log("profile");
     $('#profileMenu').toggle();
     $("#multiplayerMenu").hide();
     $("#customSelection").hide();
+});
+
+$("#profileButton").click(function(){
+	event.stopPropagation();
+	$("#profileDisplay").toggle();
+	$("#profileMenu").hide();
 });
 
 $("#onlineTab").click(function(event){
@@ -951,6 +1042,7 @@ $("#onlineTab").click(function(event){
 	$("#multiplayerMenu").toggle();
 	$("#profileMenu").hide();
 	$("#customSelection").hide();
+	$("#profileDisplay").hide();
 });
 
 $("#customTab").click(function(event){
@@ -958,13 +1050,16 @@ $("#customTab").click(function(event){
 	$("#customSelection").toggle();
 	$("#multiplayerMenu").hide();
 	$("#profileMenu").hide();
+	$("#profileDisplay").hide();
 	getCustomList();
-})
+});
 
-$(document).click( function(){
-    $('#profileMenu').hide();
-    $('#multiplayerMenu').hide();
-    $("#customSelection").hide();
+$(document).mouseup(function(e) {
+	console.log("document");
+    var container = $("#onlineTab, #customTab, #profileDisplay, #profileIcon, #profileMenu, #multiplayerMenu, #customSelection");
+    if (!container.is(e.target) && container.has(e.target).length === 0){
+    	container.hide();
+    }
 });
 
 function beginGame() {
