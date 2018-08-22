@@ -65,6 +65,30 @@ var top2017 = [
 	{name: "Pirates of the Caribbean: Dead Men Tell No Tales",score: 0,appearances: 0,image: "pirates5",rank: 0},
 	{name: "Kong: Skull Island",score: 0,appearances: 0,image: "kongSkullIsland",rank: 0}
 ];
+var harryPotter = [
+	{name: "The Sorcerer's Stone",score: 0,appearances: 0,image: "harryPotter1",rank: 0},
+	{name: "The Chamber of Secrets",score: 0,appearances: 0,image: "harryPotter2",rank: 0},
+	{name: "The Prisoner of Azkaban",score: 0,appearances: 0,image: "harryPotter3",rank: 0},
+	{name: "The Goblet of Fire",score: 0,appearances: 0,image: "harryPotter4",rank: 0},
+	{name: "The Order of the Phoenix",score: 0,appearances: 0,image: "harryPotter5",rank: 0},
+	{name: "The Half-Blood Prince",score: 0,appearances: 0,image: "harryPotter6",rank: 0},
+	{name: "The Deathly Hallows Part 1",score: 0,appearances: 0,image: "harryPotter7",rank: 0},
+	{name: "The Deathly Hallows Part 2",score: 0,appearances: 0,image: "harryPotter8",rank: 0},
+	{name: "Fantastic Beasts and Where to Find Them",score: 0,appearances: 0,image: "fantasticBeasts1",rank: 0},
+	{name: "Fantastic Beasts: The Crimes of Grindewald",score: 0,appearances: 0,image: "fantasticBeasts2",rank: 0}
+];
+var starWars = [
+	{name: "The Phantom Menace",score: 0,appearances: 0,image: "starWarsEpisode1",rank: 0},
+	{name: "Attack of the Clones",score: 0,appearances: 0,image: "starWarsEpisode2",rank: 0},
+	{name: "The Revenge of the Sith",score: 0,appearances: 0,image: "starWarsEpisode3",rank: 0},
+	{name: "A New Hope",score: 0,appearances: 0,image: "starWarsEpisode4",rank: 0},
+	{name: "The Empire Stikes Back",score: 0,appearances: 0,image: "starWarsEpisode5",rank: 0},
+	{name: "The Return of the Jedi",score: 0,appearances: 0,image: "starWarsEpisode6",rank: 0},
+	{name: "The Force Awakens",score: 0,appearances: 0,image: "starWarsEpisode7",rank: 0},
+	{name: "The Last Jedi",score: 0,appearances: 0,image: "starWarsEpisode8",rank: 0},
+	{name: "Rogue One",score: 0,appearances: 0,image: "rogueOne",rank: 0},
+	{name: "Solo",score: 0,appearances: 0,image: "solo",rank: 0}
+]
 var customMovies = [];
 
 //Global Variables
@@ -132,7 +156,7 @@ function getCurrentUsername() {
 };
 
 function displayProfileLetter() {
-	var colorArray = ["blue", "orange", "green", "red"];
+	var colorArray = ["yellow", "orange", "green", "red"];
 	$("#profileIcon").append(currentUser[0]);
 	var color = colorArray[Math.floor(Math.random()*colorArray.length)];
 	$("#profileIcon").css("background", color);
@@ -967,7 +991,7 @@ $("#replayButton").click(function(){
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
 	$(".category").css({"background-image": "none"});
-	$(this).css({"background-image": "url('../images/pow.png')"});
+	$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){
@@ -976,6 +1000,10 @@ $(".category").click(function(){
 		selectedCategory = top2017;
 	}else if(categoryId === "customGame"){
 		//getCustomList();
+	}else if(categoryId === "harryPotter"){
+		selectedCategory = harryPotter;
+	}else if(categoryId === "starWars"){
+		selectedCategory = starWars;
 	}
 });
 
@@ -1024,7 +1052,7 @@ $(document).on("click", ".deleteList", function(){
 });
 
 $('#profileIcon').click( function(event){
-    //event.stopPropagation();
+    event.stopPropagation();
     console.log("profile");
     $('#profileMenu').toggle();
     $("#multiplayerMenu").hide();
@@ -1056,7 +1084,7 @@ $("#customTab").click(function(event){
 
 $(document).mouseup(function(e) {
 	console.log("document");
-    var container = $("#onlineTab, #customTab, #profileDisplay, #profileIcon, #profileMenu, #multiplayerMenu, #customSelection");
+    var container = $("#profileDisplay, #profileMenu, #multiplayerMenu, #customSelection");
     if (!container.is(e.target) && container.has(e.target).length === 0){
     	container.hide();
     }

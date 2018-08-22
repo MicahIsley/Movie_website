@@ -119,7 +119,7 @@ button {
 	margin: 5px;
 	border-width: 5px;
 	border-radius: 5px;
-	border-color: black;
+	border-color: #002898;
 	border-style: solid;
 	font-family: 'Josefin Sans', sans-serif;
 }
@@ -141,7 +141,7 @@ button {
 #championDisplay {
 	display: none;
 	height: 70vh;
-	background: url(../images/resultsBackground.jpg) no-repeat center center fixed;
+	background: url(../images/siteAssets/resultsBackground.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
@@ -224,7 +224,7 @@ button {
 }
 
 #customResultsRow {
-	background-image: url("../images/blue-dots.gif");
+	background-image: url("../images/siteAssets/blue-dots.gif");
 	background-position: center;
 	padding-top: 20px;
 	position: relative;
@@ -302,7 +302,7 @@ button {
 	height: 70vh;
 	margin-bottom: 0px;
 	display: none;
-	background-image: url("../images/versus-background.gif");
+	background-image: url("../images/siteAssets/versus-background.gif");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -453,7 +453,7 @@ footer {
 #multiplayerLobby {
 	height: 70vh;
 	padding-top: 30px;
-	background-image: url("../images/blueComic.jpg");
+	background-image: url("../images/siteAssets/blueComic.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
@@ -462,7 +462,7 @@ footer {
 
 #multiplayerMatchups {
 	display: none;
-	background-image: url("../images/green-orange-bg.jpg");
+	background-image: url("../images/siteAssets/green-orange-bg.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -793,7 +793,7 @@ footer {
 
 	#firstRound {
 		height: 80vh;
-		background-image: url("../images/red-blue2-bg.jpg");
+		background-image: url("../images/siteAssets/red-blue2-bg.jpg");
 		background-size: 100% 100%;
 	}
 
