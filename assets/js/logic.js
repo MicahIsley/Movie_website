@@ -5,10 +5,12 @@ var marvelMovies = [
 	{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
 	{name: "Avengers: Age of Ultron",score: 0,appearances: 0,image: "avengers2",rank: 0},
 	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
+	/*{name: "Avengers: Endgame",score: 0, appearances: 0,image: "avengers4", rank: 0},*/
 	{name: "Black Panther",score: 0,appearances: 0,image: "blackPanther",rank: 0},
 	{name: "Captain America: The First Avenger",score: 0,appearances: 0,image: "captainAmerica",rank: 0},
 	{name: "Captain America: The Winter Soldier",score: 0,appearances: 0,image: "captainAmerica2",rank: 0},
 	{name: "Captain America: Civil War",score: 0,appearances: 0,image: "captainAmerica3",rank: 0},
+	{name: "Captain Marvel",score: 0,appearances: 0,image: "captainMarvel",rank: 0},
 	{name: "Doctor Strange",score: 0,appearances: 0,image: "doctorStrange",rank: 0},
 	{name: "Guardians of the Galaxy",score: 0,appearances: 0,image: "guardians",rank: 0},
 	{name: "Guardians of the Galaxy Vol.2",score: 0,appearances: 0,image: "guardians2",rank: 0},
@@ -40,6 +42,7 @@ var pixarMovies = [
 	{name: "Toy Story",score: 0,appearances: 0,image: "toyStory",rank: 0},
 	{name: "Toy Story 2",score: 0,appearances: 0,image: "toyStory2",rank: 0},
 	{name: "Toy Story 3",score: 0,appearances: 0,image: "toyStory3",rank: 0},
+	/*{name: "Toy Story 4",score: 0,appearances: 0,image: "toyStory4",rank: 0},*/
 	{name: "Up",score: 0,appearances: 0,image: "up",rank: 0	},
 	{name: "Wall-E",score: 0,appearances: 0,image: "wallE",rank: 0}
 ];
@@ -65,6 +68,28 @@ var top2017 = [
 	{name: "Pirates of the Caribbean: Dead Men Tell No Tales",score: 0,appearances: 0,image: "pirates5",rank: 0},
 	{name: "Kong: Skull Island",score: 0,appearances: 0,image: "kongSkullIsland",rank: 0}
 ];
+var top2018 = [
+	{name: "Black Panther",score: 0,appearances: 0,image: "blackPanther",rank: 0},
+	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
+	{name: "Incredibles 2",score: 0,appearances: 0,image: "incredibles2",rank: 0},
+	{name: "Jurassic World: Fallen Kingdom",score: 0,appearances: 0,image: "jurassicWorld2",rank: 0},
+	{name: "Aquaman",score: 0,appearances: 0,image: "aquaman",rank: 0},
+	{name: "Deadpool 2",score: 0,appearances: 0,image: "deadpool2",rank: 0},
+	{name: "Dr. Seuss' The Grinch",score: 0,appearances: 0,image: "theGrinch",rank: 0},
+	{name: "Mission: Impossible-Fallout",score: 0,appearances: 0,image: "missionImpossibleFallout",rank: 0},
+	{name: "Ant-Man and the Wasp",score: 0,appearances: 0,image: "antMan2",rank: 0},
+	{name: "Bohemian Rhapsody",score: 0,appearances: 0,image: "bohemianRhapsody",rank: 0},
+	{name: "Solo: A Star Wars Story",score: 0,appearances: 0,image: "solo",rank: 0},
+	{name: "Venom",score: 0,appearances: 0,image: "venom",rank: 0},
+	{name: "A Star is Born",score: 0,appearances: 0,image: "aStarIsBorn",rank: 0},
+	{name: "Ralph Breaks the Internet",score: 0,appearances: 0,image: "ralph2",rank: 0},
+	{name: "A Quiet Place",score: 0,appearances: 0,image: "aQuietPlace",rank: 0},
+	{name: "Spider-man: Into the Spider-verse",score: 0,appearances: 0,image: "spidermanIntoTheSpiderverse",rank: 0},
+	{name: "Crazy Rich Asians",score: 0,appearances: 0,image: "crazyRichAsians",rank: 0},
+	{name: "Mary Poppins Returns",score: 0,appearances: 0,image: "maryPoppinsReturns",rank: 0},
+	{name: "Hotel Transylvania 3: Summer Vaction",score: 0,appearances: 0,image: "hotelTransylvania3",rank: 0},
+	{name: "Fantastic Beasts: The Crimes of Grindelwald",score: 0,appearances: 0,image: "fantasticBeasts2",rank: 0}
+];
 var harryPotter = [
 	{name: "The Sorcerer's Stone",score: 0,appearances: 0,image: "harryPotter1",rank: 0},
 	{name: "The Chamber of Secrets",score: 0,appearances: 0,image: "harryPotter2",rank: 0},
@@ -86,9 +111,24 @@ var starWars = [
 	{name: "The Return of the Jedi",score: 0,appearances: 0,image: "starWarsEpisode6",rank: 0},
 	{name: "The Force Awakens",score: 0,appearances: 0,image: "starWarsEpisode7",rank: 0},
 	{name: "The Last Jedi",score: 0,appearances: 0,image: "starWarsEpisode8",rank: 0},
+	/*{name: "Episode 9",score: 0,appearances: 0,image: "starWarsEpisode9",rank: 0},*/
 	{name: "Rogue One",score: 0,appearances: 0,image: "rogueOne",rank: 0},
 	{name: "Solo",score: 0,appearances: 0,image: "solo",rank: 0}
-]
+];
+var xMenMovies = [
+	{name: "Deadpool",score: 0,appearances: 0,image: "deadpool",rank: 0},
+	{name: "Deadpool 2",score: 0,appearances: 0,image: "deadpool2",rank: 0},
+	{name: "Logan",score: 0,appearances: 0,image: "logan",rank: 0},
+	/*{name: "New Mutants",score: 0,appearances: 0,image: "newMutants",rank: 0},*/
+	{name: "The Wolverine",score: 0,appearances: 0,image: "theWolverine",rank: 0},
+	{name: "X-Men: Apocalypse",score: 0,appearances: 0,image: "xApocalypse",rank: 0},
+	/*{name: "X-Men: Dark Phoenix",score: 0,appearances: 0,image: "xDarkPhoenix",rank: 0},*/
+	{name: "X-Men: Days of Future Past",score: 0,appearances: 0,image: "xDaysOfFuturePast",rank: 0},
+	{name: "X-Men: First Class",score: 0,appearances: 0,image: "xFirstClass",rank: 0},
+	{name: "X-Men",score: 0,appearances: 0,image: "xMen1",rank: 0},
+	{name: "X-Men 2",score: 0,appearances: 0,image: "xMen2",rank: 0},
+	{name: "X-Men 3",score: 0,appearances: 0,image: "xMen3",rank: 0}
+];
 var customMovies = [];
 
 //Global Variables
@@ -990,8 +1030,9 @@ $("#replayButton").click(function(){
 
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
-	$(".category").css({"background-image": "none"});
-	$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});
+	$(".category").css({"background-color": "transparent"});
+	/*$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});*/
+	$(this).css({"background-color": "#ff1414"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){
@@ -1004,6 +1045,8 @@ $(".category").click(function(){
 		selectedCategory = harryPotter;
 	}else if(categoryId === "starWars"){
 		selectedCategory = starWars;
+	}else if(categoryId === "xMenMovies"){
+		selectedCategory = xMenMovies;
 	}
 });
 
@@ -1082,13 +1125,13 @@ $("#customTab").click(function(event){
 	getCustomList();
 });
 
-$(document).mouseup(function(e) {
+/*$(document).mouseup(function(e) {
 	console.log("document");
     var container = $("#profileDisplay, #profileMenu, #multiplayerMenu, #customSelection");
     if (!container.is(e.target) && container.has(e.target).length === 0){
     	container.hide();
     }
-});
+});*/
 
 function beginGame() {
 	scores = [];
