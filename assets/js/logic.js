@@ -189,6 +189,7 @@ function getUserData() {
 function getCurrentUsername() {
 	$.get("/api/userInfo/" + currentUserId.googleId, function(data) {
 		currentUser = data.username;
+		console.log(currentUser);
 		//checkForOnlineDuplicates();
 		displayProfileLetter();
 		displayOnline();
@@ -369,7 +370,7 @@ $("#readyButton").click(function() {
 	clearMultiplayer();
 });
 
-//Intro funtions
+//Intro funtionsr
 
 $(".okTextButton").click(function() {
 	console.log(pageNumber);
@@ -1030,9 +1031,9 @@ $("#replayButton").click(function(){
 
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
-	$(".category").css({"background-color": "transparent"});
+	$(".category").css({"background-color": "#374461"});
 	/*$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});*/
-	$(this).css({"background-color": "#ff1414"});
+	$(this).css({"background-color": "#6b2a2a"});
 	if(categoryId === "marvelMovies"){
 		selectedCategory = marvelMovies;
 	}else if(categoryId === "pixarMovies"){
@@ -1106,6 +1107,12 @@ $("#profileButton").click(function(){
 	event.stopPropagation();
 	$("#profileDisplay").toggle();
 	$("#profileMenu").hide();
+	$("#selectionRow").hide();
+});
+
+$("#closeProfile").click(function(){
+	$("#profileDisplay").hide();
+	$("#selectionRow").show();
 });
 
 $("#onlineTab").click(function(event){
@@ -1114,6 +1121,7 @@ $("#onlineTab").click(function(event){
 	$("#profileMenu").hide();
 	$("#customSelection").hide();
 	$("#profileDisplay").hide();
+	$("#selectionRow").show();
 });
 
 $("#customTab").click(function(event){
@@ -1122,6 +1130,7 @@ $("#customTab").click(function(event){
 	$("#multiplayerMenu").hide();
 	$("#profileMenu").hide();
 	$("#profileDisplay").hide();
+	$("#selectionRow").show();
 	getCustomList();
 });
 

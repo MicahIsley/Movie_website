@@ -28,66 +28,78 @@
 			<div class="row" id="multiplayerLobby">
 				<div class="col-xs-12">
 					<div class="row">
-						<div id="categoryRow">
-							<div id="categorySelection">
-								<div class="row">
-									<div>
-										<div class="message" id="categoryMessage">Select a category</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-4">
-										<div class="category" id="marvelMovies"><img src="images/siteAssets/marvelLogo.jpg" class="categoryLogo"></div>
-									</div>
-									<div class="col-xs-4">
-										<div class="category" id="pixarMovies"><img src="images/siteAssets/pixarLogo.jpg" class="categoryLogo"></div>
-									</div>
-								</div>
-								<div class="row">
-									<!--<div class="col-xs-6">
-										<div class="category" id="top2017">
-											<div class="categoryLogo" id="top2017Icon">Top Movies 2017</div>
-										</div>
-									</div>-->
-									<div class="col-sm-4">
-										<div class="category" id="harryPotter">
-											<img src="images/siteAssets/harryPotterLogo.jpg" class="categoryLogo">
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="category" id="starWars">
-											<img src="images/siteAssets/starWarsLogo.jpg" class="categoryLogo">
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="category" id="xMenMovies">
-											<img src="images/siteAssets/xMenLogo.jpg" class="categoryLogo">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="redButton" id="readyButton">Start</div>
-							</div>
-						</div>
 						<div class="col-sm-8 col-sm-offset-2" id="profileDisplay">
 							<div class="row">
 								<div class="col-sm-2">
 									<div class="row averageTab" id="marvelProfileTab">Marvel</div>
 									<div class="row averageTab" id="pixarProfileTab">Pixar</div>
 								</div>
-								<div class="col-sm-9" id="averageDisplay">
+								<div class="col-sm-8" id="averageDisplay">
 									<div class="row" id="averageHeader">Average Results</div>
 									<div class="row">
 										<div class="col-sm-6" id="averageDisplay1"></div>
 										<div class="col-sm-6" id="averageDisplay2"></div>
 									</div>
 								</div>
+								<div class="col-sm-1" id="closeProfile">
+									X
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-sm-4 col-sm-offset-8">
+					<div class="row" id="selectionRow">
+						<div class="col-xs-6">
+							<div class="row" id="categorySelection">
+									<div class="message" id="categoryMessage">Select a category</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="category categoryTest" id="marvelMovies">Marvel</div>
+									</div>
+									<div class="row">
+										<div class="category categoryTest" id="pixarMovies">Pixar</div>
+									</div>
+									<div class="row">
+										<div class="category categoryTest" id="harryPotter">Harry Potter</div>
+									</div>
+									<div class="row">
+										<div class="category categoryTest" id="starWars">Star Wars</div>
+									</div>
+								</div>
+							</div>
+							<!--<div class="row">	
+								<div class="col-xs-4">
+									<div class="category" id="marvelMovies"><img src="images/siteAssets/marvelLogo.jpg" class="categoryLogo"></div>
+								</div>
+								<div class="col-xs-4">
+									<div class="category" id="pixarMovies"><img src="images/siteAssets/pixarLogo.jpg" class="categoryLogo"></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="category" id="top2017">
+										<div class="categoryLogo" id="top2017Icon">Top Movies 2017</div>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="category" id="harryPotter">
+										<img src="images/siteAssets/harryPotterLogo.jpg" class="categoryLogo">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="category" id="starWars">
+										<img src="images/siteAssets/starWarsLogo.jpg" class="categoryLogo">
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="category" id="xMenMovies">
+										<img src="images/siteAssets/xMenLogo.jpg" class="categoryLogo">
+									</div>
+								</div>
+							</div>-->
+						</div>
+						<div class="col-xs-6">
 							<div class="row" id="multiplayerMenu">
 								<div class="col-xs-6 col-sm-5 col-sm-offset-1 multiDisplay">
 									<div class="row">
@@ -126,10 +138,11 @@
 						</div>
 					</div>
 					<div class="row" id="toolBarRow">
-						<div class="col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-5">
+						<div class="redButton" id="readyButton">Start!</div>
+						<div class="col-sm-2 col-sm-offset-8 col-xs-3 col-xs-offset-5">
 							<div class="toolBarTab" id="onlineTab">Online</div>
 						</div>
-						<div class="col-sm-1 col-xs-3">
+						<div class="col-sm-2 col-xs-3">
 							<div class="toolBarTab" id="customTab">Custom</div>
 						</div>
 					</div>
