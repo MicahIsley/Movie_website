@@ -68,10 +68,11 @@ a:hover {
 	text-align: center;
     font-size: 35px;
     color: white;
-    background: blue;
+    background: #374461;
     border-width: 5px;
-    border-color: red;
+    border-color: #007eff;
     border-style: solid;
+    border-radius: 5px;
     margin-top: 10%;
 }
 
@@ -115,10 +116,12 @@ button {
 }
 
 .categoryTest {
+	font-family: 'Josefin Sans', sans-serif;
 	margin-left: 10%;
+	padding-left: 5%;
 	font-size: 24px;
 	color: white;
-	background-color: #374461;
+	background: #374461;
 	border-width: 3px;
 	border-color: red;
 	border-style: solid;
@@ -417,7 +420,7 @@ footer {
 }
 
 #movieBattleLogo {
-	height: 120px;
+	height: 100px;
 }
 
 #movieBattleLogoLogin {
@@ -466,10 +469,9 @@ footer {
 }
 
 #multiplayerLobby {
-	height: 70vh;
+	height: 74vh;
 	padding-top: 30px;
-	/*background-image: url("../images/siteAssets/blueComic.jpg");*/
-	background-color: black;
+	background-image: url("../images/siteAssets/blue-dots.gif");
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
@@ -503,6 +505,7 @@ footer {
 	border-width: 3px;
 	border-radius: 5px;
 	box-shadow: 0px 3px 3px black;
+	-webkit-transition: border-color .15s ease-in;
 }
 
 .okTextButton:hover {
@@ -715,13 +718,18 @@ footer {
     text-align: center;
 }
 
+.top3Display {
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+}
+
 .top3Name {
 	font-size: 24px;
 	text-align: center;
 }
 
 #topRow {
-	height: 20vh;
+	height: 16vh;
 	background: #007eff;
 	padding-top: 5px;
 	box-shadow: 0px 5px 5px black;
