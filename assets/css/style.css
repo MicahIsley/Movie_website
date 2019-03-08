@@ -824,11 +824,6 @@ footer {
 		transform: scale(1);
 	}
 
-	#customSelection {
-		margin-top: 100%;
-		height: 180px;
-	}
-
 	#firstBracketText {
 		height: 80vh;
 	}
@@ -902,7 +897,7 @@ footer {
 	}
 
 	#multiplayerLobby {
-		height: 80vh;
+		height: 110vh;
 		padding-left: 15px;
 		padding-right: 15px;
 		padding-top: 0px;
@@ -1025,10 +1020,15 @@ footer {
 		font-size: 24px;
 	}
 
+	.customListData {
+		margin-left: 0px;
+		padding-left: 0px;
+		font-size: 24px;
+		width: 85%;
+	}
+
 	#customSelection {
-		margin-top: 20%;
-		background: white;
-		height: 250px;
+		z-index: 0;
 	}
 
 	.message {
@@ -1088,6 +1088,10 @@ footer {
 
 	#roundHeading {
 		font-size: 25px;
+	}
+
+	.toolBarTab {
+		display: none;
 	}
 
 	.top3Name {
