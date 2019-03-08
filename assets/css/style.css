@@ -22,6 +22,10 @@ a:hover {
 	text-decoration: none;
 }
 
+button:focus {
+	outline: none;
+}
+
 #averageDisplay {
 	margin-left: 15px;
 }
@@ -155,7 +159,7 @@ button {
 
 #championDisplay {
 	display: none;
-	height: 70vh;
+	height: 74vh;
 	background: url(../images/siteAssets/resultsBackground.jpg) no-repeat center center fixed;
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
@@ -190,12 +194,14 @@ button {
 }
 
 #customDisplay {
-	background: #ffffffa6;
+	background: #ffffffc2;
 	border-radius: 5px;
 	padding-left: 10px;
 	margin-top: 10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 22px;
 	box-shadow: 0px 5px 5px black;
 }
 
@@ -207,14 +213,25 @@ button {
 }
 
 .customListData {
-	width: 100px;
-	padding: 5px;
+	font-family: 'Josefin Sans', sans-serif;
+	margin-left: 10%;
+	padding-left: 5%;
+	font-size: 24px;
+	color: white;
+	background: #374461;
 	border-width: 3px;
-	border-color: black;
+	border-color: red;
 	border-style: solid;
-	margin-right: 10px;
-	background: green;
-	font-size: 20px;
+	border-radius: 5px;
+	text-align: left;
+	width: 80%;
+	margin-top: 5px;
+	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
+}
+
+.customListData:hover {
+	transform: translate(10px, 0px);
+	border-color: gold;
 }
 
 .customListRow {
@@ -222,7 +239,7 @@ button {
 }
 
 .customMoviePoster {
-	margin: 5px;
+	margin: 4px;
 	-webkit-transition: transform .2s ease-in, border-color .2s ease-in;
 }
 
@@ -231,7 +248,9 @@ button {
 	transform: scale(1.2);
 	border-style: solid;
 	border-color: #f3ec2f;
-	border-width: 5px;
+	border-width: 4px;
+	position: relative;
+	z-index: 2;
 }
 
 .customName {
@@ -253,20 +272,18 @@ button {
 #customSearchRow {
 	background: blue;
 	height: 100%;
-	box-shadow: 0px 5px 5px black;
-	position: relative;
-	z-index: 1;
+	border-color: grey;
+	border-width: 0px 0px 3px
+	border-style: solid;
 	padding-bottom: 20px;
 }
 
 #customSelection {
-	display: none;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
-    background: #ffffffa6;
-    border-radius: 5px;
-    height: 60vh;
+  	position: absolute;
+	z-index: 1;
+	top: 0px;
+	left: 0px;
+	width: 100%;
 }
 
 .deleteList {
@@ -314,7 +331,7 @@ button {
 }
 
 #firstRound {
-	height: 70vh;
+	height: 74vh;
 	margin-bottom: 0px;
 	display: none;
 	background-image: url("../images/siteAssets/versus-background.gif");
@@ -353,15 +370,7 @@ footer {
 }
 
 #goToCustomPage {
-	height: 40px;
-	width: 80px;
-	border-color: black;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 5px;
-	background: red;
-	text-align: center;
-	padding-top: 8px;
+	
 }
 
 #goToCustomPage:hover {
@@ -433,6 +442,7 @@ footer {
 
 #moviePoster {
 	margin-bottom: 150px;
+	padding-left: 6%;
 }
 
 .moviePoster {
@@ -471,7 +481,8 @@ footer {
 #multiplayerLobby {
 	height: 74vh;
 	padding-top: 30px;
-	background-image: url("../images/siteAssets/blue-dots.gif");
+	background-color: black;
+	/*background-image: url("../images/siteAssets/blue-dots.gif");*/
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
@@ -484,11 +495,16 @@ footer {
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 70vh;
+	height: 74vh;
 }
 
 #multiplayerMenu {
 	display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    width: 100%;
 }
 
 .okTextButton {
@@ -555,6 +571,8 @@ footer {
 	border-width: 3px 3px 3px 3px;
     border-color: black;
     border-style: solid;
+    position: absolute;
+    z-index: 3;
 }
 
 #profileIcon {

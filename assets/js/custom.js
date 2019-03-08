@@ -81,6 +81,8 @@ $("#finished").click(function(){
 	$.get("/custom", function(data) {
 		postCustomList();
 	});
+	$("#errorMessage").empty();
+	$("#errorMessage").append("Custom List Saved!");
 });
 
 function postCustomList() {

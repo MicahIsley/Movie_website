@@ -193,6 +193,7 @@ function getCurrentUsername() {
 		//checkForOnlineDuplicates();
 		displayProfileLetter();
 		displayOnline();
+		getCustomList();
 	});
 };
 
@@ -1032,6 +1033,7 @@ $("#replayButton").click(function(){
 $(".category").click(function(){
 	categoryId  = $(this).attr("id");
 	$(".category").css({"background-color": "#374461"});
+	$(".customListData").css({"background-color": "#374461"});
 	/*$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});*/
 	$(this).css({"background-color": "#6b2a2a"});
 	if(categoryId === "marvelMovies"){
@@ -1075,13 +1077,14 @@ $(document).on("click", ".customListData", function(){
 			customMovies.push(data[listId].customList[i]);
 		}
 	});
-	$(".customListData").css({"border-color": "black", "border-width": "3px"});
-	$(this).css({"border-color": "yellow", "border-width": "5px"});
 	selectedCategory = customMovies;
+	$(".category").css({"background-color": "#374461"});
+	$(".customListData").css({"background-color": "#374461"});
+	$(this).css({"background-color": "#6b2a2a"});
 });
 
 $(document).on("click", ".deleteList", function(){
-	var deleteDivId = $(this).parent().attr("id");
+	var deleteDivId = $(this).parent();
 	var deleteListId = $(this).attr("id");
 	$.ajax({
 		method: "DELETE",
@@ -1091,7 +1094,8 @@ $(document).on("click", ".deleteList", function(){
 		}
 	}).done(function(data) {
 		console.log(data);
-		$("#" + deleteDivId).remove();
+		console.log("#" + deleteDivId);
+		$(deleteDivId).remove();
 	});
 });
 
@@ -1100,39 +1104,35 @@ $('#profileIcon').click( function(event){
     console.log("profile");
     $('#profileMenu').toggle();
     $("#multiplayerMenu").hide();
-    $("#customSelection").hide();
+    /*$("#customSelection").hide();*/
 });
 
 $("#profileButton").click(function(){
 	event.stopPropagation();
 	$("#profileDisplay").toggle();
 	$("#profileMenu").hide();
-	$("#selectionRow").hide();
 });
 
 $("#closeProfile").click(function(){
 	$("#profileDisplay").hide();
-	$("#selectionRow").show();
 });
 
 $("#onlineTab").click(function(event){
 	event.stopPropagation();
 	$("#multiplayerMenu").toggle();
 	$("#profileMenu").hide();
-	$("#customSelection").hide();
+	/*$("#customSelection").hide();*/
 	$("#profileDisplay").hide();
-	$("#selectionRow").show();
 });
 
-$("#customTab").click(function(event){
+/*$("#customTab").click(function(event){
 	event.stopPropagation();
-	$("#customSelection").toggle();
+	/*$("#customSelection").toggle();
 	$("#multiplayerMenu").hide();
 	$("#profileMenu").hide();
 	$("#profileDisplay").hide();
-	$("#selectionRow").show();
-	getCustomList();
-});
+	//getCustomList();
+});*/
 
 /*$(document).mouseup(function(e) {
 	console.log("document");
