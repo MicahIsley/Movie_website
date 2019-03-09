@@ -329,9 +329,9 @@ function sortAverageRank(){
 	$("#averageDisplay2").empty();
 	for(i=0; i < averageRank.length; i++){
 		if(i < averageRank.length/2){
-			$("#averageDisplay1").append("<div class='row averageRow'><div class='col-xs-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-2 avgRank'>" + averageRank[i].rank + "</div></div>");
+			$("#averageDisplay1").append("<div class='row averageRow'><div class='col-xs-8 col-lg-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-1 col-lg-2 avgRank'>" + averageRank[i].rank + "</div></div>");
 		}else if(i >= averageRank.length/2){
-			$("#averageDisplay2").append("<div class='row averageRow'><div class='col-xs-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-2 avgRank'>" + averageRank[i].rank + "</div></div>");
+			$("#averageDisplay2").append("<div class='row averageRow'><div class='col-xs-8 col-lg-10 avgName'>" + averageRank[i].name + "</div><div class='col-xs-1 col-lg-2 avgRank'>" + averageRank[i].rank + "</div></div>");
 		}
 	}
 }

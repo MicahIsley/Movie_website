@@ -26,10 +26,6 @@ button:focus {
 	outline: none;
 }
 
-#averageDisplay {
-	margin-left: 15px;
-}
-
 #averageHeader {
 	text-align: center;
 	font-size: 20px;
@@ -174,6 +170,11 @@ button {
 	margin-left: 20%;
 	border-radius: 100px;
 	margin-top: 0px;
+}
+
+#closeProfile {
+	font-size: 20px;
+    margin-top: 15px;
 }
 
 #currentUser {
@@ -572,8 +573,10 @@ footer {
 	border-width: 3px 3px 3px 3px;
     border-color: black;
     border-style: solid;
+    border-radius: 5px;
     position: absolute;
     z-index: 3;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #profileIcon {
@@ -637,7 +640,7 @@ footer {
 	font-size: 26px;
 	width: 100px;
 	margin-top: 40px;
-	margin-left: 48%;
+	margin-left: 42%;
 	border-style: solid;
 	border-color: black;
 	border-width: 3px;
@@ -704,8 +707,8 @@ footer {
 
 .toolBarTab {
 	background: #ff1414;
-	font-family: 'Josefin Sans', sans-serif;
-	height: 50px;
+	mily: 'Josefin Sans', sans-serif;
+	height: 50px;font-fa
 	font-size: 24px;
 	color: white;
 	font-weight: bold;
@@ -958,6 +961,12 @@ footer {
 		transform: scale(1);
 	}
 
+	#profileDisplay {
+		height: 80vh;
+		overflow-y: auto;
+		margin-top: 15px;
+	}
+
 	#profileIcon {
 		height: 40px;
 		width: 40px;
@@ -976,8 +985,9 @@ footer {
 	}
 
 	.redButton {
-		margin-left: 39%;
+		margin-left: 33%;
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 
 	#replayButton {
@@ -1043,6 +1053,10 @@ footer {
 	}
 
 @media only screen and (max-width: 320px) {
+	.averageRow {
+		margin-top: 2px;
+	}
+
 	#beginnerTextBox {
 		font-size: 24px;
 	}
@@ -1134,10 +1148,5 @@ footer {
 
 	.top3Name {
 		font-size: 14px;
-	}
-
-	.versusRow {
-	    margin-top: -30%;
-	    margin-left: -21%;
 	}
 }
