@@ -818,7 +818,7 @@ footer {
 	}
 
 	#championDisplay {
-		height: 80vh;
+		height: auto;
 	}
 
 	.customMoviePoster {
@@ -1051,6 +1051,10 @@ footer {
 		font-size: 24px;
 	}
 
+	.byePoster {
+		height: 180px;
+	}
+
 	.customListData {
 		font-size: 22px;
 		width: 110%;
@@ -1130,5 +1134,10 @@ footer {
 
 	.top3Name {
 		font-size: 14px;
+	}
+
+	.versusRow {
+	    margin-top: -30%;
+	    margin-left: -21%;
 	}
 }
