@@ -812,6 +812,10 @@ footer {
 		margin-top: 10px;
 	}
 
+	.categoryTest {
+		margin-left: 0%;
+	}
+
 	#championDisplay {
 		height: 80vh;
 	}
@@ -822,6 +826,21 @@ footer {
 
 	.cumstomMoviePoster:hover {
 		transform: scale(1);
+	}
+
+	#customSelection {
+		position: unset;
+	}
+
+	.customListData {
+		padding: 15px;
+		padding-right: 5px;
+	    width: 100%;
+    	margin-left: 0px;
+	}
+
+	.deleteList {
+		margin-left: 35px;
 	}
 
 	#firstBracketText {
@@ -840,6 +859,10 @@ footer {
 
 	#firstTimeText {
 		height: 80vh;
+	}
+
+	footer {
+		position: unset;
 	}
 
 	#gameModeButton {
@@ -897,11 +920,10 @@ footer {
 	}
 
 	#multiplayerLobby {
-		height: 110vh;
+		height: auto;
 		padding-left: 15px;
 		padding-right: 15px;
 		padding-top: 0px;
-		font
 	}
 
 	#multiplayerMatchups {
@@ -949,7 +971,7 @@ footer {
 	}
 
 	#readyButton {
-		margin-left: 36%;
+		margin-left: 30%;
 		margin-top: 25px;
 	}
 
@@ -975,11 +997,20 @@ footer {
 		font-size: 32px;
 	}
 
+	#selectionRow {
+		margin-top: 15px;
+	}
+
 	#signInButton {
 		font-size: 30px;
 		height: 75px;
 		width: 140px;
 		padding-top: 11px;
+	}
+
+	#toolBarRow {
+		position: unset;
+		margin-bottom: 15px;
 	}
 
 	#top2017Icon {
@@ -1021,14 +1052,17 @@ footer {
 	}
 
 	.customListData {
-		margin-left: 0px;
-		padding-left: 0px;
-		font-size: 24px;
-		width: 85%;
+		font-size: 22px;
+		width: 110%;
 	}
 
 	#customSelection {
 		z-index: 0;
+		margin-top: 15px;
+	}
+
+	footer {
+		padding-top: 15px;
 	}
 
 	.message {

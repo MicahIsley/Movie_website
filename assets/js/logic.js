@@ -1063,7 +1063,7 @@ function getCustomList() {
 		}else{}
 		for(var i=0; i < data.length; i++){
 			if(data[i].user === currentUser){
-				$("#customListDisplay").append("<div class='row customListRow' id='div" + i + "'><div class='col-xs-12'><button class='customListData' id='"+i+"'>" + data[i].listName + "</button><button class='deleteList' id='" + data[i]._id + "'>X</button></div></div>");
+				$("#customListDisplay").append("<div class='row customListRow' id='div" + i + "'><div class='col-xs-12'><div class='customListData' id='"+i+"'>" + data[i].listName + "<button class='deleteList' id='" + data[i]._id + "'>X</button></div></div>");
 			}
 		}
 	});
