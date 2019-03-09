@@ -289,6 +289,7 @@ button {
 .deleteList {
 	font-weight: bold;
 	text-align: center;
+	float: right;
 }
 
 .deleteList:hover {
@@ -852,13 +853,13 @@ footer {
 	}
 
 	#firstRound {
-		height: 80vh;
+		height: auto;
 		background-image: url("../images/siteAssets/red-blue2-bg.jpg");
 		background-size: 100% 100%;
 	}
 
 	#firstTimeText {
-		height: 80vh;
+		height: auto;
 	}
 
 	footer {
@@ -927,7 +928,7 @@ footer {
 	}
 
 	#multiplayerMatchups {
-		height: 80vh;
+		height: auto;
 	}
 
 	#multiplayerMenu {
@@ -971,7 +972,7 @@ footer {
 	}
 
 	#readyButton {
-		margin-left: 30%;
+		margin-left: 33%;
 		margin-top: 25px;
 	}
 
@@ -1026,7 +1027,7 @@ footer {
 	}
 
 	#topRow {
-		height: 10vh;
+		height: auto;
 	}
 
 	.versusRow {
@@ -1094,7 +1095,7 @@ footer {
 	}
 
 	.moviePoster {
-		height: 190px;
+		height: 170px;
 	}
 
 	.multiDisplay {
@@ -1111,7 +1112,7 @@ footer {
 	}
 
 	.posterPoster {
-		height: 190px;
+		height: 170px;
 	}
 
 	#rankingDisplay {
