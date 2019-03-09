@@ -852,10 +852,12 @@ footer {
 		height: auto;
 		background-image: url("../images/siteAssets/red-blue2-bg.jpg");
 		background-size: 100% 100%;
+		padding-bottom: 8%;
 	}
 
 	#firstTimeText {
 		height: auto;
+		padding-bottom: 37%;
 	}
 
 	footer {
@@ -925,6 +927,7 @@ footer {
 
 	#multiplayerMatchups {
 		height: auto;
+		padding-bottom: 8%;
 	}
 
 	#multiplayerMenu {
@@ -1091,7 +1094,7 @@ footer {
 	}
 
 	.moviePoster {
-		height: 170px;
+		height: 180px;
 	}
 
 	.multiDisplay {
@@ -1108,7 +1111,7 @@ footer {
 	}
 
 	.posterPoster {
-		height: 170px;
+		height: 180px;
 	}
 
 	#rankingDisplay {
