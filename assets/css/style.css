@@ -436,6 +436,10 @@ footer {
     -webkit-font-smoothing: antialiased;
 }
 
+.mobileOption {
+	display: none;
+}
+
 #movieBattle {
 	border-color: red;
 	border-width: 5px 0px 5px 0px;
@@ -519,8 +523,8 @@ footer {
     position: absolute;
     z-index: 2;
     top: 0px;
-    left: 0px;
     width: 100%;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .okTextButton {
@@ -627,6 +631,8 @@ footer {
 	margin: 5px;
 	color: black;
 	background: lightgrey;
+	border-radius: 5px;
+	background-color: #007eff;
 }
 
 .profileMenuOption:hover {
@@ -908,6 +914,10 @@ footer {
 		padding-left: 7px;
 	}
 
+	.mobileOption {
+		display: block;
+	}
+
 	#movie1 {
 	    margin-left: -7%;
     	margin-top: 2px;
@@ -961,10 +971,11 @@ footer {
 
 	.onlinePlayer {
 		margin-left: 0px;
+		font-size: 20px;
 	}
 
 	.onlineTitle {
-		font-size: 22px;
+		font-size: 18px;
 	}
 
 	#overallWinner {
@@ -989,6 +1000,16 @@ footer {
 		height: 40px;
 		width: 40px;
 		padding-top: 8px;
+	}
+
+	#profileMenu {
+	    width: 220%;
+   		margin-left: -60px;
+	}
+
+	.profileMenuOption {
+	    font-size: 20px;
+	    padding: 5px;
 	}
 
 	#rankingDisplay {
