@@ -1122,7 +1122,7 @@ $("#closeProfile").click(function(){
 	$("#profileDisplay").hide();
 });
 
-$("#onlineTab").click(function(event){
+$(".onlineTab").click(function(event){
 	event.stopPropagation();
 	$("#multiplayerMenu").toggle();
 	$("#profileMenu").hide();
