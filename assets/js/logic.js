@@ -358,6 +358,11 @@ $(document).on("click", ".glyphicon-minus-sign", function(){
 	}
 });
 
+$("#hamburgerIcon").click(function() {
+	console.log("click");
+    $('#hamburgerMenu').toggle();
+});
+
 $("#readyButton").click(function() {
 	multiplayerGroup.push(currentUser);
 	multiplayerSize = $("#yourGroupMembers > div").length + 1;
@@ -371,7 +376,7 @@ $("#readyButton").click(function() {
 	clearMultiplayer();
 });
 
-//Intro funtionsr
+//Intro functions
 
 $(".okTextButton").click(function() {
 	console.log(pageNumber);

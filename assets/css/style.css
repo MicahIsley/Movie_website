@@ -60,7 +60,7 @@ button:focus {
 }
 
 #beginnerText {
-	height: 180px;
+	height: 18;bv'.'hbv 	q0px;
 }
 
 #beginnerTextBox {
@@ -386,6 +386,20 @@ footer {
 
 #groupMembersRow {
 	margin-top: -10px;
+}
+
+#hamburgerIcon {
+	font-size: 36px;
+	top: 0px;
+	margin-left: 60%;
+	display: none;
+}
+
+#hamburgerMenu {
+	display: none;
+    position: absolute;
+    z-index: 2;
+    background: white;
 }
 
 #loginTitle {
@@ -871,6 +885,10 @@ footer {
 		margin-left: 0%;
 	}
 
+	#hamburgerIcon {
+		display: block;
+	}
+
 	#leftSlot {
 		margin-left: -2%;
 		margin-top: 2px;
@@ -934,7 +952,7 @@ footer {
 	}
 
 	#multiplayerMenu {
-		margin-top: 100%;
+		margin-top: -400px;
 	}
 
 	.okTextButton {
@@ -1021,6 +1039,10 @@ footer {
 	#toolBarRow {
 		position: unset;
 		margin-bottom: 15px;
+	}
+
+	.toolBarTab {
+		display: none;
 	}
 
 	#top2017Icon {
@@ -1118,10 +1140,6 @@ footer {
 	.multiDisplay {
 		background: white;
 		height: 250px;
-	}
-
-	#multiplayerMenu {
-		margin-top: 20%;
 	}
 
 	.okTextButton {
