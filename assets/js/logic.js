@@ -687,6 +687,7 @@ $(document).on("click", ".bracketPoster", function(){
 //Voting
 
 function postVote() {
+	console.log("postVote");
 	if($("#leftSlot").attr("class") === "roundWinner") {
 		postVoteLeft();
 	}else if($("#rightSlot").attr("class") === "roundWinner") {
