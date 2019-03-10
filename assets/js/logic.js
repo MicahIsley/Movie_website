@@ -747,7 +747,6 @@ function clearVotingData() {
 				method: "PUT",
 				url: "/voting/reset"
 			}).done(function(data) {
-				console.log(data);
 				if(multiplayerRound > 0) {
 					displayMultiplayerBracket();
 				}else{}
@@ -927,7 +926,7 @@ $(document).on("click", ".top8Poster", function(){
 	var top4MovieName = $(this).attr("id");
 	var loserIdTop8Name = $(this).parent().parent().siblings().children().children().attr("id");
 	var loser = $(this).parent().parent().siblings().children().children();
-	loser.removeClass("bracketPoster");
+	loser.removeClass("top8Poster");
 	loser.css("-webkit-filter", "grayscale(1)");
 	var classWinner = $(this).parent();
 	$(classWinner).addClass("roundWinner");
@@ -937,6 +936,7 @@ $(document).on("click", ".top8Poster", function(){
 });
 
 $(document).on("click", ".top4Poster", function(){
+	$(this).removeClass("top4Poster");
 	var top4MoviePoster = $(this);
 	$("#leftSlot").removeClass("roundWinner");
 	$("#rightSlot").removeClass("roundWinner");
@@ -946,7 +946,7 @@ $(document).on("click", ".top4Poster", function(){
 	var loserIdTop4Name = $(this).parent().parent().siblings().children().children().attr("id");
 	$(this).removeClass("top4Poster");
 	var loser = $(this).parent().parent().siblings().children().children();
-	loser.removeClass("bracketPoster");
+	loser.removeClass("top4Poster");
 	loser.css("-webkit-filter", "grayscale(1)");
 	var classWinner = $(this).parent();
 	$(classWinner).addClass("roundWinner");
@@ -961,7 +961,7 @@ $(document).on("click", ".top2Poster", function(){
 	$("#leftSlot").removeClass("roundWinner");
 	$("#rightSlot").removeClass("roundWinner");
 	var loser = $(this).parent().parent().siblings().children().children();
-	loser.removeClass("bracketPoster");
+	loser.removeClass("top2Poster");
 	loser.css("-webkit-filter", "grayscale(1)");
 	var classWinner = $(this).parent();
 	$(classWinner).addClass("roundWinner");
