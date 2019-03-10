@@ -716,9 +716,11 @@ function postVoteRight() {
 
 function createVotingDatabase() {
 	$.get("/voting", function(data) {
+		console.log(data);
 		if(data.length > 0) {
 			postVote();
 		}else {
+			console.log("make new voting");
 			$.ajax({
 				method: "POST",
 				url: "/newVoting",
