@@ -695,6 +695,7 @@ function postVote() {
 };
 
 function postVoteLeft() {
+	console.log("postLeft");
 	$.ajax({
 		method: "PUT",
 		url: "/voting/updateLeft" 
@@ -704,6 +705,7 @@ function postVoteLeft() {
 };
 
 function postVoteRight() {
+	console.log("postRight");
 	$.ajax({
 		method: "PUT",
 		url: "/voting/updateRight" 
@@ -752,6 +754,7 @@ function clearVotingData() {
 
 function determineRoundWinner() {
 	$.get("/voting", function(data) {
+		console.log(data);
 		if(data[0].votes === multiplayerSize){
 			clearTimeout(votingTimeout);
 			var winningSide = "tie";
