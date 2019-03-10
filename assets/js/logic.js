@@ -744,9 +744,10 @@ function clearVotingData() {
 			}else{}
 		}else{
 			$.ajax({
-				method: "DELETE",
-				url: "/voting/deleteAll"
+				method: "PUT",
+				url: "/voting/reset"
 			}).done(function(data) {
+				console.log(data);
 				if(multiplayerRound > 0) {
 					displayMultiplayerBracket();
 				}else{}
