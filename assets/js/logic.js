@@ -1046,6 +1046,7 @@ $(".category").click(function(){
 	categoryId  = $(this).attr("id");
 	$(".category").css({"background-color": "#374461"});
 	$(".customListData").css({"background-color": "#374461"});
+	$("#readyButton").addClass("pulsate");
 	/*$(this).css({"background-image": "url('../images/siteAssets/pow.png')"});*/
 	$(this).css({"background-color": "#6b2a2a"});
 	if(categoryId === "marvelMovies"){
