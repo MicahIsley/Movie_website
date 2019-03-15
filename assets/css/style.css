@@ -172,6 +172,17 @@ button {
 	margin-top: 0px;
 }
 
+#circleTracker {
+	background-color: grey;
+	border-width: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 17px;
+	height: 35px;
+	width: 35px;
+	padding: 0px;
+}
+
 #closeProfile {
 	font-size: 20px;
     margin-top: 15px;
@@ -1164,7 +1175,7 @@ footer {
 	}
 
 	.customMoviePoster {
-		height: 145px;
+		height: 190px;
 	}
 
 	#customResultsRow {
@@ -1177,8 +1188,9 @@ footer {
 	}
 
 	#finished {
-		height: 88px;
+		height: 70px;
 		font-size: 18px;
+		margin-left: 33.33%;
 	}
 
 	footer {

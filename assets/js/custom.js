@@ -65,8 +65,11 @@ $(document).on("click", ".customMoviePoster", function(){
 		}
 	}else{
 		custom.push(newCustom);
+		$("#listTab").css("background-color", "green");
 	}
 	displayCustomList();
+	$("#circleTracker").empty();
+	$("#circleTracker").append(custom.length);
 });
 
 function displayCustomList(){
