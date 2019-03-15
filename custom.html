@@ -12,15 +12,15 @@
 			<div class="row" id="customSearchRow">
 				<div class="col-xs-12">
 					<div class="row">
-						<div class="col-xs-4 col-xs-offset-3">
+						<div class="col-xs-8 col-sm-4 col-sm-offset-3">
 							<div class="message">Search For Movies</div>
 						</div>
-						<div class="col-xs-2 col-xs-offset-2">
+						<div class="col-xs-4 col-sm-2 col-sm-offset-2">
 							<a href="/index"><button class="redButton" id="customBackButton">Back</button></a>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-7 col-xs-offset-1">
+						<div class="col-xs-7 col-sm-7 col-sm-offset-1">
 							<input type="text" name="movie" class="form-control" id="movieField" placeholder="Movie">
 						</div>
 						<div class="col-xs-2">
@@ -29,10 +29,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" id="customResultsRow">
-				<div class="col-xs-8" id="moviePoster">
+			<div class="row" id="mobileCustomRow">
+				<div class="col-xs-6 mobileCustomTab" id="resultsTab">
+					Results
 				</div>
-				<div class="col-xs-4" id="customRightSide">
+				<div class="col-xs-6 mobileCustomTab" id="listTab">
+					List
+				</div>
+			</div>
+			<div class="row" id="customResultsRow">
+				<div class="col-xs-12 col-sm-8" id="customLeftSide">
+				</div>
+				<div class="col-xs-12 col-sm-4" id="customRightSide">
 					<div class="row">
 						<div class="message">Custom Movie List</div>
 					</div>
@@ -45,14 +53,14 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-11" id="customDisplay">
+						<div class="col-xs-10 col-xs-offset-1 col-sm-11" id="customDisplay">
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-xs-12 col-sm-4">
 							<button class="redButton" id="finished">Finished</button>
 						</div>
-						<div class="col-xs-6">
+						<div class="col-xs-12 col-sm-6">
 							<div id="errorMessage"></div>
 						</div>
 					</div>

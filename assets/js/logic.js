@@ -198,6 +198,7 @@ function getCurrentUsername() {
 };
 
 function displayProfileLetter() {
+	multiplayerGroup.push(currentUser);
 	var colorArray = ["yellow", "orange", "green", "red"];
 	$("#profileIcon").append(currentUser[0]);
 	var color = colorArray[Math.floor(Math.random()*colorArray.length)];
@@ -347,6 +348,23 @@ $(document).on("click", ".glyphicon-plus-sign", function(){
 	for(i=0; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
 	}
+	$.get("/customList", function(data) {
+		$("#customListDisplay").empty();
+		if(data.length === 0){
+			console.log("you need to make a list");
+		}else{}
+		for(var i=0; i < data.length; i++){
+			console.log(data[i]);
+			for(var j=0; j < multiplayerGroup.length; j++){
+				console.log(multiplayerGroup[j]);
+				if(multiplayerGroup[j] === data[i].user){
+					console.log(multiplayerGroup[j]);
+					$("#customListDisplay").append("<div class='row customListRow' id='div" + i + "'><div class='col-xs-12'><div class='customListData' id='"+i+"'>" + data[i].listName + "<button class='deleteList' id='" + data[i]._id + "'>X</button></div></div>");
+				}
+			}
+		}
+	});
+
 });
 
 $(document).on("click", ".glyphicon-minus-sign", function(){
@@ -356,6 +374,17 @@ $(document).on("click", ".glyphicon-minus-sign", function(){
 	for(i=0; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
 	}
+	$.get("/customList", function(data) {
+		if(data.length === 0){
+			console.log("you need to make a list");
+		}else{}
+		$("#customListDisplay").empty();
+		for(var i=0; i < data.length; i++){
+			if(data[i].user === currentUser){
+				$("#customListDisplay").append("<div class='row customListRow' id='div" + i + "'><div class='col-xs-12'><div class='customListData' id='"+i+"'>" + data[i].listName + "<button class='deleteList' id='" + data[i]._id + "'>X</button></div></div>");
+			}
+		}
+	});
 });
 
 $("#hamburgerIcon").click(function() {
@@ -364,7 +393,6 @@ $("#hamburgerIcon").click(function() {
 });
 
 $("#readyButton").click(function() {
-	multiplayerGroup.push(currentUser);
 	multiplayerSize = $("#yourGroupMembers > div").length + 1;
 	$.ajax({
 		method: "PUT",

@@ -34,10 +34,10 @@ $("#submit").click(function(){
       url: "https://api.themoviedb.org/3/search/movie?api_key=15f42708446edc241bf0072e277289fe&query=" + query,
       method: "GET"
     }).done(function(response) {
-      $("#moviePoster").empty();
+      $("#customLeftSide").empty();
       for(i=0; i<response.results.length; i ++){
       	if(response.results[i].vote_count >= 75){
-      		$("#moviePoster").append("<img class='customMoviePoster' id='" + response.results[i].title + "' src='https://image.tmdb.org/t/p/w200" + response.results[i].poster_path + "'>");
+      		$("#customLeftSide").append("<img class='customMoviePoster' id='" + response.results[i].title + "' src='https://image.tmdb.org/t/p/w200" + response.results[i].poster_path + "'>");
       	}
       }
 	});
@@ -111,6 +111,16 @@ function postCustomList() {
 		$("#errorMessage").empty();
 	}, 3000);
 };
+
+$("#resultsTab").click(function() {
+	$("#customLeftSide").show();
+	$("#customRightSide").hide();
+});
+
+$("#listTab").click(function() {
+	$("#customLeftSide").hide();
+	$("#customRightSide").show();
+});
 
 getUserData();
 

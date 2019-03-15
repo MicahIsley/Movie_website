@@ -436,6 +436,11 @@ footer {
     -webkit-font-smoothing: antialiased;
 }
 
+#mobileCustomRow {
+	display: none;
+	background-color: red;
+}
+
 .mobileOption {
 	display: none;
 }
@@ -460,7 +465,7 @@ footer {
 	margin-top: 20px;
 }
 
-#moviePoster {
+#customLeftSide {
 	margin-bottom: 150px;
 	padding-left: 6%;
 }
@@ -871,6 +876,14 @@ footer {
 		transform: scale(1);
 	}
 
+	#customLeftSide {
+		margin-bottom: 112%;
+	}
+
+	#customRightSide {
+		display: none;
+	}
+
 	#customSelection {
 		position: unset;
 	}
@@ -931,6 +944,16 @@ footer {
 
 	#mobilCol {
 		padding-left: 7px;
+	}
+
+	#mobileCustomRow {
+		display: block;
+	}
+
+	.mobileCustomTab {
+		color: white;
+	    font-size: 24px;
+	    text-align: center;
 	}
 
 	.mobileOption {
@@ -1053,6 +1076,12 @@ footer {
 	    text-align: center;
 	}
 
+	#resultsTab {
+		border-color: black;
+		border-width: 0px 2px 0px 0px;
+		border-style: solid;
+	}
+
 	#rightSlot {
 	    margin-left: 57%;
     	margin-top: 8%;
@@ -1134,9 +1163,22 @@ footer {
 		width: 110%;
 	}
 
+	.customMoviePoster {
+		height: 145px;
+	}
+
+	#customResultsRow {
+		padding-bottom: 42%;
+	}
+
 	#customSelection {
 		z-index: 0;
 		margin-top: 15px;
+	}
+
+	#finished {
+		height: 88px;
+		font-size: 18px;
 	}
 
 	footer {
@@ -1145,6 +1187,7 @@ footer {
 
 	.message {
 		font-size: 18px;
+		margin-top: 15px;
 	}
 
 	#movie1 {
