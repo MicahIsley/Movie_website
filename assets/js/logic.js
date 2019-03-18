@@ -151,6 +151,7 @@ var mode = "group";
 var onlineTimeout;
 var firstRoundTimeout;
 var downloadCompiledTimeout;
+var readyTimeout;
 var votingTimeout;
 var compiledRank = [];
 var multiplayerRound = 0;
@@ -158,6 +159,7 @@ var player;
 var pageNumber = 0;
 var pageText = ["Welcome to the first round! Pick one movie from each pair.", "Then we'll turn the results into a single-elimination bracket.", "Let's Play!", "Hey1 ", "Pick one movie from each pair, just like before", "Only this time, the ones you don't pick are elimated forever!", "Keep playing until only one movie is standing!", "Let the Superbattle begin!"];
 var averageRank = [];
+var numberReady = 0
 //Login/logout functions
 
 
@@ -345,8 +347,8 @@ $(document).on("click", ".glyphicon-plus-sign", function(){
 	if (multiplayerGroup.indexOf(addPlayer) === -1){
 		multiplayerGroup.push(addPlayer);
 	}else{}
-	for(i=0; i < multiplayerGroup.length; i++){
-		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
+	for(i=1; i < multiplayerGroup.length; i++){
+		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + i + "'></div></div>");
 	}
 	$.get("/customList", function(data) {
 		$("#customListDisplay").empty();
@@ -368,10 +370,13 @@ $(document).on("click", ".glyphicon-plus-sign", function(){
 });
 
 $(document).on("click", ".glyphicon-minus-sign", function(){
+	console.log(multiplayerGroup);
 	var removePlayer = $(this).attr("id");
-	multiplayerGroup.splice(removePlayer);
+	console.log(removePlayer);
+	multiplayerGroup.splice(removePlayer, 1);
+	console.log(multiplayerGroup);
 	$("#yourGroupMembers").empty();
-	for(i=0; i < multiplayerGroup.length; i++){
+	for(i=1; i < multiplayerGroup.length; i++){
 		$("#yourGroupMembers").append("<div class='row'>" + multiplayerGroup[i] + "<div class='glyphicon glyphicon-minus-sign' id='" + multiplayerGroup[i] + "'></div></div>");
 	}
 	$.get("/customList", function(data) {
@@ -399,10 +404,35 @@ $("#readyButton").click(function() {
 		url: "/online/updateReady/" + currentUser
 	}).done(function(data) {
 	});
-	$("#multiplayerLobby").hide();
+	//$("#multiplayerLobby").hide();
+	checkGroupReady();
 	clearTimeout(onlineTimeout);
-	clearMultiplayer();
 });
+
+function checkGroupReady() {
+	numberReady = 0;
+	$.get("/online", function(data) {
+		for(var i =0; i < data.length; i++){
+			console.log(data[i].ready);
+			for(var j=1; j < multiplayerGroup.length; j++){
+				if(data[i].username === multiplayerGroup[j]){
+					console.log(data[i].username + " " + multiplayerGroup[j]);
+					if(data[i].ready === true){
+						numberReady ++;
+						console.log(numberReady);
+						if(numberReady === multiplayerGroup.length-1){
+						clearMultiplayer();
+						clearTimeout(readyTimeout);
+						}else{
+							console.log("waiting for group to ready");
+						}
+					}else{}
+				}
+			}
+		}
+	});
+	readyTimeout = setTimeout("checkGroupReady()", 1000);
+}
 
 //Intro functions
 
@@ -521,6 +551,7 @@ function bracketStage(){
 
 //Multiplayer Database
 function clearMultiplayer() {
+	$("#multiplayerLobby").hide();
 	$.get("/multiplayer", function(data) {
 		if(data.length === 0){
 			beginGame();
