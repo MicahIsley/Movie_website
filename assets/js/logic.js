@@ -405,7 +405,12 @@ $("#readyButton").click(function() {
 	}).done(function(data) {
 	});
 	//$("#multiplayerLobby").hide();
-	checkGroupReady();
+	console.log(multiplayerSize);
+	if(multiplayerSize === 1){
+		clearMultiplayer();
+	}else {
+		checkGroupReady();
+	}
 	clearTimeout(onlineTimeout);
 });
 
@@ -413,7 +418,6 @@ function checkGroupReady() {
 	numberReady = 0;
 	$.get("/online", function(data) {
 		for(var i =0; i < data.length; i++){
-			console.log(data[i].ready);
 			for(var j=1; j < multiplayerGroup.length; j++){
 				if(data[i].username === multiplayerGroup[j]){
 					console.log(data[i].username + " " + multiplayerGroup[j]);
@@ -1099,6 +1103,7 @@ function saveRankingToDatabase() {
 $("#replayButton").click(function(){
 	$("#multiplayerLobby").show();
 	$("#championDisplay").hide();
+	onlineTimeout = setTimeout("findOnline()", 1000);
 });
 
 $(".category").click(function(){
