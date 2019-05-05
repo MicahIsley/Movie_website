@@ -5,7 +5,7 @@ var marvelMovies = [
 	{name: "Avengers",score: 0,appearances: 0,image: "avengers",rank: 0},
 	{name: "Avengers: Age of Ultron",score: 0,appearances: 0,image: "avengers2",rank: 0},
 	{name: "Avengers: Infinity War",score: 0,appearances: 0,image: "avengers3",rank: 0},
-	/*{name: "Avengers: Endgame",score: 0, appearances: 0,image: "avengers4", rank: 0},*/
+	{name: "Avengers: Endgame",score: 0, appearances: 0,image: "avengers4", rank: 0},
 	{name: "Black Panther",score: 0,appearances: 0,image: "blackPanther",rank: 0},
 	{name: "Captain America: The First Avenger",score: 0,appearances: 0,image: "captainAmerica",rank: 0},
 	{name: "Captain America: The Winter Soldier",score: 0,appearances: 0,image: "captainAmerica2",rank: 0},
@@ -128,6 +128,25 @@ var xMenMovies = [
 	{name: "X-Men",score: 0,appearances: 0,image: "xMen1",rank: 0},
 	{name: "X-Men 2",score: 0,appearances: 0,image: "xMen2",rank: 0},
 	{name: "X-Men 3",score: 0,appearances: 0,image: "xMen3",rank: 0}
+];
+var upcoming2019 = [
+	{name: "Shazam!",score: 0,appearances: 0,image: "shazam",rank: 0},
+	{name: "Hellboy",score: 0,appearances: 0,image: "hellboy",rank: 0},
+	{name: "Avenger: Endgame",score: 0,appearances: 0,image: "avengers4",rank: 0},
+	{name: "Pokemon Detective Pikachu",score: 0,appearances: 0,image: "detectivePikachu",rank: 0},
+	{name: "Aladdin",score: 0,appearances: 0,image: "aladdin",rank: 0},
+	{name: "Godzilla: King of the Monsters",score: 0,appearances: 0,image: "godzilla2",rank: 0},
+	{name: "Dark Phoenix",score: 0,appearances: 0,image: "xDarkPhoenix",rank: 0},
+	{name: "Men in Black: International",score: 0,appearances: 0,image: "menInBlackInt",rank: 0},
+	{name: "Toy Story 4",score: 0,appearances: 0,image: "toyStory4",rank: 0},
+	{name: "Spider-man: Far From Home",score: 0,appearances: 0,image: "spidermanFarFromHome",rank: 0},
+	{name: "The Lion King",score: 0,appearances: 0,image: "theLionKing",rank: 0},
+	{name: "theNewMutants",score: 0,appearances: 0,image: "newMutants",rank: 0},
+	{name: "Artemis Fowl",score: 0,appearances: 0,image: "artemisFowl",rank: 0},
+	{name: "Downton Abbey",score: 0,appearances: 0,image: "downtonAbbey",rank: 0},
+	{name: "Sonic the Hedgehog",score: 0,appearances: 0,image: "sonicTheHedgehog",rank: 0},
+	{name: "Frozen II",score: 0,appearances: 0,image: "frozen2",rank: 0},
+	{name: "Star Wars: Episode IX",score: 0,appearances: 0,image: "starWarsEpisode9",rank: 0}
 ];
 var customMovies = [];
 
