@@ -19,6 +19,7 @@ var marvelMovies = [
 	{name: "Iron Man 2",score: 0,appearances: 0,image: "ironMan2",rank: 0},
 	{name: "Iron Man 3",score: 0,appearances: 0,image: "ironMan3",rank: 0},
 	{name: "Spiderman: Homecoming",score: 0,appearances: 0,image: "spidermanHomecoming",rank: 0},
+	{name: "Spiderman: Far From Home", score: 0,appearances: 0,image: "spidermanFarFromHome",rank: 0},
 	{name: "Thor",score: 0,appearances: 0,image: "thor",rank: 0},
 	{name: "Thor: The Dark World",score: 0,appearances: 0,image: "thor2",rank: 0},
 	{name: "Thor: Ragnarok",score: 0,appearances: 0,image: "thor3",rank: 0}
@@ -42,7 +43,7 @@ var pixarMovies = [
 	{name: "Toy Story",score: 0,appearances: 0,image: "toyStory",rank: 0},
 	{name: "Toy Story 2",score: 0,appearances: 0,image: "toyStory2",rank: 0},
 	{name: "Toy Story 3",score: 0,appearances: 0,image: "toyStory3",rank: 0},
-	/*{name: "Toy Story 4",score: 0,appearances: 0,image: "toyStory4",rank: 0},*/
+	{name: "Toy Story 4",score: 0,appearances: 0,image: "toyStory4",rank: 0},
 	{name: "Up",score: 0,appearances: 0,image: "up",rank: 0	},
 	{name: "Wall-E",score: 0,appearances: 0,image: "wallE",rank: 0}
 ];
@@ -122,7 +123,7 @@ var xMenMovies = [
 	/*{name: "New Mutants",score: 0,appearances: 0,image: "newMutants",rank: 0},*/
 	{name: "The Wolverine",score: 0,appearances: 0,image: "theWolverine",rank: 0},
 	{name: "X-Men: Apocalypse",score: 0,appearances: 0,image: "xApocalypse",rank: 0},
-	/*{name: "X-Men: Dark Phoenix",score: 0,appearances: 0,image: "xDarkPhoenix",rank: 0},*/
+	{name: "X-Men: Dark Phoenix",score: 0,appearances: 0,image: "xDarkPhoenix",rank: 0},
 	{name: "X-Men: Days of Future Past",score: 0,appearances: 0,image: "xDaysOfFuturePast",rank: 0},
 	{name: "X-Men: First Class",score: 0,appearances: 0,image: "xFirstClass",rank: 0},
 	{name: "X-Men",score: 0,appearances: 0,image: "xMen1",rank: 0},
